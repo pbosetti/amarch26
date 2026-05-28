@@ -152,51 +152,414 @@ Paolo Bosetti
 
 <section id="context" class="title-slide slide level1 center">
 <h1>Context</h1>
-
+<p>3-D technologies support archaeological research when replicas and models are treated as documented interpretations of material evidence.</p>
 </section>
 
 <section>
 <section id="d-reconstruction" class="title-slide slide level1 center">
 <h1>3-D Reconstruction</h1>
-
+<p>3-D reconstruction converts observations of an artefact, structure, or landscape into a digital model with measurable geometry.</p>
 </section>
 <section id="technologies-and-tools" class="slide level2">
 <h2>Technologies and tools</h2>
+<div class="columns">
+<div class="column">
+<h3 id="general-workflow">General workflow</h3>
+<ul>
+<li>Capture the object or context with images, projected light, or laser range measurements.</li>
+<li>Register viewpoints in a common coordinate system.</li>
+<li>Generate a point cloud, mesh, texture, and scale reference.</li>
+<li>Clean, document, and export the model for analysis, display, or printing.</li>
+</ul>
+</div><div class="column">
+<h3 id="method-selection">Method selection</h3>
+<ul>
+<li>Surface size, texture, reflectance, and fragility.</li>
+<li>Required metric accuracy and smallest relevant feature.</li>
+<li>Lab or field constraints: light, access, time, and portability.</li>
+<li>Final use: measurement, online publication, teaching, or replica fabrication.</li>
+</ul>
+</div></div>
+<div title="Key principle">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Key principle</strong></p>
+</div>
+<div class="callout-content">
+<p>There is no universally best capture method. For archaeological objects, the best choice is the one that preserves provenance, scale, uncertainty, and reproducibility for the intended research question.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="photogrammetry" class="slide level2">
-<h2>Photogrammetry</h2>
+<section id="photogrammetry-1" class="slide level2">
+<h2>Photogrammetry (1)</h2>
+<div class="columns">
+<div class="column">
+<h3 id="operating-principles">Operating principles</h3>
+<ul>
+<li>Multiple images of the object are taken from different angles.</li>
+<li>Computer vision algorithms identify common features across images.</li>
+<li>The 3-D structure is reconstructed by triangulating the positions of these features in space.</li>
+</ul>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://blog.prusa3d.com/wp-content/uploads/2018/03/epipolar_geometry.jpg"></p>
+<figcaption>Example of photogrammetry reconstruction</figcaption>
+</figure>
+</div>
+</div></div>
+<div title="Advantages and limitations">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Advantages and limitations</strong></p>
+</div>
+<div class="callout-content">
+<p>Photogrammetry is a cost-effective and accessible method for 3-D reconstruction, as it only requires a camera and software. However, it can be less accurate than other methods, especially for objects with low texture or in challenging lighting conditions.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="structured-light-scanning" class="slide level2">
 <h2>Structured light scanning</h2>
+<div class="columns">
+<div class="column">
+<h3 id="operating-principles-1">Operating principles</h3>
+<ul>
+<li>A projector casts a known pattern of stripes or dots on the surface.</li>
+<li>One or more cameras record how the pattern is deformed by the object.</li>
+<li>Software reconstructs geometry by triangulating between projector, camera, and surface.</li>
+</ul>
+</div><div class="column">
+<h3 id="archaeological-fit">Archaeological fit</h3>
+<ul>
+<li>Small and medium artefacts with fine relief: ceramics, lithics, bone, plaster, coins, and inscriptions.</li>
+<li>Controlled indoor capture with stable light and limited object movement.</li>
+<li>Useful when photogrammetry lacks enough texture or repeatable detail.</li>
+</ul>
+</div></div>
+<div title="Advantages and limitations">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Advantages and limitations</strong></p>
+</div>
+<div class="callout-content">
+<p>Structured light scanning gives high local resolution and fast acquisition, but glossy, translucent, very dark, or deeply undercut surfaces may need surface preparation, multiple scan angles, or another method.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="time-of-flight-scanning" class="slide level2">
 <h2>Time-of-flight scanning</h2>
+<div class="columns">
+<div class="column">
+<h3 id="operating-principles-2">Operating principles</h3>
+<ul>
+<li>The device emits a pulse or modulated beam of light.</li>
+<li>Distance is computed from the return time or phase shift.</li>
+<li>A depth map or point cloud is produced, often combined with RGB imagery and inertial tracking.</li>
+</ul>
+</div><div class="column">
+<h3 id="archaeological-fit-1">Archaeological fit</h3>
+<ul>
+<li>Rapid documentation of rooms, trenches, monuments, and larger objects.</li>
+<li>Useful for spatial context, logistics, and preliminary recording.</li>
+<li>Less appropriate when the research question depends on very fine surface detail.</li>
+</ul>
+</div></div>
+<div title="Advantages and limitations">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Advantages and limitations</strong></p>
+</div>
+<div class="callout-content">
+<p>Time-of-flight devices are fast and portable, but their resolution and edge accuracy are usually lower than close-range photogrammetry or structured light scanning for small artefacts.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="lidar-scanning" class="slide level2">
 <h2>LIDAR scanning</h2>
+<div class="columns">
+<div class="column">
+<h3 id="operating-principles-3">Operating principles</h3>
+<ul>
+<li>A laser scanner measures distance and angle for many points across a scene.</li>
+<li>Scans are aligned using targets, shared geometry, SLAM, GNSS, or total-station control.</li>
+<li>The result is a dense, often georeferenced point cloud.</li>
+</ul>
+</div><div class="column">
+<h3 id="archaeological-fit-2">Archaeological fit</h3>
+<ul>
+<li>Architecture, excavation areas, rock art panels, caves, and landscapes.</li>
+<li>Airborne LIDAR can reveal microtopography and features under vegetation.</li>
+<li>Terrestrial LIDAR is strong for monitoring deformation, erosion, and conservation work.</li>
+</ul>
+</div></div>
+<div title="Advantages and limitations">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Advantages and limitations</strong></p>
+</div>
+<div class="callout-content">
+<p>LIDAR excels at scale and spatial context, but equipment cost, line-of-sight gaps, large datasets, and limited close-range surface detail make it complementary to artefact-level scanning.</p>
+</div>
+</div>
+</div>
+</div>
 </section></section>
 <section>
 <section id="d-printing" class="title-slide slide level1 center">
 <h1>3-D Printing</h1>
-
+<p>3-D printing turns digital reconstructions into physical replicas whose research value depends on scale control, material choice, finishing, and documentation.</p>
 </section>
 <section id="taxonomy-of-3-d-printing-technologies" class="slide level2">
 <h2>Taxonomy of 3-D printing technologies</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Family</th>
+<th>Common technologies</th>
+<th>Typical archaeological use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Material extrusion</td>
+<td>FDM, FFF</td>
+<td>Low-cost handling models, teaching sets, enlarged tactile replicas</td>
+</tr>
+<tr class="even">
+<td>Vat photopolymerization</td>
+<td>SLA, MSLA, DLP</td>
+<td>Small finds with fine relief, inscriptions, seals, detailed fragments</td>
+</tr>
+<tr class="odd">
+<td>Powder bed and binder</td>
+<td>SLS, MJF, binder jet</td>
+<td>Complex shapes, durable nylon replicas, color display models</td>
+</tr>
+<tr class="even">
+<td>Metal additive manufacturing</td>
+<td>PBF, DED, metal binder jet</td>
+<td>Specialist replicas, mounts, experimental tools, structural parts</td>
+</tr>
+</tbody>
+</table>
+<div title="Selection criteria">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Selection criteria</strong></p>
+</div>
+<div class="callout-content">
+<p>Choose the printing process from the required detail, strength, color, handling conditions, cost, post-processing effort, and ethical need to distinguish replica from original.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="polymer-based-3-d-printing" class="slide level2">
 <h2>Polymer-based 3-D printing</h2>
+<div class="columns">
+<div class="column">
+<h3 id="material-families">Material families</h3>
+<ul>
+<li>Thermoplastics: PLA, PETG, ABS, nylon, and filled filaments.</li>
+<li>Photopolymers: standard, tough, flexible, castable, and high-temperature resins.</li>
+<li>Composite materials can imitate stone, wood, or ceramic appearance without reproducing the original material history.</li>
+</ul>
+</div><div class="column">
+<h3 id="archaeological-decisions">Archaeological decisions</h3>
+<ul>
+<li>Is the replica for handling, measurement, exhibition, accessibility, or conservation planning?</li>
+<li>Does the surface need texture, painted color, or neutral analytical visibility?</li>
+<li>What scale, tolerance, and label will prevent confusion with the original?</li>
+</ul>
+</div></div>
+<div title="Practical note">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Practical note</strong></p>
+</div>
+<div class="callout-content">
+<p>Polymers are usually the most accessible materials for archaeological replicas, but they should be described as interpretive copies with recorded source model, scale, printer, material, and finishing steps.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="filament-based-3-d-printing" class="slide level2">
 <h2>Filament-based 3-D printing</h2>
+<div class="columns">
+<div class="column">
+<h3 id="operating-principles-4">Operating principles</h3>
+<ul>
+<li>A thermoplastic filament is melted and extruded through a nozzle.</li>
+<li>The object is built layer by layer along programmed toolpaths.</li>
+<li>Supports, infill, perimeter count, layer height, and nozzle size control strength and detail.</li>
+</ul>
+</div><div class="column">
+<h3 id="archaeological-fit-3">Archaeological fit</h3>
+<ul>
+<li>Robust replicas for handling, teaching, access, and public engagement.</li>
+<li>Enlarged models of small finds for tactile inspection.</li>
+<li>Trial reconstructions, joins, mounts, and packaging aids.</li>
+</ul>
+</div></div>
+<div title="Advantages and limitations">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Advantages and limitations</strong></p>
+</div>
+<div class="callout-content">
+<p>Filament printing is inexpensive and durable, but layer lines, anisotropic strength, overhang supports, and limited fine detail can affect the accuracy of inscriptions, tool marks, and thin edges.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="resin-based-3-d-printing" class="slide level2">
 <h2>Resin-based 3-D printing</h2>
+<div class="columns">
+<div class="column">
+<h3 id="operating-principles-5">Operating principles</h3>
+<ul>
+<li>Ultraviolet light cures liquid photopolymer resin in thin layers.</li>
+<li>Parts are printed on supports, then washed, dried, and post-cured.</li>
+<li>Resolution depends on pixel size, layer height, resin behavior, and orientation.</li>
+</ul>
+</div><div class="column">
+<h3 id="archaeological-fit-4">Archaeological fit</h3>
+<ul>
+<li>Small artefacts with fine relief or complex decoration.</li>
+<li>Coins, seals, figurines, engraved surfaces, and diagnostic fragments.</li>
+<li>Masters for moulding or casting when direct handling copies are needed.</li>
+</ul>
+</div></div>
+<div title="Advantages and limitations">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Advantages and limitations</strong></p>
+</div>
+<div class="callout-content">
+<p>Resin printing captures fine detail well, but uncured resin is hazardous, parts can be brittle or UV-sensitive, and support scars or shrinkage may compromise metric fidelity.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="powder-based-3-d-printing" class="slide level2">
 <h2>Powder-based 3-D printing</h2>
+<div class="columns">
+<div class="column">
+<h3 id="operating-principles-6">Operating principles</h3>
+<ul>
+<li>A thin layer of powder is spread over the build area.</li>
+<li>Heat, laser energy, or a liquid binder selectively joins each layer.</li>
+<li>Unfused powder supports the part during printing and is removed afterward.</li>
+</ul>
+</div><div class="column">
+<h3 id="archaeological-fit-5">Archaeological fit</h3>
+<ul>
+<li>Complex geometry without many visible support scars.</li>
+<li>Nylon prints for durable handling collections.</li>
+<li>Binder jet prints for full-color display models using texture maps.</li>
+</ul>
+</div></div>
+<div title="Advantages and limitations">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Advantages and limitations</strong></p>
+</div>
+<div class="callout-content">
+<p>Powder processes can handle complex forms and color, but surfaces may be grainy or porous, cavities can trap powder, and equipment and service costs are higher than desktop polymer printers.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="metal-based-3-d-printing" class="slide level2">
 <h2>Metal-based 3-D printing</h2>
+<div class="columns">
+<div class="column">
+<h3 id="operating-principles-7">Operating principles</h3>
+<ul>
+<li>Metal powder or wire is fused by laser, electron beam, or directed energy.</li>
+<li>Binder jet metal parts are printed green and then sintered.</li>
+<li>Heat treatment, machining, polishing, and support removal are usually part of the workflow.</li>
+</ul>
+</div><div class="column">
+<h3 id="archaeological-fit-6">Archaeological fit</h3>
+<ul>
+<li>Specialist replicas when weight, stiffness, wear, or heat resistance matter.</li>
+<li>Mounts, brackets, replacement fixtures, and experimental archaeology tools.</li>
+<li>Rarely justified for routine artefact replication.</li>
+</ul>
+</div></div>
+<div title="Advantages and limitations">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Advantages and limitations</strong></p>
+</div>
+<div class="callout-content">
+<p>Metal printing is costly and technically demanding; in archaeology it is most defensible when material properties are part of the research or conservation problem, not merely for visual resemblance.</p>
+</div>
+</div>
+</div>
+</div>
 
 
 </section></section>
