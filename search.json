@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "AMARCH26",
+    "section": "",
+    "text": "This repository contains the materials for the seminar “3-D reconstruction and printing tools: Fundamentals” presented by Paolo Bosetti at the AMARCH26 summer school.\n\nContents\n\n3-D reconstruction and printing tools: Fundamentals."
+  },
+  {
     "objectID": "slides/part_1.html#technologies-and-tools",
     "href": "slides/part_1.html#technologies-and-tools",
     "title": "3-D reconstruction and printing tools: Fundamentals",
@@ -75,12 +82,5 @@
     "title": "3-D reconstruction and printing tools: Fundamentals",
     "section": "Metal-based 3-D printing",
     "text": "Metal-based 3-D printing"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "AMARCH26",
-    "section": "",
-    "text": "This repository contains the materials for the seminar “3-D reconstruction and printing tools: Fundamentals” presented by Paolo Bosetti at the AMARCH26 summer school.\n\nContents\n\n3-D reconstruction and printing tools: Fundamentals."
   }
 ]
