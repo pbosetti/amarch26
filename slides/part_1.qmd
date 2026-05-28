@@ -1,0 +1,40 @@
+---
+title: "3-D reconstruction and printing tools: Fundamentals"
+subtitle: "AMARCH26"
+author: "Paolo Bosetti"
+format: revealjs
+---
+
+# Contents
+
+
+# Context
+
+
+# 3-D Reconstruction
+
+## Technologies and tools
+
+## Photogrammetry
+
+## Structured light scanning
+
+## Time-of-flight scanning
+
+## LIDAR scanning
+
+
+# 3-D Printing
+
+## Taxonomy of 3-D printing technologies
+
+## Polymer-based 3-D printing
+
+## Filament-based 3-D printing
+
+## Resin-based 3-D printing
+
+## Powder-based 3-D printing
+
+
+## Metal-based 3-D printing

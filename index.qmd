@@ -1,0 +1,14 @@
+---
+title: "AMARCH26"
+author: "Paolo Bosetti"
+format: html
+---
+
+
+This repository contains the materials for the seminar "3-D reconstruction and printing tools: Fundamentals" presented by Paolo Bosetti at the [AMARCH26](https://eventi.unitn.it/it/amarch-2026) summer school.
+
+# Contents
+
+a. 3-D reconstruction and printing tools: Fundamentals. [{{< bi file-slides >}}](/slides/part_1.qmd)
+
+

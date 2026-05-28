@@ -1,0 +1,13 @@
+$main-color: #DA6A15;
+$main-color-light: scale-color($main-color, $lightness: +20%);
+$main-color-dark: scale-color($main-color, $lightness: -20%);
+$alt-color: complement($main-color, $space: hsl);
+$my-blue: $alt-color;
+$my-green: #23c142; 
+$my-red: #aa0030; 
+$math-color: #004488;
+$code-color: $my-green;
+
+$headings-color: $main-color;
+$link-color: $alt-color;
+$link-hover-color: $main-color-light;

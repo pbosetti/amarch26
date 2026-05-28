@@ -1,0 +1,30 @@
+project:
+  type: website
+  title: "AMARCH26"
+
+format:
+  html:
+    theme: [superhero, slides.scss]
+  revealjs:
+    theme: [default, slides.scss]
+    width: 1280
+    height: 720
+    margin: 0.1
+    logo: /images/logo.png
+    slide-number: true
+    controls: true
+    progress: true
+    transition: fade
+    code-line-numbers: true
+    code-annotations: below
+    preview-links: auto
+    chalkboard: true
+    footer: "AMARCH26 --- [{{< bi house-fill >}} Home](/)"
+    fig-width: 5
+    fig-height: 4
+    fig-dpi: 300
+    touch: true
+    email-obfuscation: javascript
+    pdf-separate-fragments: true
+    link-external-icon: true
+    lang: en-EN

@@ -1,0 +1,197 @@
+/*-- Load variables --*/
+@import "_vars.scss";
+
+/*-- scss:defaults --*/
+$presentation-font-size-root: 30px;
+$presentation-heading-color: $main-color;
+$code-block-font-size: 0.75em;
+$body-bg: white;
+$body-color: #777777;
+
+.noicons a.external:after{
+  display: none;
+}
+
+/*-- scss:rules --*/
+
+.reveal {
+  a {
+    color: $link-color;
+    text-decoration: underline;
+    text-decoration-color: $link-hover-color;
+  }
+  
+  a:hover {
+    color: $link-hover-color;
+    text-decoration: underline;
+    text-decoration-color: $link-color;
+  }
+  
+  p.subtitle {
+    font-size: 150%;
+    color: $presentation-heading-color;
+  }
+  
+  strong {
+    color: $presentation-heading-color;
+  }
+  
+  aside{
+    font-style: italic;
+  }
+  
+  figcaption {
+    font-style: italic;
+    text-align: center;
+  }
+  
+  .theorem {
+    background-color: #f9f9ff;
+    border: 1px solid #888888;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 43px 0px 10px 0px;
+  }
+  
+  .theorem .title {
+    font-weight: normal;
+    border: 1px solid #888888 !important;
+    border-radius: 5px;
+    margin-top: -32px;
+    margin-left: 30px;
+    background-color: white;
+    padding: 0px 10px 0px 10px;
+    width: fit-content;
+  }
+  
+  .theorem .title p {
+    margin: 0px;
+  }
+  
+  .quarto-title-author-name {
+    font-size: 80%;
+    font-weight: bold;
+  }
+  
+  .quarto-title-affiliation {
+    font-style: italic;
+  }
+  
+  p.date {
+    font-size: 50%;
+    font-style: italic;
+    color: #aa9999;
+  }
+  
+  h1:not(.title) {
+    background-image: linear-gradient(to right, $body-bg, scale-color($link-color, $lightness: +50%));
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  
+  .title {
+    border-bottom: 6px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+    border-bottom-style: solid;
+    border-bottom-color: $presentation-heading-color;  
+  }
+  
+  p.subtitle {
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+    color: complement($presentation-heading-color, $space: null);  
+  }
+  
+  h2 {
+    border-bottom: 4px;
+    border-bottom-style: solid;
+    border-bottom-color: $presentation-heading-color;
+  }
+  
+  .math {
+    color: $math-color;
+  }
+
+  h2 .math {
+    color: $main-color-dark;
+  }
+  
+  code {
+    color: $code-color;
+    font-size: 90%;
+  }
+  
+  .cell-output-stdout {
+    font-size: 75%;
+  }
+
+  .cell-output code {
+    background-color: #f9f9ff;
+    margin-left: 25px;
+    border-radius: 5px;
+  }
+
+  .bblue {
+    font-weight: bold;
+    color: $my-blue;
+  }
+  
+  .bgreen {
+    font-weight: bold;
+    color: $my-green;
+  }
+  
+  .bred {
+    font-weight: bold;
+    color: $my-red;
+  }
+  
+  .ul {
+    text-decoration: underline;
+  }
+  
+  .smaller {
+    font-size: 75%;
+  }
+  
+  .tiny {
+    font-size: 50%;
+  }
+  
+  .sourceCode {
+    font-size: 80%;
+  }
+  
+  div.callout.callout-style-default {
+    border-right: 1px solid #dee2e6;
+    border-top: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 10px;
+  }
+
+  .panel-tabset [role="tablist"] {
+    border-bottom-color: $body-color;
+  }
+
+  .panel-tabset [role="tab"] {
+    border-left-color: $body-color;
+    border-right-color: $body-color;
+    border-top-color: $body-color;
+    border-bottom: 0px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: scale-color($body-bg, $lightness: -2%);
+    padding-top: 0%;
+    padding-bottom: 0%;
+  }
+  
+  .panel-tabset [role="tab"][aria-selected="true"],
+  .panel-tabset [role="tab"]:hover:not([aria-selected="true"]) {
+    background-color: $body-bg;
+    border-color: scale-color($body-color, $lightness: -20%);
+    border-bottom: 0px;
+    color: $main-color;
+  }
+}
