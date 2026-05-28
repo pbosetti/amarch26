@@ -10,31 +10,334 @@ format: revealjs
 
 # Context
 
+3-D technologies support archaeological research when replicas and models are treated as documented interpretations of material evidence.
+
 
 # 3-D Reconstruction
 
+3-D reconstruction converts observations of an artefact, structure, or landscape into a digital model with measurable geometry.
+
 ## Technologies and tools
 
-## Photogrammetry
+::: {.columns}
+
+::: {.column}
+### General workflow
+
+* Capture the object or context with images, projected light, or laser range measurements.
+* Register viewpoints in a common coordinate system.
+* Generate a point cloud, mesh, texture, and scale reference.
+* Clean, document, and export the model for analysis, display, or printing.
+
+:::
+
+::: {.column}
+### Method selection
+
+* Surface size, texture, reflectance, and fragility.
+* Required metric accuracy and smallest relevant feature.
+* Lab or field constraints: light, access, time, and portability.
+* Final use: measurement, online publication, teaching, or replica fabrication.
+
+:::
+
+:::
+
+::: {.callout-note title="Key principle"}
+
+There is no universally best capture method. For archaeological objects, the best choice is the one that preserves provenance, scale, uncertainty, and reproducibility for the intended research question.
+
+:::
+
+## Photogrammetry (1)
+
+
+::: {.columns}
+
+::: {.column}
+### Operating principles
+
+* Multiple images of the object are taken from different angles.
+* Computer vision algorithms identify common features across images.
+* The 3-D structure is reconstructed by triangulating the positions of these features in space.
+
+:::
+
+::: {.column}
+
+![Example of photogrammetry reconstruction](https://blog.prusa3d.com/wp-content/uploads/2018/03/epipolar_geometry.jpg)
+
+:::
+
+:::
+
+
+::: {.callout-note title="Advantages and limitations"}
+
+Photogrammetry is a cost-effective and accessible method for 3-D reconstruction, as it only requires a camera and software. However, it can be less accurate than other methods, especially for objects with low texture or in challenging lighting conditions.
+
+:::
+
+
+
 
 ## Structured light scanning
 
+::: {.columns}
+
+::: {.column}
+### Operating principles
+
+* A projector casts a known pattern of stripes or dots on the surface.
+* One or more cameras record how the pattern is deformed by the object.
+* Software reconstructs geometry by triangulating between projector, camera, and surface.
+
+:::
+
+::: {.column}
+### Archaeological fit
+
+* Small and medium artefacts with fine relief: ceramics, lithics, bone, plaster, coins, and inscriptions.
+* Controlled indoor capture with stable light and limited object movement.
+* Useful when photogrammetry lacks enough texture or repeatable detail.
+
+:::
+
+:::
+
+::: {.callout-note title="Advantages and limitations"}
+
+Structured light scanning gives high local resolution and fast acquisition, but glossy, translucent, very dark, or deeply undercut surfaces may need surface preparation, multiple scan angles, or another method.
+
+:::
+
 ## Time-of-flight scanning
 
+::: {.columns}
+
+::: {.column}
+### Operating principles
+
+* The device emits a pulse or modulated beam of light.
+* Distance is computed from the return time or phase shift.
+* A depth map or point cloud is produced, often combined with RGB imagery and inertial tracking.
+
+:::
+
+::: {.column}
+### Archaeological fit
+
+* Rapid documentation of rooms, trenches, monuments, and larger objects.
+* Useful for spatial context, logistics, and preliminary recording.
+* Less appropriate when the research question depends on very fine surface detail.
+
+:::
+
+:::
+
+::: {.callout-note title="Advantages and limitations"}
+
+Time-of-flight devices are fast and portable, but their resolution and edge accuracy are usually lower than close-range photogrammetry or structured light scanning for small artefacts.
+
+:::
+
 ## LIDAR scanning
+
+::: {.columns}
+
+::: {.column}
+### Operating principles
+
+* A laser scanner measures distance and angle for many points across a scene.
+* Scans are aligned using targets, shared geometry, SLAM, GNSS, or total-station control.
+* The result is a dense, often georeferenced point cloud.
+
+:::
+
+::: {.column}
+### Archaeological fit
+
+* Architecture, excavation areas, rock art panels, caves, and landscapes.
+* Airborne LIDAR can reveal microtopography and features under vegetation.
+* Terrestrial LIDAR is strong for monitoring deformation, erosion, and conservation work.
+
+:::
+
+:::
+
+::: {.callout-note title="Advantages and limitations"}
+
+LIDAR excels at scale and spatial context, but equipment cost, line-of-sight gaps, large datasets, and limited close-range surface detail make it complementary to artefact-level scanning.
+
+:::
 
 
 # 3-D Printing
 
+3-D printing turns digital reconstructions into physical replicas whose research value depends on scale control, material choice, finishing, and documentation.
+
 ## Taxonomy of 3-D printing technologies
+
+| Family | Common technologies | Typical archaeological use |
+|---|---|---|
+| Material extrusion | FDM, FFF | Low-cost handling models, teaching sets, enlarged tactile replicas |
+| Vat photopolymerization | SLA, MSLA, DLP | Small finds with fine relief, inscriptions, seals, detailed fragments |
+| Powder bed and binder | SLS, MJF, binder jet | Complex shapes, durable nylon replicas, color display models |
+| Metal additive manufacturing | PBF, DED, metal binder jet | Specialist replicas, mounts, experimental tools, structural parts |
+
+::: {.callout-note title="Selection criteria"}
+
+Choose the printing process from the required detail, strength, color, handling conditions, cost, post-processing effort, and ethical need to distinguish replica from original.
+
+:::
 
 ## Polymer-based 3-D printing
 
+::: {.columns}
+
+::: {.column}
+### Material families
+
+* Thermoplastics: PLA, PETG, ABS, nylon, and filled filaments.
+* Photopolymers: standard, tough, flexible, castable, and high-temperature resins.
+* Composite materials can imitate stone, wood, or ceramic appearance without reproducing the original material history.
+
+:::
+
+::: {.column}
+### Archaeological decisions
+
+* Is the replica for handling, measurement, exhibition, accessibility, or conservation planning?
+* Does the surface need texture, painted color, or neutral analytical visibility?
+* What scale, tolerance, and label will prevent confusion with the original?
+
+:::
+
+:::
+
+::: {.callout-note title="Practical note"}
+
+Polymers are usually the most accessible materials for archaeological replicas, but they should be described as interpretive copies with recorded source model, scale, printer, material, and finishing steps.
+
+:::
+
 ## Filament-based 3-D printing
+
+::: {.columns}
+
+::: {.column}
+### Operating principles
+
+* A thermoplastic filament is melted and extruded through a nozzle.
+* The object is built layer by layer along programmed toolpaths.
+* Supports, infill, perimeter count, layer height, and nozzle size control strength and detail.
+
+:::
+
+::: {.column}
+### Archaeological fit
+
+* Robust replicas for handling, teaching, access, and public engagement.
+* Enlarged models of small finds for tactile inspection.
+* Trial reconstructions, joins, mounts, and packaging aids.
+
+:::
+
+:::
+
+::: {.callout-note title="Advantages and limitations"}
+
+Filament printing is inexpensive and durable, but layer lines, anisotropic strength, overhang supports, and limited fine detail can affect the accuracy of inscriptions, tool marks, and thin edges.
+
+:::
 
 ## Resin-based 3-D printing
 
+::: {.columns}
+
+::: {.column}
+### Operating principles
+
+* Ultraviolet light cures liquid photopolymer resin in thin layers.
+* Parts are printed on supports, then washed, dried, and post-cured.
+* Resolution depends on pixel size, layer height, resin behavior, and orientation.
+
+:::
+
+::: {.column}
+### Archaeological fit
+
+* Small artefacts with fine relief or complex decoration.
+* Coins, seals, figurines, engraved surfaces, and diagnostic fragments.
+* Masters for moulding or casting when direct handling copies are needed.
+
+:::
+
+:::
+
+::: {.callout-note title="Advantages and limitations"}
+
+Resin printing captures fine detail well, but uncured resin is hazardous, parts can be brittle or UV-sensitive, and support scars or shrinkage may compromise metric fidelity.
+
+:::
+
 ## Powder-based 3-D printing
+
+::: {.columns}
+
+::: {.column}
+### Operating principles
+
+* A thin layer of powder is spread over the build area.
+* Heat, laser energy, or a liquid binder selectively joins each layer.
+* Unfused powder supports the part during printing and is removed afterward.
+
+:::
+
+::: {.column}
+### Archaeological fit
+
+* Complex geometry without many visible support scars.
+* Nylon prints for durable handling collections.
+* Binder jet prints for full-color display models using texture maps.
+
+:::
+
+:::
+
+::: {.callout-note title="Advantages and limitations"}
+
+Powder processes can handle complex forms and color, but surfaces may be grainy or porous, cavities can trap powder, and equipment and service costs are higher than desktop polymer printers.
+
+:::
 
 
 ## Metal-based 3-D printing
+
+::: {.columns}
+
+::: {.column}
+### Operating principles
+
+* Metal powder or wire is fused by laser, electron beam, or directed energy.
+* Binder jet metal parts are printed green and then sintered.
+* Heat treatment, machining, polishing, and support removal are usually part of the workflow.
+
+:::
+
+::: {.column}
+### Archaeological fit
+
+* Specialist replicas when weight, stiffness, wear, or heat resistance matter.
+* Mounts, brackets, replacement fixtures, and experimental archaeology tools.
+* Rarely justified for routine artefact replication.
+
+:::
+
+:::
+
+::: {.callout-note title="Advantages and limitations"}
+
+Metal printing is costly and technically demanding; in archaeology it is most defensible when material properties are part of the research or conservation problem, not merely for visual resemblance.
+
+:::
