@@ -253,7 +253,7 @@ Both methods can be augmented with RGB cameras for color information, and inerti
 ::: {.column}
 * **Reality composer** is a free app for iOS and macOS that uses the device's camera and ToF sensor to create 3-D models from live scanning
 * it produces an `.objcap` file that must be opened by **Reality Composer Pro** app on macOS (free)
-* The latter can export models in USDZ format, which is compatible with many 3-D software and online platforms
+* The latter can export models in `.usdz` format, which is compatible with many 3-D software and online platforms
 * The model quality is generally very good and includes texture
 :::
 
@@ -265,7 +265,7 @@ Both methods can be augmented with RGB cameras for color information, and inerti
 
 :::
 
-## Example
+## Example {.scrollable}
 
 
 ::: {.columns}
@@ -279,7 +279,9 @@ Both methods can be augmented with RGB cameras for color information, and inerti
 :::
 
 ::: {.column width=33%}
-{{< video rc_3.mov width=280 >}}
+```{=html}
+<video src="rc_3.mov" controls style="display: block; margin: 0 auto;"><source src="rc_3.mov"></video>
+```
 :::
 
 :::
@@ -287,7 +289,7 @@ Both methods can be augmented with RGB cameras for color information, and inerti
 
 ## Example: Same mask as above
 
-Scanned with Reality Composer on iPhone 16 Pro, exported as USDZ, and rendered with the same WebGL viewer as the photogrammetry model.
+Scanned with Reality Composer on iPhone 16 Pro, exported as `.usdz`, and rendered with the same WebGL viewer as the photogrammetry model
 
 ```{=html}
 <div class="mask-viewer" data-mask-viewer data-model-src="_Mask.usdz"></div>
@@ -297,7 +299,7 @@ Scanned with Reality Composer on iPhone 16 Pro, exported as USDZ, and rendered w
 
 # 3-D Printing
 
-3-D printing turns digital reconstructions into physical replicas whose research value depends on scale control, material choice, finishing, and documentation.
+3-D printing turns digital reconstructions into physical replicas whose research value depends on scale control, material choice, finishing, and documentation
 
 ## Taxonomy of 3-D printing technologies
 
