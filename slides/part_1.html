@@ -33,7 +33,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-b3d6f86437c80a626227b1da5f9484f0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-4fb7e28a32558f01bec84e9c62f4f224.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -196,21 +196,29 @@ Paolo Bosetti
 </div>
 </div>
 </section>
-<section id="photogrammetry-1" class="slide level2">
-<h2>Photogrammetry (1)</h2>
+<section id="photogrammetry-1-triangulation" class="slide level2">
+<h2>Photogrammetry (1): Triangulation</h2>
+<p>It’s quite like our binocular vision:</p>
+<div class="reconstruction-scene" data-reconstruction-webgl="" data-method="photogrammetry" data-model-src="_Mask.usdz"></div>
+<script src="mask-model.js"></script>
+<script src="reconstruction-webgl.js"></script>
+</section>
+<section id="photogrammetry-2-operating-principles" class="slide level2">
+<h2>Photogrammetry (2): Operating principles</h2>
 <div class="columns">
-<div class="column">
-<h3 id="operating-principles">Operating principles</h3>
+<div class="column" style="width:60%;">
 <ul>
-<li>Multiple images of the object are taken from different angles.</li>
-<li>Computer vision algorithms identify common features across images.</li>
-<li>The 3-D structure is reconstructed by triangulating the positions of these features in space.</li>
+<li>Multiple <strong>overlapping</strong> images of the object are taken from different angles</li>
+<li>The camera positions and orientations do <strong>not</strong> have to be known in advance</li>
+<li>Computer vision algorithms identify common features (points) across images</li>
+<li>Images are aligned in 3-D space so that the same features overlap</li>
+<li>The scene is reconstructed by triangulating feature positions in space, and textured with the original images</li>
 </ul>
-</div><div class="column">
+</div><div class="column" style="width:40%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="https://blog.prusa3d.com/wp-content/uploads/2018/03/epipolar_geometry.jpg"></p>
-<figcaption>Example of photogrammetry reconstruction</figcaption>
+<p><img data-src="photogrammetry.png" style="width:66.0%"></p>
+<figcaption>Photogrammetry bundle triangulation</figcaption>
 </figure>
 </div>
 </div></div>
@@ -234,7 +242,7 @@ Paolo Bosetti
 <h2>Structured light scanning</h2>
 <div class="columns">
 <div class="column">
-<h3 id="operating-principles-1">Operating principles</h3>
+<h3 id="operating-principles">Operating principles</h3>
 <ul>
 <li>A projector casts a known pattern of stripes or dots on the surface.</li>
 <li>One or more cameras record how the pattern is deformed by the object.</li>
@@ -264,11 +272,17 @@ Paolo Bosetti
 </div>
 </div>
 </section>
+<section id="structured-light-scanning-2-example" class="slide level2">
+<h2>Structured light scanning (2): Example</h2>
+<div class="reconstruction-scene" data-reconstruction-webgl="" data-method="structured-light" data-model-src="_Mask.usdz"></div>
+<script src="mask-model.js"></script>
+<script src="reconstruction-webgl.js"></script>
+</section>
 <section id="time-of-flight-scanning" class="slide level2">
 <h2>Time-of-flight scanning</h2>
 <div class="columns">
 <div class="column">
-<h3 id="operating-principles-2">Operating principles</h3>
+<h3 id="operating-principles-1">Operating principles</h3>
 <ul>
 <li>The device emits a pulse or modulated beam of light.</li>
 <li>Distance is computed from the return time or phase shift.</li>
@@ -302,7 +316,7 @@ Paolo Bosetti
 <h2>LIDAR scanning</h2>
 <div class="columns">
 <div class="column">
-<h3 id="operating-principles-3">Operating principles</h3>
+<h3 id="operating-principles-2">Operating principles</h3>
 <ul>
 <li>A laser scanner measures distance and angle for many points across a scene.</li>
 <li>Scans are aligned using targets, shared geometry, SLAM, GNSS, or total-station control.</li>
@@ -429,7 +443,7 @@ Paolo Bosetti
 <h2>Filament-based 3-D printing</h2>
 <div class="columns">
 <div class="column">
-<h3 id="operating-principles-4">Operating principles</h3>
+<h3 id="operating-principles-3">Operating principles</h3>
 <ul>
 <li>A thermoplastic filament is melted and extruded through a nozzle.</li>
 <li>The object is built layer by layer along programmed toolpaths.</li>
@@ -463,7 +477,7 @@ Paolo Bosetti
 <h2>Resin-based 3-D printing</h2>
 <div class="columns">
 <div class="column">
-<h3 id="operating-principles-5">Operating principles</h3>
+<h3 id="operating-principles-4">Operating principles</h3>
 <ul>
 <li>Ultraviolet light cures liquid photopolymer resin in thin layers.</li>
 <li>Parts are printed on supports, then washed, dried, and post-cured.</li>
@@ -497,7 +511,7 @@ Paolo Bosetti
 <h2>Powder-based 3-D printing</h2>
 <div class="columns">
 <div class="column">
-<h3 id="operating-principles-6">Operating principles</h3>
+<h3 id="operating-principles-5">Operating principles</h3>
 <ul>
 <li>A thin layer of powder is spread over the build area.</li>
 <li>Heat, laser energy, or a liquid binder selectively joins each layer.</li>
@@ -531,7 +545,7 @@ Paolo Bosetti
 <h2>Metal-based 3-D printing</h2>
 <div class="columns">
 <div class="column">
-<h3 id="operating-principles-7">Operating principles</h3>
+<h3 id="operating-principles-6">Operating principles</h3>
 <ul>
 <li>Metal powder or wire is fused by laser, electron beam, or directed energy.</li>
 <li>Binder jet metal parts are printed green and then sintered.</li>

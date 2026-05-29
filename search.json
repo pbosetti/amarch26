@@ -14,11 +14,18 @@
     "text": "Technologies and tools\n\n\nGeneral workflow\n\nCapture the object or context with images, projected light, or laser range measurements.\nRegister viewpoints in a common coordinate system.\nGenerate a point cloud, mesh, texture, and scale reference.\nClean, document, and export the model for analysis, display, or printing.\n\n\nMethod selection\n\nSurface size, texture, reflectance, and fragility.\nRequired metric accuracy and smallest relevant feature.\nLab or field constraints: light, access, time, and portability.\nFinal use: measurement, online publication, teaching, or replica fabrication.\n\n\n\n\n\n\n\n\n\nKey principle\n\n\nThere is no universally best capture method. For archaeological objects, the best choice is the one that preserves provenance, scale, uncertainty, and reproducibility for the intended research question."
   },
   {
-    "objectID": "slides/part_1.html#photogrammetry-1",
-    "href": "slides/part_1.html#photogrammetry-1",
+    "objectID": "slides/part_1.html#photogrammetry-1-triangulation",
+    "href": "slides/part_1.html#photogrammetry-1-triangulation",
     "title": "3-D reconstruction and printing tools: Fundamentals",
-    "section": "Photogrammetry (1)",
-    "text": "Photogrammetry (1)\n\n\nOperating principles\n\nMultiple images of the object are taken from different angles.\nComputer vision algorithms identify common features across images.\nThe 3-D structure is reconstructed by triangulating the positions of these features in space.\n\n\n\n\n\nExample of photogrammetry reconstruction\n\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nPhotogrammetry is a cost-effective and accessible method for 3-D reconstruction, as it only requires a camera and software. However, it can be less accurate than other methods, especially for objects with low texture or in challenging lighting conditions."
+    "section": "Photogrammetry (1): Triangulation",
+    "text": "Photogrammetry (1): Triangulation\nIt’s quite like our binocular vision:"
+  },
+  {
+    "objectID": "slides/part_1.html#photogrammetry-2-operating-principles",
+    "href": "slides/part_1.html#photogrammetry-2-operating-principles",
+    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "section": "Photogrammetry (2): Operating principles",
+    "text": "Photogrammetry (2): Operating principles\n\n\n\nMultiple overlapping images of the object are taken from different angles\nThe camera positions and orientations do not have to be known in advance\nComputer vision algorithms identify common features (points) across images\nImages are aligned in 3-D space so that the same features overlap\nThe scene is reconstructed by triangulating feature positions in space, and textured with the original images\n\n\n\n\n\nPhotogrammetry bundle triangulation\n\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nPhotogrammetry is a cost-effective and accessible method for 3-D reconstruction, as it only requires a camera and software. However, it can be less accurate than other methods, especially for objects with low texture or in challenging lighting conditions."
   },
   {
     "objectID": "slides/part_1.html#structured-light-scanning",
@@ -26,6 +33,13 @@
     "title": "3-D reconstruction and printing tools: Fundamentals",
     "section": "Structured light scanning",
     "text": "Structured light scanning\n\n\nOperating principles\n\nA projector casts a known pattern of stripes or dots on the surface.\nOne or more cameras record how the pattern is deformed by the object.\nSoftware reconstructs geometry by triangulating between projector, camera, and surface.\n\n\nArchaeological fit\n\nSmall and medium artefacts with fine relief: ceramics, lithics, bone, plaster, coins, and inscriptions.\nControlled indoor capture with stable light and limited object movement.\nUseful when photogrammetry lacks enough texture or repeatable detail.\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nStructured light scanning gives high local resolution and fast acquisition, but glossy, translucent, very dark, or deeply undercut surfaces may need surface preparation, multiple scan angles, or another method."
+  },
+  {
+    "objectID": "slides/part_1.html#structured-light-scanning-2-example",
+    "href": "slides/part_1.html#structured-light-scanning-2-example",
+    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "section": "Structured light scanning (2): Example",
+    "text": "Structured light scanning (2): Example"
   },
   {
     "objectID": "slides/part_1.html#time-of-flight-scanning",
