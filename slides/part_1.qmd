@@ -3,6 +3,9 @@ title: "3-D reconstruction and printing tools: Fundamentals"
 subtitle: "AMARCH26"
 author: "Paolo Bosetti"
 format: revealjs
+resources:
+  - _Mask.usdz
+  - mask-texture.png
 ---
 
 # Contents
@@ -49,35 +52,39 @@ There is no universally best capture method. For archaeological objects, the bes
 
 :::
 
-## Photogrammetry (1)
 
+
+## Photogrammetry (1): Triangulation
+
+It's quite like our binocular vision:
+
+```{=html}
+<div class="reconstruction-scene" data-reconstruction-webgl data-method="photogrammetry" data-model-src="_Mask.usdz"></div>
+<script src="mask-model.js"></script>
+<script src="reconstruction-webgl.js"></script>
+```
+
+## Photogrammetry (2): Operating principles
 
 ::: {.columns}
+::: {.column width=60%}
 
-::: {.column}
-### Operating principles
-
-* Multiple images of the object are taken from different angles.
-* Computer vision algorithms identify common features across images.
-* The 3-D structure is reconstructed by triangulating the positions of these features in space.
-
-:::
-
-::: {.column}
-
-![Example of photogrammetry reconstruction](https://blog.prusa3d.com/wp-content/uploads/2018/03/epipolar_geometry.jpg)
+* Multiple **overlapping** images of the object are taken from different angles
+* The camera positions and orientations do **not** have to be known in advance
+* Computer vision algorithms identify common features (points) across images
+* Images are aligned in 3-D space so that the same features overlap
+* The scene is reconstructed by triangulating feature positions in space, and textured with the original images
 
 :::
 
+::: {.column width=40%}
+![Photogrammetry bundle triangulation](photogrammetry.png){width=66%}
 :::
-
+:::
 
 ::: {.callout-note title="Advantages and limitations"}
-
 Photogrammetry is a cost-effective and accessible method for 3-D reconstruction, as it only requires a camera and software. However, it can be less accurate than other methods, especially for objects with low texture or in challenging lighting conditions.
-
 :::
-
 
 
 
@@ -106,10 +113,16 @@ Photogrammetry is a cost-effective and accessible method for 3-D reconstruction,
 :::
 
 ::: {.callout-note title="Advantages and limitations"}
-
 Structured light scanning gives high local resolution and fast acquisition, but glossy, translucent, very dark, or deeply undercut surfaces may need surface preparation, multiple scan angles, or another method.
-
 :::
+
+## Structured light scanning (2): Example
+
+```{=html}
+<div class="reconstruction-scene" data-reconstruction-webgl data-method="structured-light" data-model-src="_Mask.usdz"></div>
+<script src="mask-model.js"></script>
+<script src="reconstruction-webgl.js"></script>
+```
 
 ## Time-of-flight scanning
 
@@ -136,9 +149,7 @@ Structured light scanning gives high local resolution and fast acquisition, but 
 :::
 
 ::: {.callout-note title="Advantages and limitations"}
-
 Time-of-flight devices are fast and portable, but their resolution and edge accuracy are usually lower than close-range photogrammetry or structured light scanning for small artefacts.
-
 :::
 
 ## LIDAR scanning
@@ -156,19 +167,15 @@ Time-of-flight devices are fast and portable, but their resolution and edge accu
 
 ::: {.column}
 ### Archaeological fit
-
 * Architecture, excavation areas, rock art panels, caves, and landscapes.
 * Airborne LIDAR can reveal microtopography and features under vegetation.
 * Terrestrial LIDAR is strong for monitoring deformation, erosion, and conservation work.
-
+:::
 :::
 
-:::
 
 ::: {.callout-note title="Advantages and limitations"}
-
 LIDAR excels at scale and spatial context, but equipment cost, line-of-sight gaps, large datasets, and limited close-range surface detail make it complementary to artefact-level scanning.
-
 :::
 
 

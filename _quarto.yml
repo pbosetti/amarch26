@@ -1,7 +1,8 @@
 project:
   type: website
   title: "AMARCH26"
-
+  preview:
+    port: 8080
 format:
   html:
     theme: [superhero, slides.scss]

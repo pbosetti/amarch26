@@ -163,6 +163,134 @@ $body-color: #777777;
   .sourceCode {
     font-size: 80%;
   }
+
+  .reconstruction-scene {
+    position: relative;
+    width: 100%;
+    max-width: 1120px;
+    height: 500px;
+    margin: 0.45em auto 0;
+    overflow: hidden;
+    background: #f4f7fa;
+    border: 1px solid #d4dbe4;
+    border-radius: 8px;
+  }
+
+  .reconstruction-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    touch-action: none;
+  }
+
+  .reconstruction-canvas:active {
+    cursor: grabbing;
+  }
+
+  .reconstruction-controls {
+    position: absolute;
+    left: 18px;
+    bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    color: #27313d;
+    font-size: 16px;
+    line-height: 1;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(39, 49, 61, 0.18);
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(39, 49, 61, 0.12);
+  }
+
+  .reconstruction-control-label,
+  .reconstruction-baseline-value {
+    font-weight: 600;
+  }
+
+  .reconstruction-controls input[type="range"] {
+    width: 170px;
+    accent-color: $link-color;
+  }
+
+  .reconstruction-reset {
+    min-width: 54px;
+    padding: 5px 8px;
+    color: white;
+    font-size: 15px;
+    line-height: 1;
+    background: $main-color;
+    border: 0;
+    border-radius: 6px;
+  }
+
+  .reconstruction-reset:hover {
+    background: $main-color-dark;
+  }
+
+  .reconstruction-label {
+    position: absolute;
+    z-index: 2;
+    padding: 4px 7px;
+    color: #27313d;
+    font-size: 15px;
+    line-height: 1;
+    white-space: nowrap;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(39, 49, 61, 0.18);
+    border-radius: 4px;
+    transform: translate(-50%, -50%);
+    transition: opacity 120ms ease;
+  }
+
+  .reconstruction-label-left {
+    border-left: 4px solid #0d6fd2;
+  }
+
+  .reconstruction-label-right {
+    border-left: 4px solid #de5b1a;
+  }
+
+  .reconstruction-label-object {
+    border-left: 4px solid #8f5034;
+  }
+
+  .reconstruction-label-feature {
+    border-left: 4px solid #1f9a5f;
+  }
+
+  .reconstruction-error {
+    display: grid;
+    height: 100%;
+    margin: 0;
+    color: #27313d;
+    place-items: center;
+  }
+
+  @media (max-width: 700px) {
+    .reconstruction-scene {
+      height: 420px;
+    }
+
+    .reconstruction-controls {
+      right: 12px;
+      left: 12px;
+      bottom: 12px;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .reconstruction-controls input[type="range"] {
+      width: 120px;
+    }
+
+    .reconstruction-label {
+      font-size: 13px;
+    }
+  }
   
   div.callout.callout-style-default {
     border-right: 1px solid #dee2e6;
