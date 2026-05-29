@@ -124,6 +124,44 @@ Structured light scanning gives high local resolution and fast acquisition, but 
 <script src="reconstruction-webgl.js"></script>
 ```
 
+
+## LiDAR scanning
+
+::: {.columns}
+
+::: {.column}
+### Operating principles
+
+* A fixed laser scanner measures distance and angle for many points across a scene, via echo time of a pulse
+* The result is a dense, often georeferenced point cloud
+* Might be combined with RGB imagery for texture and color information
+* Multiple scans may be aligned using targets, shared geometry, SLAM, GNSS
+:::
+
+::: {.column}
+:::{.panel-tabset}
+### Scan
+![LiDAR point cloud](lidar_2.jpg){width=77%}
+
+### Mesh
+![LiDAR mesh](lidar_3.jpg){width=66%}
+
+### Archaeological fit
+* Architecture, excavation areas, rock art panels, caves, and landscapes.
+* Airborne LiDAR can reveal microtopography and features under vegetation.
+* Terrestrial LiDAR is strong for monitoring deformation, erosion, and conservation work.
+:::
+:::
+:::
+
+
+::: {.callout-note title="Advantages and limitations"}
+LiDAR excels at scale and spatial context, but equipment cost, line-of-sight gaps, large datasets, and limited close-range surface detail make it complementary to artefact-level scanning
+
+Wavelengths: short-wave infrared spectrums 905 nm (more sensitive) or eye-safe 1550 nm
+:::
+
+
 ## Time-of-flight scanning
 
 ::: {.columns}
@@ -131,52 +169,48 @@ Structured light scanning gives high local resolution and fast acquisition, but 
 ::: {.column}
 ### Operating principles
 
-* The device emits a pulse or modulated beam of light.
-* Distance is computed from the return time or phase shift.
+* Evolution of LiDAR technology for portable, handheld devices.
+* The device floods the scene with a modulated beam of light (IR)
+* The sensor array measuresthe phase shift, pixel by pixel
 * A depth map or point cloud is produced, often combined with RGB imagery and inertial tracking.
-
 :::
 
 ::: {.column}
-### Archaeological fit
+:::{.panel-tabset}
+### Example
+![Time-of-flight scanning](flowers.jpeg){width=66%}
 
+### Archaeological fit
 * Rapid documentation of rooms, trenches, monuments, and larger objects.
 * Useful for spatial context, logistics, and preliminary recording.
 * Less appropriate when the research question depends on very fine surface detail.
-
 :::
-
+:::
 :::
 
 ::: {.callout-note title="Advantages and limitations"}
-Time-of-flight devices are fast and portable, but their resolution and edge accuracy are usually lower than close-range photogrammetry or structured light scanning for small artefacts.
-:::
-
-## LIDAR scanning
-
-::: {.columns}
-
-::: {.column}
-### Operating principles
-
-* A laser scanner measures distance and angle for many points across a scene.
-* Scans are aligned using targets, shared geometry, SLAM, GNSS, or total-station control.
-* The result is a dense, often georeferenced point cloud.
-
-:::
-
-::: {.column}
-### Archaeological fit
-* Architecture, excavation areas, rock art panels, caves, and landscapes.
-* Airborne LIDAR can reveal microtopography and features under vegetation.
-* Terrestrial LIDAR is strong for monitoring deformation, erosion, and conservation work.
-:::
+Time-of-flight devices are fast and portable (iPhone has two), but their resolution and edge accuracy are usually lower than close-range photogrammetr or, structured light scanning for small artefacts, and lower than LiDAR for large-scale contexts
 :::
 
 
-::: {.callout-note title="Advantages and limitations"}
-LIDAR excels at scale and spatial context, but equipment cost, line-of-sight gaps, large datasets, and limited close-range surface detail make it complementary to artefact-level scanning.
-:::
+
+
+
+
+## LiDAR vs ToF {.smaller}
+
+| Technical Metric | LiDAR Scanning	 | ToF (Flash/Phase Array) |
+|---|---|---|
+| Spatial Sampling	| Sequential point-by-point (mechanical or MEMS sweep) | Simultaneous matrix array (instant snapshot) |
+| Operational Range	| Long-range (10m to 300m+) | Short to medium-range (0.1m to 5m–10m) |
+| Measurement Method	| Direct time interval measurement | Indirect phase-shift detection |
+| Angular Resolution	| Extremely high (dependent on mechanical/galvanometer precision) | Dependent on pixel array density (lower resolution than scanning) |
+| Frame Rate	| Limited by scanning sweep mechanics (typically 10–30 Hz) | Very high frame rates achievable (up to 60–120+ fps) |
+| Ambient Light | Tolerance	Exceptionally high (filters out solar noise via narrow aperture/wave) | Prone to solar washing (indoor optimization preferred) |
+| Moving Parts	| Yes (in spinning/MEMS units); No (in pure solid-state OPA) | Completely solid-state (zero moving parts) |
+
+
+
 
 
 # 3-D Printing
