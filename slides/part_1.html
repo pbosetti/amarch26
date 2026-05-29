@@ -7,6 +7,8 @@
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/bootstrap-icons-1.13.1/bootstrap-icons.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
@@ -147,14 +149,58 @@ Paolo Bosetti
 </section>
 <section id="contents" class="title-slide slide level1 center">
 <h1>Contents</h1>
-
+<ol type="1">
+<li>Context of 3-D technologies in archaeology</li>
+<li>3-D reconstruction tools</li>
+<li>3-D printing tools</li>
+</ol>
 </section>
 
+<section>
 <section id="context" class="title-slide slide level1 center">
 <h1>Context</h1>
-<p>3-D technologies support archaeological research when replicas and models are treated as documented interpretations of material evidence.</p>
+<p>3-D technologies support archaeological research when replicas and models are treated as documented interpretations of material evidence</p>
 </section>
-
+<section id="key-references-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c6269206e65777370617065723e7d7d" class="slide level2 smaller">
+<h2>Key references <i class="bi-newspaper " style="" role="img" aria-hidden="true"></i></h2>
+<ul>
+<li><i class="bi-exclamation-circle-fill " style="" role="img" aria-hidden="true"></i> Balletti, C., &amp; Ballarin, M. (2019). <em>An Application of Integrated 3D Technologies for Replicas in Cultural Heritage.</em> ISPRS International Journal of Geo-Information, 8(6), 285. <a href="https://doi.org/10.3390/ijgi8060285" class="uri">https://doi.org/10.3390/ijgi8060285</a></li>
+<li>Bitelli, G., Forte, A., Tini, M. A., Belfiori, F., &amp; Tirincanti, A. (2025). <em>High-Detail 3D Reconstruction and Digital Strategies for the Enhancements of Archaeological Properties in Museums.</em> Heritage, 8(2), 49. <a href="https://doi.org/10.3390/heritage8020049" class="uri">https://doi.org/10.3390/heritage8020049</a></li>
+<li>Cecchitelli, M., Fiori, G., Bocchetta, G., Filippi, F., Leccese, F., Galo, J., Sciuto, S. A., &amp; Scorza, A. (2023). <em>Dimensional assessment in bioarchaeology applications: a preliminary study on quality controls in 3D printing of human skulls.</em> Proceedings of the 2022 IMEKO TC4 International Conference on Metrology for Archaeology and Cultural Heritage, 98–103. <a href="https://doi.org/10.21014/tc4-arc-2023.020" class="uri">https://doi.org/10.21014/tc4-arc-2023.020</a></li>
+<li>Kantaros, A., Douros, P., Soulis, E., Brachos, K., Ganetsos, T., Peppa, E., Manta, E., &amp; Alysandratou, E. (2025). <em>3D Imaging and Additive Manufacturing for Original Artifact Preservation Purposes: A Case Study from the Archaeological Museum of Alexandroupolis.</em> Heritage, 8(2), 80. <a href="https://doi.org/10.3390/heritage8020080" class="uri">https://doi.org/10.3390/heritage8020080</a></li>
+<li>Llull, C., Baloian, N., Bustos, B., Kupczik, K., Sipiran, I., &amp; Baloian, A. (2023). <em>Evaluation of 3D Reconstruction for Cultural Heritage Applications.</em> 2023 IEEE/CVF International Conference on Computer Vision Workshops (ICCVW), 1634–1643. <a href="https://doi.org/10.1109/iccvw60793.2023.00179" class="uri">https://doi.org/10.1109/iccvw60793.2023.00179</a></li>
+<li>Spallone, R., Lamberti, F., Olivieri, L. M., Ronco, F., &amp; Castagna, L. (2022). <em>AR And VR for Enhancing Museums’ Heritage Through 3d Reconstruction of Fragmented Statue and Architectural Context.</em> The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences, XLVI-2/W1-2022, 473–480. <a href="https://doi.org/10.5194/isprs-archives-xlvi-2-w1-2022-473-2022" class="uri">https://doi.org/10.5194/isprs-archives-xlvi-2-w1-2022-473-2022</a></li>
+</ul>
+</section>
+<section id="key-references-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920626f6f6b3e7d7d" class="slide level2">
+<h2>Key references <i class="bi-book " style="" role="img" aria-hidden="true"></i></h2>
+<ul>
+<li><strong>On the Technologies</strong> (Fundamentals): <em>Additive Manufacturing Technologies: 3D Printing, Rapid Prototyping, and Direct Digital Manufacturing</em> by Ian Gibson, David Rosen, and Brent Stucker. This is widely considered the gold-standard textbook for understanding the mechanics, materials, and distinct processes (e.g., SLA, SLS, FDM) that make up modern 3D printing.</li>
+<li><strong>On Their Use in Archaeology</strong>: <em>3D Information Technologies in Cultural Heritage Preservation and Popularisation</em> (MDPI Books, 2023). This volume offers a broad compilation of recent case studies focusing heavily on 3D terrestrial laser scanning, photogrammetry, and the application of 3D modeling for archaeological and museum contexts.</li>
+</ul>
+</section>
+<section id="key-references-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c6269206c696e6b2d34356465673e7d7d" class="slide level2 smaller">
+<h2>Key References <i class="bi-link-45deg " style="" role="img" aria-hidden="true"></i></h2>
+<ul>
+<li><strong>Photogrammetry for Cultural Heritage Objects</strong> (Video Tutorial) <a href="https://www.youtube.com/watch?v=E2i4DQSsgCU" class="uri">https://www.youtube.com/watch?v=E2i4DQSsgCU</a>
+<ul>
+<li><em>Why it’s useful</em>: Practical step-by-step video tutorial on creating 3D models of cultural heritage objects via photogrammetry. Demonstrates photo capture and mesh processing—ideal for archaeologists learning the field-to-digital pipeline.</li>
+</ul></li>
+<li><strong>3D Scanning for Cultural Heritage Conservation by Factum Arte</strong> (Online Guide/Lesson) <a href="https://www.factum-arte.com/pag/701/3d-scanning-for-cultural-heritage-conservation" class="uri">https://www.factum-arte.com/pag/701/3d-scanning-for-cultural-heritage-conservation</a>
+<ul>
+<li><em>Why it’s useful</em>: Factum Arte, world leader in digital mediation and heritage preservation, breaks down differences between close-range photogrammetry and laser scanning, explaining when to use each based on artifact material (translucent marble vs.&nbsp;opaque stone) and environment.</li>
+</ul></li>
+<li><strong>Complete Beginner’s Guide to 3D Printing</strong> (Video Tutorial) <a href="https://www.youtube.com/watch?v=T-Z3GmM20JM" class="uri">https://www.youtube.com/watch?v=T-Z3GmM20JM</a>
+<ul>
+<li><em>Why it’s useful</em>: Comprehensive video introduction to fused deposition modeling (FDM). Covers printer components, slicing software (converting 3D models into G-code), and printing process.</li>
+</ul></li>
+<li><strong>Decoding Maya Hieroglyphs with 3D Technology</strong> (Educational Video)<br>
+Peabody Museum - Harvard University <a href="https://peabody.harvard.edu/video-decoding-maya-hieroglyphs-3d-technology" class="uri">https://peabody.harvard.edu/video-decoding-maya-hieroglyphs-3d-technology</a>
+<ul>
+<li><em>Why it’s useful</em>: Peabody Museum video bridges technology and archaeological value, showing how 3D scanning and printing decode, replicate, and preserve complex structures like the Hieroglyphic Stairway at Copan.</li>
+</ul></li>
+</ul>
+</section></section>
 <section>
 <section id="d-reconstruction" class="title-slide slide level1 center">
 <h1>3-D Reconstruction</h1>
@@ -196,15 +242,15 @@ Paolo Bosetti
 </div>
 </div>
 </section>
-<section id="photogrammetry-1-triangulation" class="slide level2">
-<h2>Photogrammetry (1): Triangulation</h2>
+<section id="photogrammetry-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d-triangulation" class="slide level2">
+<h2>Photogrammetry <i class="bi-1-circle-fill " style="" role="img" aria-hidden="true"></i>: Triangulation</h2>
 <p>It’s quite like our binocular vision:</p>
 <div class="reconstruction-scene" data-reconstruction-webgl="" data-method="photogrammetry" data-model-src="_Mask.usdz"></div>
 <script src="mask-model.js"></script>
 <script src="reconstruction-webgl.js"></script>
 </section>
-<section id="photogrammetry-2-operating-principles" class="slide level2">
-<h2>Photogrammetry (2): Operating principles</h2>
+<section id="photogrammetry-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d-operating-principles" class="slide level2">
+<h2>Photogrammetry <i class="bi-2-circle-fill " style="" role="img" aria-hidden="true"></i>: Operating principles</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <ul>
@@ -238,8 +284,8 @@ Paolo Bosetti
 </div>
 </div>
 </section>
-<section id="structured-light-scanning" class="slide level2">
-<h2>Structured light scanning</h2>
+<section id="structured-light-scanning-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d-operating-principles" class="slide level2">
+<h2>Structured light scanning <i class="bi-1-circle-fill " style="" role="img" aria-hidden="true"></i>: Operating principles</h2>
 <div class="columns">
 <div class="column">
 <h3 id="operating-principles">Operating principles</h3>
@@ -272,8 +318,8 @@ Paolo Bosetti
 </div>
 </div>
 </section>
-<section id="structured-light-scanning-2-example" class="slide level2">
-<h2>Structured light scanning (2): Example</h2>
+<section id="structured-light-scanning-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d-example" class="slide level2">
+<h2>Structured light scanning <i class="bi-2-circle-fill " style="" role="img" aria-hidden="true"></i>: Example</h2>
 <div class="reconstruction-scene" data-reconstruction-webgl="" data-method="structured-light" data-model-src="_Mask.usdz"></div>
 <script src="mask-model.js"></script>
 <script src="reconstruction-webgl.js"></script>
@@ -285,7 +331,7 @@ Paolo Bosetti
 <h3 id="operating-principles-1">Operating principles</h3>
 <ul>
 <li>A fixed laser scanner measures distance and angle for many points across a scene, via echo time of a pulse</li>
-<li>The result is a dense, often georeferenced point cloud</li>
+<li>The result is a dense, often <strong>georeferenced</strong> point cloud</li>
 <li>Might be combined with RGB imagery for texture and color information</li>
 <li>Multiple scans may be aligned using targets, shared geometry, SLAM, GNSS</li>
 </ul>
@@ -385,8 +431,9 @@ Paolo Bosetti
 </div>
 </div>
 </section>
-<section id="lidar-vs-tof" class="slide level2 smaller">
+<section id="lidar-vs-tof" class="slide level2">
 <h2>LiDAR vs ToF</h2>
+<div class="smaller">
 <table class="caption-top">
 <colgroup>
 <col style="width: 33%">
@@ -408,8 +455,8 @@ Paolo Bosetti
 </tr>
 <tr class="even">
 <td>Operational Range</td>
-<td>Long-range (10m to 300m+)</td>
-<td>Short to medium-range (0.1m to 5m–10m)</td>
+<td><strong>Long-range</strong> (10m to 500m+)</td>
+<td><strong>Short to medium-range</strong> (0.1m to 5m–10m)</td>
 </tr>
 <tr class="odd">
 <td>Measurement Method</td>
@@ -423,8 +470,8 @@ Paolo Bosetti
 </tr>
 <tr class="odd">
 <td>Frame Rate</td>
-<td>Limited by scanning sweep mechanics (typically 10–30 Hz)</td>
-<td>Very high frame rates achievable (up to 60–120+ fps)</td>
+<td>Limited by scanning sweep mechanics (typically 10–30 Hz) <span class="bred">SLOW</span></td>
+<td>Very high frame rates achievable (up to 60–120+ fps) <span class="bgreen">FAST</span></td>
 </tr>
 <tr class="even">
 <td>Ambient Light</td>
@@ -438,6 +485,60 @@ Paolo Bosetti
 </tr>
 </tbody>
 </table>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Both methods can be augmented with RGB cameras for color information, and inertial measurement units (IMUs) for improved spatial tracking or range extension, but their core depth sensing technologies differ significantly in terms of resolution, range, and susceptibility to environmental conditions.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="cheapest-solution-photogrammetry-with-a-smartphone" class="slide level2">
+<h2>Cheapest solution: photogrammetry with a smartphone</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li><strong>Reality composer</strong> is a free app for iOS and macOS that uses the device’s camera and ToF sensor to create 3-D models from live scanning</li>
+<li>it produces an <code>.objcap</code> file that must be opened by <strong>Reality Composer Pro</strong> app on macOS (free)</li>
+<li>The latter can export models in USDZ format, which is compatible with many 3-D software and online platforms</li>
+<li>The model quality is generally very good and includes texture</li>
+</ul>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Reality_Composer_macOS_icon.webp" style="width:66.0%"></p>
+<figcaption>Reality Composer app (by Apple)</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="rc_1.jpeg" width="280"></p>
+<figcaption>Reality Composer</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="rc_2.jpeg" width="280"></p>
+<figcaption>Create Scan</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:33%;">
+<video id="video_shortcode_videojs_video1" width="280" class="video-js vjs-default-skin vjs-big-play-centered " controls="" preload="auto" data-setup="{}" title=""><source src="rc_3.mov"></video>
+</div></div>
 </section></section>
 <section>
 <section id="d-printing" class="title-slide slide level1 center">
@@ -1171,6 +1272,7 @@ Paolo Bosetti
         }
       });
       </script>
+    <script>videojs(video_shortcode_videojs_video1);</script>
     
 
 </body></html>

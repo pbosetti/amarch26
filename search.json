@@ -7,6 +7,27 @@
     "text": "This repository contains the materials for the seminar “3-D reconstruction and printing tools: Fundamentals” presented by Paolo Bosetti at the AMARCH26 summer school.\n\nContents\n\n3-D reconstruction and printing tools: Fundamentals."
   },
   {
+    "objectID": "slides/part_1.html#key-references-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c6269206e65777370617065723e7d7d",
+    "href": "slides/part_1.html#key-references-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c6269206e65777370617065723e7d7d",
+    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "section": "Key references ",
+    "text": "Key references \n\n Balletti, C., & Ballarin, M. (2019). An Application of Integrated 3D Technologies for Replicas in Cultural Heritage. ISPRS International Journal of Geo-Information, 8(6), 285. https://doi.org/10.3390/ijgi8060285\nBitelli, G., Forte, A., Tini, M. A., Belfiori, F., & Tirincanti, A. (2025). High-Detail 3D Reconstruction and Digital Strategies for the Enhancements of Archaeological Properties in Museums. Heritage, 8(2), 49. https://doi.org/10.3390/heritage8020049\nCecchitelli, M., Fiori, G., Bocchetta, G., Filippi, F., Leccese, F., Galo, J., Sciuto, S. A., & Scorza, A. (2023). Dimensional assessment in bioarchaeology applications: a preliminary study on quality controls in 3D printing of human skulls. Proceedings of the 2022 IMEKO TC4 International Conference on Metrology for Archaeology and Cultural Heritage, 98–103. https://doi.org/10.21014/tc4-arc-2023.020\nKantaros, A., Douros, P., Soulis, E., Brachos, K., Ganetsos, T., Peppa, E., Manta, E., & Alysandratou, E. (2025). 3D Imaging and Additive Manufacturing for Original Artifact Preservation Purposes: A Case Study from the Archaeological Museum of Alexandroupolis. Heritage, 8(2), 80. https://doi.org/10.3390/heritage8020080\nLlull, C., Baloian, N., Bustos, B., Kupczik, K., Sipiran, I., & Baloian, A. (2023). Evaluation of 3D Reconstruction for Cultural Heritage Applications. 2023 IEEE/CVF International Conference on Computer Vision Workshops (ICCVW), 1634–1643. https://doi.org/10.1109/iccvw60793.2023.00179\nSpallone, R., Lamberti, F., Olivieri, L. M., Ronco, F., & Castagna, L. (2022). AR And VR for Enhancing Museums’ Heritage Through 3d Reconstruction of Fragmented Statue and Architectural Context. The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences, XLVI-2/W1-2022, 473–480. https://doi.org/10.5194/isprs-archives-xlvi-2-w1-2022-473-2022"
+  },
+  {
+    "objectID": "slides/part_1.html#key-references-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920626f6f6b3e7d7d",
+    "href": "slides/part_1.html#key-references-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920626f6f6b3e7d7d",
+    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "section": "Key references ",
+    "text": "Key references \n\nOn the Technologies (Fundamentals): Additive Manufacturing Technologies: 3D Printing, Rapid Prototyping, and Direct Digital Manufacturing by Ian Gibson, David Rosen, and Brent Stucker. This is widely considered the gold-standard textbook for understanding the mechanics, materials, and distinct processes (e.g., SLA, SLS, FDM) that make up modern 3D printing.\nOn Their Use in Archaeology: 3D Information Technologies in Cultural Heritage Preservation and Popularisation (MDPI Books, 2023). This volume offers a broad compilation of recent case studies focusing heavily on 3D terrestrial laser scanning, photogrammetry, and the application of 3D modeling for archaeological and museum contexts."
+  },
+  {
+    "objectID": "slides/part_1.html#key-references-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c6269206c696e6b2d34356465673e7d7d",
+    "href": "slides/part_1.html#key-references-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c6269206c696e6b2d34356465673e7d7d",
+    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "section": "Key References ",
+    "text": "Key References \n\nPhotogrammetry for Cultural Heritage Objects (Video Tutorial) https://www.youtube.com/watch?v=E2i4DQSsgCU\n\nWhy it’s useful: Practical step-by-step video tutorial on creating 3D models of cultural heritage objects via photogrammetry. Demonstrates photo capture and mesh processing—ideal for archaeologists learning the field-to-digital pipeline.\n\n3D Scanning for Cultural Heritage Conservation by Factum Arte (Online Guide/Lesson) https://www.factum-arte.com/pag/701/3d-scanning-for-cultural-heritage-conservation\n\nWhy it’s useful: Factum Arte, world leader in digital mediation and heritage preservation, breaks down differences between close-range photogrammetry and laser scanning, explaining when to use each based on artifact material (translucent marble vs. opaque stone) and environment.\n\nComplete Beginner’s Guide to 3D Printing (Video Tutorial) https://www.youtube.com/watch?v=T-Z3GmM20JM\n\nWhy it’s useful: Comprehensive video introduction to fused deposition modeling (FDM). Covers printer components, slicing software (converting 3D models into G-code), and printing process.\n\nDecoding Maya Hieroglyphs with 3D Technology (Educational Video)\nPeabody Museum - Harvard University https://peabody.harvard.edu/video-decoding-maya-hieroglyphs-3d-technology\n\nWhy it’s useful: Peabody Museum video bridges technology and archaeological value, showing how 3D scanning and printing decode, replicate, and preserve complex structures like the Hieroglyphic Stairway at Copan."
+  },
+  {
     "objectID": "slides/part_1.html#technologies-and-tools",
     "href": "slides/part_1.html#technologies-and-tools",
     "title": "3-D reconstruction and printing tools: Fundamentals",
@@ -14,32 +35,32 @@
     "text": "Technologies and tools\n\n\nGeneral workflow\n\nCapture the object or context with images, projected light, or laser range measurements.\nRegister viewpoints in a common coordinate system.\nGenerate a point cloud, mesh, texture, and scale reference.\nClean, document, and export the model for analysis, display, or printing.\n\n\nMethod selection\n\nSurface size, texture, reflectance, and fragility.\nRequired metric accuracy and smallest relevant feature.\nLab or field constraints: light, access, time, and portability.\nFinal use: measurement, online publication, teaching, or replica fabrication.\n\n\n\n\n\n\n\n\n\nKey principle\n\n\nThere is no universally best capture method. For archaeological objects, the best choice is the one that preserves provenance, scale, uncertainty, and reproducibility for the intended research question."
   },
   {
-    "objectID": "slides/part_1.html#photogrammetry-1-triangulation",
-    "href": "slides/part_1.html#photogrammetry-1-triangulation",
+    "objectID": "slides/part_1.html#photogrammetry-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d-triangulation",
+    "href": "slides/part_1.html#photogrammetry-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d-triangulation",
     "title": "3-D reconstruction and printing tools: Fundamentals",
-    "section": "Photogrammetry (1): Triangulation",
-    "text": "Photogrammetry (1): Triangulation\nIt’s quite like our binocular vision:"
+    "section": "Photogrammetry : Triangulation",
+    "text": "Photogrammetry : Triangulation\nIt’s quite like our binocular vision:"
   },
   {
-    "objectID": "slides/part_1.html#photogrammetry-2-operating-principles",
-    "href": "slides/part_1.html#photogrammetry-2-operating-principles",
+    "objectID": "slides/part_1.html#photogrammetry-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d-operating-principles",
+    "href": "slides/part_1.html#photogrammetry-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d-operating-principles",
     "title": "3-D reconstruction and printing tools: Fundamentals",
-    "section": "Photogrammetry (2): Operating principles",
-    "text": "Photogrammetry (2): Operating principles\n\n\n\nMultiple overlapping images of the object are taken from different angles\nThe camera positions and orientations do not have to be known in advance\nComputer vision algorithms identify common features (points) across images\nImages are aligned in 3-D space so that the same features overlap\nThe scene is reconstructed by triangulating feature positions in space, and textured with the original images\n\n\n\n\n\nPhotogrammetry bundle triangulation\n\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nPhotogrammetry is a cost-effective and accessible method for 3-D reconstruction, as it only requires a camera and software. However, it can be less accurate than other methods, especially for objects with low texture or in challenging lighting conditions."
+    "section": "Photogrammetry : Operating principles",
+    "text": "Photogrammetry : Operating principles\n\n\n\nMultiple overlapping images of the object are taken from different angles\nThe camera positions and orientations do not have to be known in advance\nComputer vision algorithms identify common features (points) across images\nImages are aligned in 3-D space so that the same features overlap\nThe scene is reconstructed by triangulating feature positions in space, and textured with the original images\n\n\n\n\n\nPhotogrammetry bundle triangulation\n\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nPhotogrammetry is a cost-effective and accessible method for 3-D reconstruction, as it only requires a camera and software. However, it can be less accurate than other methods, especially for objects with low texture or in challenging lighting conditions."
   },
   {
-    "objectID": "slides/part_1.html#structured-light-scanning",
-    "href": "slides/part_1.html#structured-light-scanning",
+    "objectID": "slides/part_1.html#structured-light-scanning-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d-operating-principles",
+    "href": "slides/part_1.html#structured-light-scanning-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d-operating-principles",
     "title": "3-D reconstruction and printing tools: Fundamentals",
-    "section": "Structured light scanning",
-    "text": "Structured light scanning\n\n\nOperating principles\n\nA projector casts a known pattern of stripes or dots on the surface.\nOne or more cameras record how the pattern is deformed by the object.\nSoftware reconstructs geometry by triangulating between projector, camera, and surface.\n\n\nArchaeological fit\n\nSmall and medium artefacts with fine relief: ceramics, lithics, bone, plaster, coins, and inscriptions.\nControlled indoor capture with stable light and limited object movement.\nUseful when photogrammetry lacks enough texture or repeatable detail.\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nStructured light scanning gives high local resolution and fast acquisition, but glossy, translucent, very dark, or deeply undercut surfaces may need surface preparation, multiple scan angles, or another method."
+    "section": "Structured light scanning : Operating principles",
+    "text": "Structured light scanning : Operating principles\n\n\nOperating principles\n\nA projector casts a known pattern of stripes or dots on the surface.\nOne or more cameras record how the pattern is deformed by the object.\nSoftware reconstructs geometry by triangulating between projector, camera, and surface.\n\n\nArchaeological fit\n\nSmall and medium artefacts with fine relief: ceramics, lithics, bone, plaster, coins, and inscriptions.\nControlled indoor capture with stable light and limited object movement.\nUseful when photogrammetry lacks enough texture or repeatable detail.\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nStructured light scanning gives high local resolution and fast acquisition, but glossy, translucent, very dark, or deeply undercut surfaces may need surface preparation, multiple scan angles, or another method."
   },
   {
-    "objectID": "slides/part_1.html#structured-light-scanning-2-example",
-    "href": "slides/part_1.html#structured-light-scanning-2-example",
+    "objectID": "slides/part_1.html#structured-light-scanning-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d-example",
+    "href": "slides/part_1.html#structured-light-scanning-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d-example",
     "title": "3-D reconstruction and printing tools: Fundamentals",
-    "section": "Structured light scanning (2): Example",
-    "text": "Structured light scanning (2): Example"
+    "section": "Structured light scanning : Example",
+    "text": "Structured light scanning : Example"
   },
   {
     "objectID": "slides/part_1.html#lidar-scanning",
@@ -60,7 +81,21 @@
     "href": "slides/part_1.html#lidar-vs-tof",
     "title": "3-D reconstruction and printing tools: Fundamentals",
     "section": "LiDAR vs ToF",
-    "text": "LiDAR vs ToF\n\n\n\n\n\n\n\n\nTechnical Metric\nLiDAR Scanning\nToF (Flash/Phase Array)\n\n\n\n\nSpatial Sampling\nSequential point-by-point (mechanical or MEMS sweep)\nSimultaneous matrix array (instant snapshot)\n\n\nOperational Range\nLong-range (10m to 300m+)\nShort to medium-range (0.1m to 5m–10m)\n\n\nMeasurement Method\nDirect time interval measurement\nIndirect phase-shift detection\n\n\nAngular Resolution\nExtremely high (dependent on mechanical/galvanometer precision)\nDependent on pixel array density (lower resolution than scanning)\n\n\nFrame Rate\nLimited by scanning sweep mechanics (typically 10–30 Hz)\nVery high frame rates achievable (up to 60–120+ fps)\n\n\nAmbient Light\nTolerance Exceptionally high (filters out solar noise via narrow aperture/wave)\nProne to solar washing (indoor optimization preferred)\n\n\nMoving Parts\nYes (in spinning/MEMS units); No (in pure solid-state OPA)\nCompletely solid-state (zero moving parts)"
+    "text": "LiDAR vs ToF\n\n\n\n\n\n\n\n\n\nTechnical Metric\nLiDAR Scanning\nToF (Flash/Phase Array)\n\n\n\n\nSpatial Sampling\nSequential point-by-point (mechanical or MEMS sweep)\nSimultaneous matrix array (instant snapshot)\n\n\nOperational Range\nLong-range (10m to 500m+)\nShort to medium-range (0.1m to 5m–10m)\n\n\nMeasurement Method\nDirect time interval measurement\nIndirect phase-shift detection\n\n\nAngular Resolution\nExtremely high (dependent on mechanical/galvanometer precision)\nDependent on pixel array density (lower resolution than scanning)\n\n\nFrame Rate\nLimited by scanning sweep mechanics (typically 10–30 Hz) SLOW\nVery high frame rates achievable (up to 60–120+ fps) FAST\n\n\nAmbient Light\nTolerance Exceptionally high (filters out solar noise via narrow aperture/wave)\nProne to solar washing (indoor optimization preferred)\n\n\nMoving Parts\nYes (in spinning/MEMS units); No (in pure solid-state OPA)\nCompletely solid-state (zero moving parts)\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nBoth methods can be augmented with RGB cameras for color information, and inertial measurement units (IMUs) for improved spatial tracking or range extension, but their core depth sensing technologies differ significantly in terms of resolution, range, and susceptibility to environmental conditions."
+  },
+  {
+    "objectID": "slides/part_1.html#cheapest-solution-photogrammetry-with-a-smartphone",
+    "href": "slides/part_1.html#cheapest-solution-photogrammetry-with-a-smartphone",
+    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "section": "Cheapest solution: photogrammetry with a smartphone",
+    "text": "Cheapest solution: photogrammetry with a smartphone\n\n\n\nReality composer is a free app for iOS and macOS that uses the device’s camera and ToF sensor to create 3-D models from live scanning\nit produces an .objcap file that must be opened by Reality Composer Pro app on macOS (free)\nThe latter can export models in USDZ format, which is compatible with many 3-D software and online platforms\nThe model quality is generally very good and includes texture\n\n\n\n\n\nReality Composer app (by Apple)"
+  },
+  {
+    "objectID": "slides/part_1.html#example-1",
+    "href": "slides/part_1.html#example-1",
+    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "section": "Example",
+    "text": "Example\n\n\n\n\n\nReality Composer\n\n\n\n\n\n\nCreate Scan"
   },
   {
     "objectID": "slides/part_1.html#taxonomy-of-3-d-printing-technologies",
