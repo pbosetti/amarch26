@@ -27,6 +27,8 @@
     [0.1, 0.43, 0.78, 1],
   ];
 
+  const structuredLightLaserSource = [-1.35, 0.58, 2.35];
+
   const vertexShaderSource = `
     attribute vec3 a_position;
     attribute vec4 a_color;
@@ -582,8 +584,15 @@
 
   function makeLaserBlade(labelValue, bounds) {
     const sweep = clamp((labelValue - 0.2) / 3.4, 0, 1);
-    const offset = bounds.min[0] * 0.55 + sweep * (bounds.max[0] - bounds.min[0]) * 1.1;
-    const normal = normalize([1, 0, 0.16]);
+    const targetX = bounds.min[0] * 0.55 + sweep * (bounds.max[0] - bounds.min[0]) * 1.1;
+    const targetZ = (bounds.min[2] + bounds.max[2]) * 0.5;
+    const sourceToTarget = [
+      targetX - structuredLightLaserSource[0],
+      0,
+      targetZ - structuredLightLaserSource[2],
+    ];
+    const normal = normalize([sourceToTarget[2], 0, -sourceToTarget[0]]);
+    const offset = dot(structuredLightLaserSource, normal);
     return { normal, offset };
   }
 
@@ -621,14 +630,17 @@
     const lineColor = [0.0, 0.66, 0.25, 0.86];
     const min = bounds.min;
     const max = bounds.max;
-    const source = [-1.35, 0.58, 2.35];
+    const source = structuredLightLaserSource;
     const y0 = min[1] - 0.22;
     const y1 = max[1] + 0.22;
     const span = max[0] - min[0];
-    const p0 = [blade.offset - blade.normal[2] * (min[2] - 0.24), y0, min[2] - 0.24];
-    const p1 = [blade.offset - blade.normal[2] * (max[2] + 0.28), y0, max[2] + 0.28];
-    const p2 = [blade.offset - blade.normal[2] * (max[2] + 0.28), y1, max[2] + 0.28];
-    const p3 = [blade.offset - blade.normal[2] * (min[2] - 0.24), y1, min[2] - 0.24];
+    const z0 = min[2] - 0.24;
+    const z1 = max[2] + 0.28;
+    const xOnBlade = (z) => (blade.offset - blade.normal[2] * z) / blade.normal[0];
+    const p0 = [xOnBlade(z0), y0, z0];
+    const p1 = [xOnBlade(z1), y0, z1];
+    const p2 = [xOnBlade(z1), y1, z1];
+    const p3 = [xOnBlade(z0), y1, z0];
 
     addQuad(planes, p0, p1, p2, p3, color, blade.normal);
     addLine(lines, p0, p1, lineColor);
@@ -639,7 +651,12 @@
     addLine(lines, source, p1, lineColor);
     addLine(lines, source, p2, lineColor);
     addLine(lines, source, p3, lineColor);
-    addLine(lines, [source[0] - span * 0.06, source[1], source[2]], [source[0] + span * 0.06, source[1], source[2]], [0.0, 0.66, 0.25, 1]);
+    addLine(
+      lines,
+      [source[0], source[1] - span * 0.08, source[2]],
+      [source[0], source[1] + span * 0.08, source[2]],
+      [0.0, 0.66, 0.25, 1],
+    );
     return source;
   }
 
@@ -755,6 +772,7 @@
       this.modelTexture = null;
       this.featurePoints = this.objectMesh.featurePoints || fallbackFeaturePoints;
       this.labels = new Map();
+      this.labelsVisible = true;
 
       this.addControls();
       this.addLabels();
@@ -825,6 +843,18 @@
       value.className = "reconstruction-baseline-value";
       value.textContent = this.baseline.toFixed(2);
 
+      const labelsToggle = document.createElement("label");
+      labelsToggle.className = "reconstruction-label-toggle";
+
+      const labelsInput = document.createElement("input");
+      labelsInput.type = "checkbox";
+      labelsInput.checked = this.labelsVisible;
+      labelsInput.setAttribute("aria-label", "Show labels");
+
+      const labelsText = document.createElement("span");
+      labelsText.textContent = "Labels";
+      labelsToggle.append(labelsInput, labelsText);
+
       const reset = document.createElement("button");
       reset.type = "button";
       reset.className = "reconstruction-reset";
@@ -836,6 +866,10 @@
         this.baseline = Number(input.value);
         value.textContent = this.baseline.toFixed(2);
       });
+      labelsInput.addEventListener("change", () => {
+        this.labelsVisible = labelsInput.checked;
+        this.root.classList.toggle("reconstruction-labels-hidden", !this.labelsVisible);
+      });
       reset.addEventListener("click", () => {
         this.distance = 6.1;
         this.yaw = 0.0;
@@ -845,7 +879,7 @@
         value.textContent = this.baseline.toFixed(2);
       });
 
-      controls.append(label, input, value, reset);
+      controls.append(label, input, value, labelsToggle, reset);
       this.root.appendChild(controls);
     }
 
@@ -1084,6 +1118,13 @@
     }
 
     updateLabels(mvp, dynamic) {
+      if (!this.labelsVisible) {
+        this.labels.forEach((el) => {
+          el.style.opacity = "0";
+        });
+        return;
+      }
+
       const featureAnchor = this.featurePoints[1] || this.featurePoints[0] || [0, 0.25, 0.5];
       const bounds = this.objectMesh.bounds || { min: [0, -0.64, 0], max: [0, 0.64, 0.2] };
       const anchors = {
