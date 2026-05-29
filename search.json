@@ -42,18 +42,25 @@
     "text": "Structured light scanning (2): Example"
   },
   {
+    "objectID": "slides/part_1.html#lidar-scanning",
+    "href": "slides/part_1.html#lidar-scanning",
+    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "section": "LiDAR scanning",
+    "text": "LiDAR scanning\n\n\nOperating principles\n\nA fixed laser scanner measures distance and angle for many points across a scene, via echo time of a pulse\nThe result is a dense, often georeferenced point cloud\nMight be combined with RGB imagery for texture and color information\nMultiple scans may be aligned using targets, shared geometry, SLAM, GNSS\n\n\n\nScanMeshArchaeological fit\n\n\n\n\n\nLiDAR point cloud\n\n\n\n\n\n\n\nLiDAR mesh\n\n\n\n\n\nArchitecture, excavation areas, rock art panels, caves, and landscapes.\nAirborne LiDAR can reveal microtopography and features under vegetation.\nTerrestrial LiDAR is strong for monitoring deformation, erosion, and conservation work.\n\n\n\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nLiDAR excels at scale and spatial context, but equipment cost, line-of-sight gaps, large datasets, and limited close-range surface detail make it complementary to artefact-level scanning\nWavelengths: short-wave infrared spectrums 905 nm (more sensitive) or eye-safe 1550 nm"
+  },
+  {
     "objectID": "slides/part_1.html#time-of-flight-scanning",
     "href": "slides/part_1.html#time-of-flight-scanning",
     "title": "3-D reconstruction and printing tools: Fundamentals",
     "section": "Time-of-flight scanning",
-    "text": "Time-of-flight scanning\n\n\nOperating principles\n\nThe device emits a pulse or modulated beam of light.\nDistance is computed from the return time or phase shift.\nA depth map or point cloud is produced, often combined with RGB imagery and inertial tracking.\n\n\nArchaeological fit\n\nRapid documentation of rooms, trenches, monuments, and larger objects.\nUseful for spatial context, logistics, and preliminary recording.\nLess appropriate when the research question depends on very fine surface detail.\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nTime-of-flight devices are fast and portable, but their resolution and edge accuracy are usually lower than close-range photogrammetry or structured light scanning for small artefacts."
+    "text": "Time-of-flight scanning\n\n\nOperating principles\n\nEvolution of LiDAR technology for portable, handheld devices.\nThe device floods the scene with a modulated beam of light (IR)\nThe sensor array measuresthe phase shift, pixel by pixel\nA depth map or point cloud is produced, often combined with RGB imagery and inertial tracking.\n\n\n\nExampleArchaeological fit\n\n\n\n\n\nTime-of-flight scanning\n\n\n\n\n\nRapid documentation of rooms, trenches, monuments, and larger objects.\nUseful for spatial context, logistics, and preliminary recording.\nLess appropriate when the research question depends on very fine surface detail.\n\n\n\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nTime-of-flight devices are fast and portable (iPhone has two), but their resolution and edge accuracy are usually lower than close-range photogrammetr or, structured light scanning for small artefacts, and lower than LiDAR for large-scale contexts"
   },
   {
-    "objectID": "slides/part_1.html#lidar-scanning",
-    "href": "slides/part_1.html#lidar-scanning",
+    "objectID": "slides/part_1.html#lidar-vs-tof",
+    "href": "slides/part_1.html#lidar-vs-tof",
     "title": "3-D reconstruction and printing tools: Fundamentals",
-    "section": "LIDAR scanning",
-    "text": "LIDAR scanning\n\n\nOperating principles\n\nA laser scanner measures distance and angle for many points across a scene.\nScans are aligned using targets, shared geometry, SLAM, GNSS, or total-station control.\nThe result is a dense, often georeferenced point cloud.\n\n\nArchaeological fit\n\nArchitecture, excavation areas, rock art panels, caves, and landscapes.\nAirborne LIDAR can reveal microtopography and features under vegetation.\nTerrestrial LIDAR is strong for monitoring deformation, erosion, and conservation work.\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nLIDAR excels at scale and spatial context, but equipment cost, line-of-sight gaps, large datasets, and limited close-range surface detail make it complementary to artefact-level scanning."
+    "section": "LiDAR vs ToF",
+    "text": "LiDAR vs ToF\n\n\n\n\n\n\n\n\nTechnical Metric\nLiDAR Scanning\nToF (Flash/Phase Array)\n\n\n\n\nSpatial Sampling\nSequential point-by-point (mechanical or MEMS sweep)\nSimultaneous matrix array (instant snapshot)\n\n\nOperational Range\nLong-range (10m to 300m+)\nShort to medium-range (0.1m to 5m–10m)\n\n\nMeasurement Method\nDirect time interval measurement\nIndirect phase-shift detection\n\n\nAngular Resolution\nExtremely high (dependent on mechanical/galvanometer precision)\nDependent on pixel array density (lower resolution than scanning)\n\n\nFrame Rate\nLimited by scanning sweep mechanics (typically 10–30 Hz)\nVery high frame rates achievable (up to 60–120+ fps)\n\n\nAmbient Light\nTolerance Exceptionally high (filters out solar noise via narrow aperture/wave)\nProne to solar washing (indoor optimization preferred)\n\n\nMoving Parts\nYes (in spinning/MEMS units); No (in pure solid-state OPA)\nCompletely solid-state (zero moving parts)"
   },
   {
     "objectID": "slides/part_1.html#taxonomy-of-3-d-printing-technologies",

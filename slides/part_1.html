@@ -278,23 +278,46 @@ Paolo Bosetti
 <script src="mask-model.js"></script>
 <script src="reconstruction-webgl.js"></script>
 </section>
-<section id="time-of-flight-scanning" class="slide level2">
-<h2>Time-of-flight scanning</h2>
+<section id="lidar-scanning" class="slide level2">
+<h2>LiDAR scanning</h2>
 <div class="columns">
 <div class="column">
 <h3 id="operating-principles-1">Operating principles</h3>
 <ul>
-<li>The device emits a pulse or modulated beam of light.</li>
-<li>Distance is computed from the return time or phase shift.</li>
-<li>A depth map or point cloud is produced, often combined with RGB imagery and inertial tracking.</li>
+<li>A fixed laser scanner measures distance and angle for many points across a scene, via echo time of a pulse</li>
+<li>The result is a dense, often georeferenced point cloud</li>
+<li>Might be combined with RGB imagery for texture and color information</li>
+<li>Multiple scans may be aligned using targets, shared geometry, SLAM, GNSS</li>
 </ul>
 </div><div class="column">
-<h3 id="archaeological-fit-1">Archaeological fit</h3>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Scan</a></li><li><a href="#tabset-1-2">Mesh</a></li><li><a href="#tabset-1-3">Archaeological fit</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lidar_2.jpg" style="width:77.0%"></p>
+<figcaption>LiDAR point cloud</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lidar_3.jpg" style="width:66.0%"></p>
+<figcaption>LiDAR mesh</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-3">
 <ul>
-<li>Rapid documentation of rooms, trenches, monuments, and larger objects.</li>
-<li>Useful for spatial context, logistics, and preliminary recording.</li>
-<li>Less appropriate when the research question depends on very fine surface detail.</li>
+<li>Architecture, excavation areas, rock art panels, caves, and landscapes.</li>
+<li>Airborne LiDAR can reveal microtopography and features under vegetation.</li>
+<li>Terrestrial LiDAR is strong for monitoring deformation, erosion, and conservation work.</li>
 </ul>
+</div>
+</div>
+</div>
 </div></div>
 <div title="Advantages and limitations">
 <div class="callout callout-note callout-titled callout-style-default">
@@ -306,29 +329,45 @@ Paolo Bosetti
 <p><strong>Advantages and limitations</strong></p>
 </div>
 <div class="callout-content">
-<p>Time-of-flight devices are fast and portable, but their resolution and edge accuracy are usually lower than close-range photogrammetry or structured light scanning for small artefacts.</p>
+<p>LiDAR excels at scale and spatial context, but equipment cost, line-of-sight gaps, large datasets, and limited close-range surface detail make it complementary to artefact-level scanning</p>
+<p>Wavelengths: short-wave infrared spectrums 905 nm (more sensitive) or eye-safe 1550 nm</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="lidar-scanning" class="slide level2">
-<h2>LIDAR scanning</h2>
+<section id="time-of-flight-scanning" class="slide level2">
+<h2>Time-of-flight scanning</h2>
 <div class="columns">
 <div class="column">
 <h3 id="operating-principles-2">Operating principles</h3>
 <ul>
-<li>A laser scanner measures distance and angle for many points across a scene.</li>
-<li>Scans are aligned using targets, shared geometry, SLAM, GNSS, or total-station control.</li>
-<li>The result is a dense, often georeferenced point cloud.</li>
+<li>Evolution of LiDAR technology for portable, handheld devices.</li>
+<li>The device floods the scene with a modulated beam of light (IR)</li>
+<li>The sensor array measuresthe phase shift, pixel by pixel</li>
+<li>A depth map or point cloud is produced, often combined with RGB imagery and inertial tracking.</li>
 </ul>
 </div><div class="column">
-<h3 id="archaeological-fit-2">Archaeological fit</h3>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Example</a></li><li><a href="#tabset-2-2">Archaeological fit</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="flowers.jpeg" style="width:66.0%"></p>
+<figcaption>Time-of-flight scanning</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-2-2">
 <ul>
-<li>Architecture, excavation areas, rock art panels, caves, and landscapes.</li>
-<li>Airborne LIDAR can reveal microtopography and features under vegetation.</li>
-<li>Terrestrial LIDAR is strong for monitoring deformation, erosion, and conservation work.</li>
+<li>Rapid documentation of rooms, trenches, monuments, and larger objects.</li>
+<li>Useful for spatial context, logistics, and preliminary recording.</li>
+<li>Less appropriate when the research question depends on very fine surface detail.</li>
 </ul>
+</div>
+</div>
+</div>
 </div></div>
 <div title="Advantages and limitations">
 <div class="callout callout-note callout-titled callout-style-default">
@@ -340,11 +379,65 @@ Paolo Bosetti
 <p><strong>Advantages and limitations</strong></p>
 </div>
 <div class="callout-content">
-<p>LIDAR excels at scale and spatial context, but equipment cost, line-of-sight gaps, large datasets, and limited close-range surface detail make it complementary to artefact-level scanning.</p>
+<p>Time-of-flight devices are fast and portable (iPhone has two), but their resolution and edge accuracy are usually lower than close-range photogrammetr or, structured light scanning for small artefacts, and lower than LiDAR for large-scale contexts</p>
 </div>
 </div>
 </div>
 </div>
+</section>
+<section id="lidar-vs-tof" class="slide level2 smaller">
+<h2>LiDAR vs ToF</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Technical Metric</th>
+<th>LiDAR Scanning</th>
+<th>ToF (Flash/Phase Array)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Spatial Sampling</td>
+<td>Sequential point-by-point (mechanical or MEMS sweep)</td>
+<td>Simultaneous matrix array (instant snapshot)</td>
+</tr>
+<tr class="even">
+<td>Operational Range</td>
+<td>Long-range (10m to 300m+)</td>
+<td>Short to medium-range (0.1m to 5m–10m)</td>
+</tr>
+<tr class="odd">
+<td>Measurement Method</td>
+<td>Direct time interval measurement</td>
+<td>Indirect phase-shift detection</td>
+</tr>
+<tr class="even">
+<td>Angular Resolution</td>
+<td>Extremely high (dependent on mechanical/galvanometer precision)</td>
+<td>Dependent on pixel array density (lower resolution than scanning)</td>
+</tr>
+<tr class="odd">
+<td>Frame Rate</td>
+<td>Limited by scanning sweep mechanics (typically 10–30 Hz)</td>
+<td>Very high frame rates achievable (up to 60–120+ fps)</td>
+</tr>
+<tr class="even">
+<td>Ambient Light</td>
+<td>Tolerance Exceptionally high (filters out solar noise via narrow aperture/wave)</td>
+<td>Prone to solar washing (indoor optimization preferred)</td>
+</tr>
+<tr class="odd">
+<td>Moving Parts</td>
+<td>Yes (in spinning/MEMS units); No (in pure solid-state OPA)</td>
+<td>Completely solid-state (zero moving parts)</td>
+</tr>
+</tbody>
+</table>
 </section></section>
 <section>
 <section id="d-printing" class="title-slide slide level1 center">
