@@ -88,7 +88,7 @@
     "href": "slides/part_1.html#cheapest-solution-photogrammetry-with-a-smartphone",
     "title": "3-D reconstruction and printing tools: Fundamentals",
     "section": "Cheapest solution: photogrammetry with a smartphone",
-    "text": "Cheapest solution: photogrammetry with a smartphone\n\n\n\nReality composer is a free app for iOS and macOS that uses the device’s camera and ToF sensor to create 3-D models from live scanning\nit produces an .objcap file that must be opened by Reality Composer Pro app on macOS (free)\nThe latter can export models in USDZ format, which is compatible with many 3-D software and online platforms\nThe model quality is generally very good and includes texture\n\n\n\n\n\nReality Composer app (by Apple)"
+    "text": "Cheapest solution: photogrammetry with a smartphone\n\n\n\nReality composer is a free app for iOS and macOS that uses the device’s camera and ToF sensor to create 3-D models from live scanning\nit produces an .objcap file that must be opened by Reality Composer Pro app on macOS (free)\nThe latter can export models in .usdz format, which is compatible with many 3-D software and online platforms\nThe model quality is generally very good and includes texture\n\n\n\n\n\nReality Composer app (by Apple)"
   },
   {
     "objectID": "slides/part_1.html#example-1",
@@ -102,7 +102,7 @@
     "href": "slides/part_1.html#example-same-mask-as-above",
     "title": "3-D reconstruction and printing tools: Fundamentals",
     "section": "Example: Same mask as above",
-    "text": "Example: Same mask as above\nScanned with Reality Composer on iPhone 16 Pro, exported as USDZ, and rendered with the same WebGL viewer as the photogrammetry model."
+    "text": "Example: Same mask as above\nScanned with Reality Composer on iPhone 16 Pro, exported as .usdz, and rendered with the same WebGL viewer as the photogrammetry model"
   },
   {
     "objectID": "slides/part_1.html#taxonomy-of-3-d-printing-technologies",
