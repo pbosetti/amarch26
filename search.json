@@ -98,6 +98,13 @@
     "text": "Example\n\n\n\n\n\nReality Composer\n\n\n\n\n\n\nCreate Scan"
   },
   {
+    "objectID": "slides/part_1.html#example-same-mask-as-above",
+    "href": "slides/part_1.html#example-same-mask-as-above",
+    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "section": "Example: Same mask as above",
+    "text": "Example: Same mask as above\nScanned with Reality Composer on iPhone 16 Pro, exported as USDZ, and rendered with the same WebGL viewer as the photogrammetry model."
+  },
+  {
     "objectID": "slides/part_1.html#taxonomy-of-3-d-printing-technologies",
     "href": "slides/part_1.html#taxonomy-of-3-d-printing-technologies",
     "title": "3-D reconstruction and printing tools: Fundamentals",

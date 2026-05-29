@@ -417,6 +417,58 @@
     return registry[modelSrc] || registry[modelSrc && modelSrc.split("/").pop()];
   }
 
+  function pointAt(values, index) {
+    const offset = index * 3;
+    return [values[offset], values[offset + 1], values[offset + 2]];
+  }
+
+  function positionKey(positions, index) {
+    const point = pointAt(positions, index);
+    return point.map((value) => String(Math.round(value * 10000))).join(",");
+  }
+
+  function createTriangleWireframeGeometry(modelMesh) {
+    const geometry = makeGeometry();
+    const positions = modelMesh.positions;
+    const normals = modelMesh.normals;
+    const indices = modelMesh.indices;
+    if (!positions || !normals || !indices) {
+      return geometry;
+    }
+
+    const edges = new Set();
+    const color = [0.0, 0.08, 0.1, 0.5];
+    const offsetPoint = (index) => {
+      const normal = normalize(pointAt(normals, index));
+      return add(pointAt(positions, index), scale(normal, 0.012));
+    };
+
+    const addEdge = (firstIndex, secondIndex) => {
+      const firstKey = positionKey(positions, firstIndex);
+      const secondKey = positionKey(positions, secondIndex);
+      const reversed = firstKey > secondKey;
+      const i0 = reversed ? secondIndex : firstIndex;
+      const i1 = reversed ? firstIndex : secondIndex;
+      const key = reversed ? `${secondKey}|${firstKey}` : `${firstKey}|${secondKey}`;
+      if (edges.has(key)) {
+        return;
+      }
+      edges.add(key);
+      addLine(geometry, offsetPoint(i0), offsetPoint(i1), color);
+    };
+
+    for (let i = 0; i < indices.length; i += 3) {
+      const i0 = indices[i];
+      const i1 = indices[i + 1];
+      const i2 = indices[i + 2];
+      addEdge(i0, i1);
+      addEdge(i1, i2);
+      addEdge(i2, i0);
+    }
+
+    return geometry;
+  }
+
   function selectFeaturePoints(positions, bounds) {
     const min = bounds.min;
     const max = bounds.max;
@@ -1155,26 +1207,360 @@
     }
   }
 
-  const scenes = new WeakMap();
+  class MaskModelViewer {
+    constructor(root) {
+      this.root = root;
+      this.modelSrc = root.dataset.modelSrc || "_Mask.usdz";
+      this.yaw = 0.0;
+      this.pitch = 0.12;
+      this.dragging = false;
+      this.lastPointer = null;
+      this.width = 1;
+      this.height = 1;
+      this.textureDisabled = false;
 
-  function initReconstructionScenes() {
+      this.root.textContent = "";
+      this.canvas = document.createElement("canvas");
+      this.canvas.className = "mask-viewer-canvas";
+      this.canvas.setAttribute("aria-label", "Interactive WebGL mask model viewer");
+      this.canvas.tabIndex = 0;
+      this.root.appendChild(this.canvas);
+
+      this.gl = this.canvas.getContext("webgl", {
+        alpha: false,
+        antialias: true,
+        depth: true,
+      });
+
+      if (!this.gl) {
+        this.root.innerHTML = '<p class="reconstruction-error">WebGL is not available in this browser.</p>';
+        return;
+      }
+
+      this.program = createProgram(this.gl, vertexShaderSource, fragmentShaderSource);
+      this.locations = {
+        position: this.gl.getAttribLocation(this.program, "a_position"),
+        color: this.gl.getAttribLocation(this.program, "a_color"),
+        normal: this.gl.getAttribLocation(this.program, "a_normal"),
+        texcoord: this.gl.getAttribLocation(this.program, "a_texcoord"),
+        mvp: this.gl.getUniformLocation(this.program, "u_mvp"),
+        lightDir: this.gl.getUniformLocation(this.program, "u_light_dir"),
+        pointSize: this.gl.getUniformLocation(this.program, "u_point_size"),
+        roundPoints: this.gl.getUniformLocation(this.program, "u_round_points"),
+        texture: this.gl.getUniformLocation(this.program, "u_texture"),
+        useTexture: this.gl.getUniformLocation(this.program, "u_use_texture"),
+        useLighting: this.gl.getUniformLocation(this.program, "u_use_lighting"),
+      };
+      this.buffers = {
+        index: this.gl.createBuffer(),
+        position: this.gl.createBuffer(),
+        color: this.gl.createBuffer(),
+        normal: this.gl.createBuffer(),
+        texcoord: this.gl.createBuffer(),
+      };
+      this.uint32ElementExtension = this.gl.getExtension("OES_element_index_uint");
+      this.objectMesh = createModelMesh(getModelAsset(this.modelSrc));
+      this.triangleWireframeGeometry = createTriangleWireframeGeometry(this.objectMesh);
+      this.modelTexture = null;
+
+      this.configureView();
+      this.addControls();
+      this.bindEvents();
+      this.loadModelTexture();
+      this.resize();
+
+      if (window.ResizeObserver) {
+        this.resizeObserver = new ResizeObserver(() => this.resize());
+        this.resizeObserver.observe(this.root);
+      }
+      window.addEventListener("resize", () => this.resize());
+
+      this.frame = () => {
+        this.render();
+        this.raf = window.requestAnimationFrame(this.frame);
+      };
+      this.raf = window.requestAnimationFrame(this.frame);
+    }
+
+    configureView() {
+      const bounds = this.objectMesh.bounds || { min: [-0.6, -0.6, -0.6], max: [0.6, 0.6, 0.6] };
+      this.target = [
+        (bounds.min[0] + bounds.max[0]) * 0.5,
+        (bounds.min[1] + bounds.max[1]) * 0.5,
+        (bounds.min[2] + bounds.max[2]) * 0.5,
+      ];
+      const span = Math.max(
+        bounds.max[0] - bounds.min[0],
+        bounds.max[1] - bounds.min[1],
+        bounds.max[2] - bounds.min[2],
+      );
+      this.minDistance = Math.max(0.75, span * 0.85);
+      this.maxDistance = Math.max(4.5, span * 4.5);
+      this.distance = Math.max(2.25, span * 2.15);
+    }
+
+    loadModelTexture() {
+      if (!this.objectMesh.texture) {
+        return;
+      }
+
+      const image = new Image();
+      image.addEventListener("load", () => {
+        const gl = this.gl;
+        const texture = gl.createTexture();
+        gl.bindTexture(gl.TEXTURE_2D, texture);
+        gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        if (isPowerOf2(image.width) && isPowerOf2(image.height)) {
+          gl.generateMipmap(gl.TEXTURE_2D);
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+        } else {
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        }
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
+        this.modelTexture = texture;
+      });
+      image.src = this.objectMesh.texture;
+    }
+
+    addControls() {
+      const controls = document.createElement("div");
+      controls.className = "mask-viewer-controls";
+
+      const textureToggle = document.createElement("button");
+      textureToggle.type = "button";
+      textureToggle.className = "mask-viewer-toggle";
+      textureToggle.textContent = "No texture";
+      textureToggle.title = "Disable texture map";
+      textureToggle.setAttribute("aria-label", "Disable texture map");
+      textureToggle.setAttribute("aria-pressed", "false");
+
+      const reset = document.createElement("button");
+      reset.type = "button";
+      reset.className = "mask-viewer-reset";
+      reset.textContent = "Reset";
+      reset.title = "Reset view";
+      reset.setAttribute("aria-label", "Reset view");
+
+      textureToggle.addEventListener("click", () => {
+        this.textureDisabled = !this.textureDisabled;
+        textureToggle.setAttribute("aria-pressed", String(this.textureDisabled));
+        textureToggle.setAttribute(
+          "aria-label",
+          this.textureDisabled ? "Enable texture map" : "Disable texture map",
+        );
+      });
+      reset.addEventListener("click", () => {
+        this.yaw = 0.0;
+        this.pitch = 0.12;
+        this.distance = Math.max(2.25, this.minDistance * 2.5);
+      });
+
+      controls.append(textureToggle, reset);
+      this.root.appendChild(controls);
+    }
+
+    bindEvents() {
+      this.canvas.addEventListener("pointerdown", (event) => {
+        this.dragging = true;
+        this.lastPointer = [event.clientX, event.clientY];
+        this.canvas.setPointerCapture(event.pointerId);
+      });
+
+      this.canvas.addEventListener("pointermove", (event) => {
+        if (!this.dragging || !this.lastPointer) {
+          return;
+        }
+        const dx = event.clientX - this.lastPointer[0];
+        const dy = event.clientY - this.lastPointer[1];
+        this.yaw += dx * 0.007;
+        this.pitch = clamp(this.pitch + dy * 0.006, -1.1, 1.1);
+        this.lastPointer = [event.clientX, event.clientY];
+      });
+
+      const stopDrag = (event) => {
+        this.dragging = false;
+        this.lastPointer = null;
+        if (this.canvas.hasPointerCapture(event.pointerId)) {
+          this.canvas.releasePointerCapture(event.pointerId);
+        }
+      };
+      this.canvas.addEventListener("pointerup", stopDrag);
+      this.canvas.addEventListener("pointercancel", stopDrag);
+      this.canvas.addEventListener(
+        "wheel",
+        (event) => {
+          event.preventDefault();
+          this.distance = clamp(this.distance + event.deltaY * 0.004, this.minDistance, this.maxDistance);
+        },
+        { passive: false },
+      );
+    }
+
+    resize() {
+      const rect = this.root.getBoundingClientRect();
+      const cssWidth = Math.max(1, Math.round(this.root.clientWidth || rect.width || 960));
+      const cssHeight = Math.max(1, Math.round(this.root.clientHeight || rect.height || 480));
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const pixelWidth = Math.max(1, Math.round(cssWidth * dpr));
+      const pixelHeight = Math.max(1, Math.round(cssHeight * dpr));
+      if (this.canvas.width !== pixelWidth || this.canvas.height !== pixelHeight) {
+        this.canvas.width = pixelWidth;
+        this.canvas.height = pixelHeight;
+      }
+      this.width = cssWidth;
+      this.height = cssHeight;
+      this.dpr = dpr;
+      this.gl.viewport(0, 0, pixelWidth, pixelHeight);
+    }
+
+    render() {
+      const gl = this.gl;
+      this.resize();
+
+      const aspect = this.width / this.height;
+      const cosPitch = Math.cos(this.pitch);
+      const eye = [
+        this.target[0] + Math.sin(this.yaw) * cosPitch * this.distance,
+        this.target[1] + Math.sin(this.pitch) * this.distance,
+        this.target[2] + Math.cos(this.yaw) * cosPitch * this.distance,
+      ];
+      const projection = perspective(Math.PI / 5, aspect, 0.05, 30);
+      const view = lookAt(eye, this.target, [0, 1, 0]);
+      const mvp = multiplyMat4(projection, view);
+      const texture = this.textureDisabled ? null : this.modelTexture;
+
+      gl.clearColor(0.965, 0.975, 0.985, 1);
+      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+      gl.useProgram(this.program);
+      gl.uniformMatrix4fv(this.locations.mvp, false, mvp);
+      gl.uniform3fv(this.locations.lightDir, normalize([-0.25, 0.82, 0.5]));
+      gl.enable(gl.DEPTH_TEST);
+      gl.depthMask(true);
+      gl.disable(gl.BLEND);
+
+      this.drawGeometry(this.objectMesh, gl.TRIANGLES, {
+        defaultColor: texture ? [1, 1, 1, 1] : [0.64, 0.5, 0.39, 1],
+        lighting: true,
+        pointSize: 1,
+        roundPoints: false,
+        texture,
+      });
+
+      if (this.textureDisabled && this.triangleWireframeGeometry.positions.length) {
+        gl.enable(gl.BLEND);
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+        gl.depthMask(false);
+        gl.lineWidth(1.5);
+        this.drawGeometry(this.triangleWireframeGeometry, gl.LINES, {
+          lighting: false,
+          pointSize: 1,
+          roundPoints: false,
+        });
+        gl.depthMask(true);
+        gl.disable(gl.BLEND);
+      }
+    }
+
+    drawGeometry(geometry, mode, options) {
+      const gl = this.gl;
+      const count = geometry.positions.length / 3;
+      if (!count) {
+        return;
+      }
+      const positions =
+        geometry.positions instanceof Float32Array ? geometry.positions : new Float32Array(geometry.positions);
+      const normals =
+        geometry.normals instanceof Float32Array ? geometry.normals : new Float32Array(geometry.normals);
+      const useTexture = Boolean(options.texture && geometry.texcoords && geometry.texcoords.length);
+
+      gl.bindBuffer(gl.ARRAY_BUFFER, this.buffers.position);
+      gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STREAM_DRAW);
+      gl.enableVertexAttribArray(this.locations.position);
+      gl.vertexAttribPointer(this.locations.position, 3, gl.FLOAT, false, 0, 0);
+
+      if (geometry.colors && geometry.colors.length) {
+        const colors =
+          geometry.colors instanceof Float32Array ? geometry.colors : new Float32Array(geometry.colors);
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.buffers.color);
+        gl.bufferData(gl.ARRAY_BUFFER, colors, gl.STREAM_DRAW);
+        gl.enableVertexAttribArray(this.locations.color);
+        gl.vertexAttribPointer(this.locations.color, 4, gl.FLOAT, false, 0, 0);
+      } else {
+        gl.disableVertexAttribArray(this.locations.color);
+        gl.vertexAttrib4fv(this.locations.color, options.defaultColor || [0.62, 0.38, 0.24, 1]);
+      }
+
+      gl.bindBuffer(gl.ARRAY_BUFFER, this.buffers.normal);
+      gl.bufferData(gl.ARRAY_BUFFER, normals, gl.STREAM_DRAW);
+      gl.enableVertexAttribArray(this.locations.normal);
+      gl.vertexAttribPointer(this.locations.normal, 3, gl.FLOAT, false, 0, 0);
+
+      if (geometry.texcoords && geometry.texcoords.length) {
+        const texcoords =
+          geometry.texcoords instanceof Float32Array ? geometry.texcoords : new Float32Array(geometry.texcoords);
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.buffers.texcoord);
+        gl.bufferData(gl.ARRAY_BUFFER, texcoords, gl.STREAM_DRAW);
+        gl.enableVertexAttribArray(this.locations.texcoord);
+        gl.vertexAttribPointer(this.locations.texcoord, 2, gl.FLOAT, false, 0, 0);
+      } else {
+        gl.disableVertexAttribArray(this.locations.texcoord);
+        gl.vertexAttrib2f(this.locations.texcoord, 0, 0);
+      }
+
+      gl.uniform1f(this.locations.useLighting, options.lighting ? 1 : 0);
+      gl.uniform1f(this.locations.pointSize, options.pointSize);
+      gl.uniform1f(this.locations.roundPoints, options.roundPoints ? 1 : 0);
+      gl.uniform1f(this.locations.useTexture, useTexture ? 1 : 0);
+      if (useTexture) {
+        gl.activeTexture(gl.TEXTURE0);
+        gl.bindTexture(gl.TEXTURE_2D, options.texture);
+        gl.uniform1i(this.locations.texture, 0);
+      }
+
+      if (geometry.indices && geometry.indices.length) {
+        const type = geometry.indices instanceof Uint32Array ? gl.UNSIGNED_INT : gl.UNSIGNED_SHORT;
+        if (type === gl.UNSIGNED_INT && !this.uint32ElementExtension) {
+          return;
+        }
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.buffers.index);
+        gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, geometry.indices, gl.STREAM_DRAW);
+        gl.drawElements(mode, geometry.indices.length, type, 0);
+      } else {
+        gl.drawArrays(mode, 0, count);
+      }
+    }
+  }
+
+  const scenes = new WeakMap();
+  const maskViewers = new WeakMap();
+
+  function initWebglScenes() {
     document.querySelectorAll("[data-reconstruction-webgl]").forEach((root) => {
       if (!scenes.has(root)) {
         scenes.set(root, new ReconstructionScene(root));
       }
     });
+    document.querySelectorAll("[data-mask-viewer]").forEach((root) => {
+      if (!maskViewers.has(root)) {
+        maskViewers.set(root, new MaskModelViewer(root));
+      }
+    });
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initReconstructionScenes);
+    document.addEventListener("DOMContentLoaded", initWebglScenes);
   } else {
-    initReconstructionScenes();
+    initWebglScenes();
   }
 
-  window.addEventListener("load", initReconstructionScenes);
+  window.addEventListener("load", initWebglScenes);
 
   if (window.Reveal) {
-    window.Reveal.on("ready", initReconstructionScenes);
-    window.Reveal.on("slidechanged", initReconstructionScenes);
+    window.Reveal.on("ready", initWebglScenes);
+    window.Reveal.on("slidechanged", initWebglScenes);
   }
 })();
