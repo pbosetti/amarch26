@@ -10,10 +10,39 @@ resources:
 
 # Contents
 
+1. Context of 3-D technologies in archaeology
+2. 3-D reconstruction tools
+3. 3-D printing tools
 
 # Context
 
-3-D technologies support archaeological research when replicas and models are treated as documented interpretations of material evidence.
+3-D technologies support archaeological research when replicas and models are treated as documented interpretations of material evidence
+
+## Key references {{<bi newspaper>}} {.smaller}
+
+* {{<bi exclamation-circle-fill >}} Balletti, C., & Ballarin, M. (2019). *An Application of Integrated 3D Technologies for Replicas in Cultural Heritage.* ISPRS International Journal of Geo-Information, 8(6), 285. <https://doi.org/10.3390/ijgi8060285>
+* Bitelli, G., Forte, A., Tini, M. A., Belfiori, F., & Tirincanti, A. (2025). *High-Detail 3D Reconstruction and Digital Strategies for the Enhancements of Archaeological Properties in Museums.* Heritage, 8(2), 49. <https://doi.org/10.3390/heritage8020049>
+* Cecchitelli, M., Fiori, G., Bocchetta, G., Filippi, F., Leccese, F., Galo, J., Sciuto, S. A., & Scorza, A. (2023). *Dimensional assessment in bioarchaeology applications: a preliminary study on quality controls in 3D printing of human skulls.* Proceedings of the 2022 IMEKO TC4 International Conference on Metrology for Archaeology and Cultural Heritage, 98–103. <https://doi.org/10.21014/tc4-arc-2023.020>
+* Kantaros, A., Douros, P., Soulis, E., Brachos, K., Ganetsos, T., Peppa, E., Manta, E., & Alysandratou, E. (2025). *3D Imaging and Additive Manufacturing for Original Artifact Preservation Purposes: A Case Study from the Archaeological Museum of Alexandroupolis.* Heritage, 8(2), 80. <https://doi.org/10.3390/heritage8020080>
+* Llull, C., Baloian, N., Bustos, B., Kupczik, K., Sipiran, I., & Baloian, A. (2023). *Evaluation of 3D Reconstruction for Cultural Heritage Applications.* 2023 IEEE/CVF International Conference on Computer Vision Workshops (ICCVW), 1634–1643. <https://doi.org/10.1109/iccvw60793.2023.00179>
+* Spallone, R., Lamberti, F., Olivieri, L. M., Ronco, F., & Castagna, L. (2022). *AR And VR for Enhancing Museums’ Heritage Through 3d Reconstruction of Fragmented Statue and Architectural Context.* The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences, XLVI-2/W1-2022, 473–480. <https://doi.org/10.5194/isprs-archives-xlvi-2-w1-2022-473-2022>
+
+## Key references {{<bi book>}}
+
+* **On the Technologies** (Fundamentals): *Additive Manufacturing Technologies: 3D Printing, Rapid Prototyping, and Direct Digital Manufacturing* by Ian Gibson, David Rosen, and Brent Stucker. This is widely considered the gold-standard textbook for understanding the mechanics, materials, and distinct processes (e.g., SLA, SLS, FDM) that make up modern 3D printing.
+* **On Their Use in Archaeology**: *3D Information Technologies in Cultural Heritage Preservation and Popularisation* (MDPI Books, 2023). This volume offers a broad compilation of recent case studies focusing heavily on 3D terrestrial laser scanning, photogrammetry, and the application of 3D modeling for archaeological and museum contexts.
+
+## Key References {{<bi link-45deg>}} {.smaller}
+
+* **Photogrammetry for Cultural Heritage Objects** (Video Tutorial) <https://www.youtube.com/watch?v=E2i4DQSsgCU>
+  - *Why it's useful*: Practical step-by-step video tutorial on creating 3D models of cultural heritage objects via photogrammetry. Demonstrates photo capture and mesh processing—ideal for archaeologists learning the field-to-digital pipeline.
+* **3D Scanning for Cultural Heritage Conservation by Factum Arte** (Online Guide/Lesson) <https://www.factum-arte.com/pag/701/3d-scanning-for-cultural-heritage-conservation>
+  - *Why it's useful*: Factum Arte, world leader in digital mediation and heritage preservation, breaks down differences between close-range photogrammetry and laser scanning, explaining when to use each based on artifact material (translucent marble vs. opaque stone) and environment.
+* **Complete Beginner's Guide to 3D Printing** (Video Tutorial) <https://www.youtube.com/watch?v=T-Z3GmM20JM>
+  - *Why it's useful*: Comprehensive video introduction to fused deposition modeling (FDM). Covers printer components, slicing software (converting 3D models into G-code), and printing process.
+* **Decoding Maya Hieroglyphs with 3D Technology** (Educational Video)  
+Peabody Museum - Harvard University <https://peabody.harvard.edu/video-decoding-maya-hieroglyphs-3d-technology>
+  - *Why it's useful*: Peabody Museum video bridges technology and archaeological value, showing how 3D scanning and printing decode, replicate, and preserve complex structures like the Hieroglyphic Stairway at Copan.
 
 
 # 3-D Reconstruction
@@ -54,7 +83,7 @@ There is no universally best capture method. For archaeological objects, the bes
 
 
 
-## Photogrammetry (1): Triangulation
+## Photogrammetry {{<bi 1-circle-fill>}}: Triangulation
 
 It's quite like our binocular vision:
 
@@ -64,7 +93,7 @@ It's quite like our binocular vision:
 <script src="reconstruction-webgl.js"></script>
 ```
 
-## Photogrammetry (2): Operating principles
+## Photogrammetry {{<bi 2-circle-fill>}}: Operating principles
 
 ::: {.columns}
 ::: {.column width=60%}
@@ -88,7 +117,7 @@ Photogrammetry is a cost-effective and accessible method for 3-D reconstruction,
 
 
 
-## Structured light scanning
+## Structured light scanning {{<bi 1-circle-fill>}}: Operating principles
 
 ::: {.columns}
 
@@ -116,7 +145,7 @@ Photogrammetry is a cost-effective and accessible method for 3-D reconstruction,
 Structured light scanning gives high local resolution and fast acquisition, but glossy, translucent, very dark, or deeply undercut surfaces may need surface preparation, multiple scan angles, or another method.
 :::
 
-## Structured light scanning (2): Example
+## Structured light scanning {{<bi 2-circle-fill>}}: Example
 
 ```{=html}
 <div class="reconstruction-scene" data-reconstruction-webgl data-method="structured-light" data-model-src="_Mask.usdz"></div>
@@ -133,7 +162,7 @@ Structured light scanning gives high local resolution and fast acquisition, but 
 ### Operating principles
 
 * A fixed laser scanner measures distance and angle for many points across a scene, via echo time of a pulse
-* The result is a dense, often georeferenced point cloud
+* The result is a dense, often **georeferenced** point cloud
 * Might be combined with RGB imagery for texture and color information
 * Multiple scans may be aligned using targets, shared geometry, SLAM, GNSS
 :::
@@ -197,17 +226,64 @@ Time-of-flight devices are fast and portable (iPhone has two), but their resolut
 
 
 
-## LiDAR vs ToF {.smaller}
+## LiDAR vs ToF
 
+:::smaller
 | Technical Metric | LiDAR Scanning	 | ToF (Flash/Phase Array) |
 |---|---|---|
 | Spatial Sampling	| Sequential point-by-point (mechanical or MEMS sweep) | Simultaneous matrix array (instant snapshot) |
-| Operational Range	| Long-range (10m to 300m+) | Short to medium-range (0.1m to 5m–10m) |
+| Operational Range	| **Long-range** (10m to 500m+) | **Short to medium-range** (0.1m to 5m–10m) |
 | Measurement Method	| Direct time interval measurement | Indirect phase-shift detection |
 | Angular Resolution	| Extremely high (dependent on mechanical/galvanometer precision) | Dependent on pixel array density (lower resolution than scanning) |
-| Frame Rate	| Limited by scanning sweep mechanics (typically 10–30 Hz) | Very high frame rates achievable (up to 60–120+ fps) |
+| Frame Rate	| Limited by scanning sweep mechanics (typically 10–30 Hz) [SLOW]{.bred} | Very high frame rates achievable (up to 60–120+ fps) [FAST]{.bgreen} |
 | Ambient Light | Tolerance	Exceptionally high (filters out solar noise via narrow aperture/wave) | Prone to solar washing (indoor optimization preferred) |
 | Moving Parts	| Yes (in spinning/MEMS units); No (in pure solid-state OPA) | Completely solid-state (zero moving parts) |
+:::
+
+::: {.callout-note}
+Both methods can be augmented with RGB cameras for color information, and inertial measurement units (IMUs) for improved spatial tracking or range extension, but their core depth sensing technologies differ significantly in terms of resolution, range, and susceptibility to environmental conditions.
+:::
+
+
+## Cheapest solution: photogrammetry with a smartphone
+
+
+::: {.columns}
+
+::: {.column}
+* **Reality composer** is a free app for iOS and macOS that uses the device's camera and ToF sensor to create 3-D models from live scanning
+* it produces an `.objcap` file that must be opened by **Reality Composer Pro** app on macOS (free)
+* The latter can export models in USDZ format, which is compatible with many 3-D software and online platforms
+* The model quality is generally very good and includes texture
+:::
+
+::: {.column}
+
+![Reality Composer app (by Apple)](Reality_Composer_macOS_icon.webp){width=66%}
+
+:::
+
+:::
+
+## Example
+
+
+::: {.columns}
+
+::: {.column width=33%}
+![Reality Composer](rc_1.jpeg){width=280px}
+:::
+
+::: {.column width=33%}
+![Create Scan](rc_2.jpeg){width=280px}
+:::
+
+::: {.column width=33%}
+{{< video rc_3.mov width=280 >}}
+:::
+
+:::
+
 
 
 
