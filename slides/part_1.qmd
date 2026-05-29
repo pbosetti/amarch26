@@ -285,7 +285,13 @@ Both methods can be augmented with RGB cameras for color information, and inerti
 :::
 
 
+## Example: Same mask as above
 
+Scanned with Reality Composer on iPhone 16 Pro, exported as USDZ, and rendered with the same WebGL viewer as the photogrammetry model.
+
+```{=html}
+<div class="mask-viewer" data-mask-viewer data-model-src="_Mask.usdz"></div>
+```
 
 
 
