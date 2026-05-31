@@ -140,6 +140,13 @@
     "text": "Taxonomy of 3-D printing technologies\n\n\n\n\n\n\n\n\nFamily\nCommon technologies\nTypical archaeological use\n\n\n\n\nMaterial extrusion\nFDM, FFF\nLow-cost handling models, teaching sets, enlarged tactile replicas\n\n\nVat photopolymerization\nSLA, MSLA, DLP\nSmall finds with fine relief, inscriptions, seals, detailed fragments\n\n\nPowder bed and binder\nSLS, MJF, binder jet\nComplex shapes, durable nylon replicas, color display models\n\n\nMetal additive manufacturing\nPBF, DED, metal binder jet\nSpecialist replicas, mounts, experimental tools, structural parts\n\n\n\n\n\n\n\n\n\n\nSelection criteria\n\n\nChoose the printing process from the required detail, strength, color, handling conditions, cost, post-processing effort, and ethical need to distinguish replica from original."
   },
   {
+    "objectID": "slides/part_1.html#technologies-vs.-materials",
+    "href": "slides/part_1.html#technologies-vs.-materials",
+    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "section": "Technologies vs. materials",
+    "text": "Technologies vs. materials\n\n\n\n\n\n\n\n\n\n\nTechnology\nCost\nCommon materials\nArchaeological fit\n\n\n\n\nMaterial extrusion\n\nPLA, PETG, ABS, nylon, filled filaments, concrete\nRobust handling models, enlarged tactile replicas, trial reconstructions, buildings\n\n\nVat photopolymerization\n\nStandard, tough, flexible, castable, high-temperature resins; resins w. ceramic load\nSmall artefacts with fine relief, coins, seals, figurines, engraved surfaces, masters for moulding\n\n\nPowder bed and binder\n\nNylon, gypsum, sandstone, concrete\nComplex geometry without many visible support scars, durable handling collections, full-color display models using texture maps\n\n\nMetal additive manufacturing\n\nStainless steel, aluminum, titanium, bronze\nSpecialist replicas when weight, stiffness, wear, or heat resistance matter, mounts, brackets, replacement fixtures, experimental archaeology tools\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\nMaterial extrusion and photopolymerization are desktop-compatible processes; powder bed and metal AM usually require industrial equipment and safety precautions, which can increase cost and turnaround time, and limit material options and post-processing control."
+  },
+  {
     "objectID": "slides/part_1.html#polymer-based-3-d-printing",
     "href": "slides/part_1.html#polymer-based-3-d-printing",
     "title": "3-D reconstruction and printing tools: Fundamentals",
