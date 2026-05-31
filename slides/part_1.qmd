@@ -295,11 +295,188 @@ Scanned with Reality Composer on iPhone 16 Pro, exported as `.usdz`, and rendere
 <div class="mask-viewer" data-mask-viewer data-model-src="_Mask.usdz"></div>
 ```
 
+:::{.callout-important .smaller}
+Note the **holes** in the model: a 3-D scan, regardless the technology, provides a **surface model**, which has no information about the internal structure of the object. The holes are areas where the scanner could not capture data, often due to occlusions, reflective surfaces, or insufficient texture.
+:::
+
 
 
 # 3-D Printing
 
 3-D printing turns digital reconstructions into physical replicas whose research value depends on scale control, material choice, finishing, and documentation
+
+
+
+## Process flowchart
+
+::: {.columns}
+
+::: {.column}
+* Scan must produce a **surface model** with sufficient resolution, with coherent face normals, and without holes or non-manifold geometry
+* Most commonly used file formats are `.stl` (geometry only) and `.obj` (geometry + texture), but some printers require proprietary formats or additional metadata
+* Print process involves orientation, support generation, slicing, and post-processing steps that can affect feasibility, final accuracy and appearance of the replica
+
+:::
+
+::: {.column}
+```{dot}
+digraph process_flow {
+  graph [
+    rankdir = TB,
+    compound = true,
+    newrank = true,
+    splines = ortho,
+    nodesep = 0.8,
+    ranksep = 0.42,
+    bgcolor = "transparent"
+  ];
+
+  node [
+    shape = box,
+    style = "rounded,filled",
+    fillcolor = "#eef3f7",
+    color = "#8c99a5",
+    penwidth = 1.2,
+    fontname = "Helvetica",
+    fontsize = 18,
+    fontcolor = "#1585da",
+    margin = "0.18,0.12"
+  ];
+
+  edge [
+    color = "#8c99a5",
+    arrowsize = 0.7,
+    penwidth = 1.1
+  ];
+
+  subgraph cluster_scan {
+    label = "Scan";
+    labelloc = t;
+    labeljust = c;
+    style = "rounded,filled";
+    fillcolor = "#f8fbfd";
+    color = "#aeb7c1";
+    penwidth = 1.2;
+    fontname = "Helvetica";
+    fontsize = 18;
+    fontcolor = "#1585da";
+    margin = 16;
+
+    A [label = "Scan", group = scan_column];
+    B [label = "Preprocess", group = scan_column];
+    C [label = "Reconstruct", group = scan_column];
+    D [label = "Refine / Export", group = scan_column];
+
+    A -> B -> C -> D;
+  }
+
+  subgraph cluster_print {
+    label = "Print";
+    labelloc = t;
+    labeljust = c;
+    style = "rounded,filled";
+    fillcolor = "#f8fbfd";
+    color = "#aeb7c1";
+    penwidth = 1.2;
+    fontname = "Helvetica";
+    fontsize = 18;
+    fontcolor = "#1585da";
+    margin = 16;
+
+    F [label = "Orientation", group = print_column];
+    G [label = "Support generation", group = print_column];
+    H [label = "Slice", group = print_column];
+    I [label = "Print", group = print_column];
+
+    F -> G -> H -> I;
+  }
+
+  { rank = same; A; F; }
+  { rank = same; B; G; }
+  { rank = same; C; H; }
+  { rank = same; D; I; }
+
+  A -> F [style = invis, weight = 10];
+  B -> G [style = invis, weight = 10];
+  C -> H [style = invis, weight = 10];
+  D -> I [style = invis, weight = 10];
+  D -> F [constraint = false];
+}
+```
+:::{.callout-note .smaller}
+AM processes work layer-by.layer, so the mudel must be **sliced** into thin horizontal sections
+:::
+:::
+
+:::
+
+
+## Solid model preparation
+::: {.columns}
+::: {.column}
+* Scans produce a **surface model** that may have holes, non-manifold geometry, and inconsistent face normals
+* These issues must be resolved before printing, using software tools that can fill holes, repair meshes, and ensure the model is watertight and printable
+* The model may also need to be scaled, oriented, and simplified to meet the printer's requirements and the research goals of the replica
+
+:::{.callout-note .smaller}
+Scan reslution might affect print result, but too high is just as bad as too low, because it can create unnecessarily large files and long print times without improving the final quality of the replica
+:::
+
+:::
+
+::: {.column}
+
+
+:::{.panel-tabset}
+### Approximation
+![Mesh approximation](slice.svg){width=75%}
+
+### Surface model
+![PolygonalApproximation](cura_sm.png)
+:::
+
+:::
+:::
+
+
+
+## Model orientation and support generation
+::: {.columns}
+::: {.column}
+
+* Almost all 3-D printing processes **cannot print overhangs** beyond a certain angle without support structures
+* The model must be oriented to minimize the need for supports, which can affect surface quality and post-processing time
+* Support structures are generated based on the printer's capabilities and the model's geometry
+* They must be removed after printing, which can leave marks or require additional finishing steps
+
+:::
+
+::: {.column}
+
+![Support structures](cura_support.png)
+
+:::
+:::
+
+
+
+## Slicing and print-ready file generation
+::: {.columns}
+::: {.column}
+
+* Last step is **slicing**: the software converts the 3-D model into a series of 2-D layers and generates a print-ready file (e.g., G-code) that contains instructions for the printer
+* Slicing parameters include layer height, infill density, print speed, and specific process settings that can affect the strength, appearance, and accuracy of the final replica
+* The sliced file is then sent to the printer, which builds the object layer by layer according to the instructions
+:::
+
+::: {.column}
+
+![Print slicing](cura_infill.png)
+
+:::
+:::
+
+
 
 ## Taxonomy of 3-D printing technologies
 
