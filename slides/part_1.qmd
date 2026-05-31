@@ -477,6 +477,10 @@ Scan reslution might affect print result, but too high is just as bad as too low
 :::
 
 
+# 3-D Printing technologies
+
+3-D printing is a subset of **Additive Manufacturing** (AM) that builds objects layer by layer from a digital model, using various materials and processes to achieve different levels of detail, strength, and finish
+
 
 ## Taxonomy of 3-D printing technologies
 
@@ -491,6 +495,21 @@ Scan reslution might affect print result, but too high is just as bad as too low
 
 Choose the printing process from the required detail, strength, color, handling conditions, cost, post-processing effort, and ethical need to distinguish replica from original.
 
+:::
+
+## Technologies vs. materials
+
+:::{.smaller}
+| Technology | Cost | Common materials | Archaeological fit |
+|--|-|---|---|
+| Material extrusion | {{< bi star-fill >}}{{< bi star >}}{{< bi star >}}{{< bi star >}} | PLA, PETG, ABS, nylon, filled filaments, concrete | Robust handling models, enlarged tactile replicas, trial reconstructions, buildings |
+| Vat photopolymerization | {{< bi star-fill >}}{{< bi star-fill >}}{{< bi star >}}{{< bi star >}} | Standard, tough, flexible, castable, high-temperature resins; resins w. ceramic load | Small artefacts with fine relief, coins, seals, figurines, engraved surfaces, masters for moulding |
+| Powder bed and binder | {{< bi star-fill >}}{{< bi star-fill >}}{{< bi star-fill >}}{{< bi star >}} | Nylon, gypsum, sandstone, concrete | Complex geometry without many visible support scars, durable handling collections, full-color display models using texture maps |
+| Metal additive manufacturing | {{< bi star-fill >}}{{< bi star-fill >}}{{< bi star-fill >}}{{< bi star-fill >}} | Stainless steel, aluminum, titanium, bronze | Specialist replicas when weight, stiffness, wear, or heat resistance matter, mounts, brackets, replacement fixtures, experimental archaeology tools |
+:::
+
+:::{.callout-warning}
+Material extrusion and photopolymerization are [desktop-compatible]{.bgreen} processes; powder bed and metal AM usually require [industrial equipment]{.bred} and safety precautions, which can increase cost and turnaround time, and limit material options and post-processing control.
 :::
 
 ## Polymer-based 3-D printing
