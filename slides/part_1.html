@@ -542,11 +542,257 @@ Peabody Museum - Harvard University <a href="https://peabody.harvard.edu/video-d
 <h2>Example: Same mask as above</h2>
 <p>Scanned with Reality Composer on iPhone 16 Pro, exported as <code>.usdz</code>, and rendered with the same WebGL viewer as the photogrammetry model</p>
 <div class="mask-viewer" data-mask-viewer="" data-model-src="_Mask.usdz"></div>
+<div class="smaller">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Note the <strong>holes</strong> in the model: a 3-D scan, regardless the technology, provides a <strong>surface model</strong>, which has no information about the internal structure of the object. The holes are areas where the scanner could not capture data, often due to occlusions, reflective surfaces, or insufficient texture.</p>
+</div>
+</div>
+</div>
+</div>
 </section></section>
 <section>
 <section id="d-printing" class="title-slide slide level1 center">
 <h1>3-D Printing</h1>
 <p>3-D printing turns digital reconstructions into physical replicas whose research value depends on scale control, material choice, finishing, and documentation</p>
+</section>
+<section id="process-flowchart" class="slide level2">
+<h2>Process flowchart</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Scan must produce a <strong>surface model</strong> with sufficient resolution, with coherent face normals, and without holes or non-manifold geometry</li>
+<li>Most commonly used file formats are <code>.stl</code> (geometry only) and <code>.obj</code> (geometry + texture), but some printers require proprietary formats or additional metadata</li>
+<li>Print process involves orientation, support generation, slicing, and post-processing steps that can affect feasibility, final accuracy and appearance of the replica</li>
+</ul>
+</div><div class="column">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="480" height="384" viewbox="0.00 0.00 425.00 334.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 330)">
+<title>process_flow</title>
+<g id="clust1" class="cluster">
+<title>cluster_scan</title>
+<path fill="#f8fbfd" stroke="#aeb7c1" stroke-width="1.2" d="M20,-8C20,-8 174,-8 174,-8 180,-8 186,-14 186,-20 186,-20 186,-306 186,-306 186,-312 180,-318 174,-318 174,-318 20,-318 20,-318 14,-318 8,-312 8,-306 8,-306 8,-20 8,-20 8,-14 14,-8 20,-8"></path>
+<text text-anchor="middle" x="97" y="-297.8" font-family="Helvetica,sans-Serif" font-size="18.00" fill="#1585da">Scan</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_print</title>
+<path fill="#f8fbfd" stroke="#aeb7c1" stroke-width="1.2" d="M209,-8C209,-8 397,-8 397,-8 403,-8 409,-14 409,-20 409,-20 409,-306 409,-306 409,-312 403,-318 397,-318 397,-318 209,-318 209,-318 203,-318 197,-312 197,-306 197,-306 197,-20 197,-20 197,-14 203,-8 209,-8"></path>
+<text text-anchor="middle" x="303" y="-297.8" font-family="Helvetica,sans-Serif" font-size="18.00" fill="#1585da">Print</text>
+</g>
+<!-- A -->
+<g id="node1" class="node">
+<title>A</title>
+<path fill="#eef3f7" stroke="#8c99a5" stroke-width="1.2" d="M118.53,-272.2C118.53,-272.2 75.47,-272.2 75.47,-272.2 69.47,-272.2 63.47,-266.2 63.47,-260.2 63.47,-260.2 63.47,-245 63.47,-245 63.47,-239 69.47,-233 75.47,-233 75.47,-233 118.53,-233 118.53,-233 124.53,-233 130.53,-239 130.53,-245 130.53,-245 130.53,-260.2 130.53,-260.2 130.53,-266.2 124.53,-272.2 118.53,-272.2"></path>
+<text text-anchor="middle" x="97" y="-247.2" font-family="Helvetica,sans-Serif" font-size="18.00" fill="#1585da">Scan</text>
+</g>
+<!-- B -->
+<g id="node2" class="node">
+<title>B</title>
+<path fill="#eef3f7" stroke="#8c99a5" stroke-width="1.2" d="M143.54,-202.6C143.54,-202.6 50.46,-202.6 50.46,-202.6 44.46,-202.6 38.46,-196.6 38.46,-190.6 38.46,-190.6 38.46,-175.4 38.46,-175.4 38.46,-169.4 44.46,-163.4 50.46,-163.4 50.46,-163.4 143.54,-163.4 143.54,-163.4 149.54,-163.4 155.54,-169.4 155.54,-175.4 155.54,-175.4 155.54,-190.6 155.54,-190.6 155.54,-196.6 149.54,-202.6 143.54,-202.6"></path>
+<text text-anchor="middle" x="97" y="-177.6" font-family="Helvetica,sans-Serif" font-size="18.00" fill="#1585da">Preprocess</text>
+</g>
+<!-- A&#45;&gt;B -->
+<g id="edge1" class="edge">
+<title>A-&gt;B</title>
+<path fill="none" stroke="#8c99a5" stroke-width="1.1" d="M97,-232.84C97,-232.84 97,-210.05 97,-210.05"></path>
+<polygon fill="#8c99a5" stroke="#8c99a5" stroke-width="1.1" points="99.45,-210.05 97,-203.05 94.55,-210.05 99.45,-210.05"></polygon>
+</g>
+<!-- F -->
+<g id="node5" class="node">
+<title>F</title>
+<path fill="#eef3f7" stroke="#8c99a5" stroke-width="1.2" d="M348.05,-272.2C348.05,-272.2 257.95,-272.2 257.95,-272.2 251.95,-272.2 245.95,-266.2 245.95,-260.2 245.95,-260.2 245.95,-245 245.95,-245 245.95,-239 251.95,-233 257.95,-233 257.95,-233 348.05,-233 348.05,-233 354.05,-233 360.05,-239 360.05,-245 360.05,-245 360.05,-260.2 360.05,-260.2 360.05,-266.2 354.05,-272.2 348.05,-272.2"></path>
+<text text-anchor="middle" x="303" y="-247.2" font-family="Helvetica,sans-Serif" font-size="18.00" fill="#1585da">Orientation</text>
+</g>
+<!-- A&#45;&gt;F -->
+<!-- C -->
+<g id="node3" class="node">
+<title>C</title>
+<path fill="#eef3f7" stroke="#8c99a5" stroke-width="1.2" d="M146.04,-133C146.04,-133 47.96,-133 47.96,-133 41.96,-133 35.96,-127 35.96,-121 35.96,-121 35.96,-105.8 35.96,-105.8 35.96,-99.8 41.96,-93.8 47.96,-93.8 47.96,-93.8 146.04,-93.8 146.04,-93.8 152.04,-93.8 158.04,-99.8 158.04,-105.8 158.04,-105.8 158.04,-121 158.04,-121 158.04,-127 152.04,-133 146.04,-133"></path>
+<text text-anchor="middle" x="97" y="-108" font-family="Helvetica,sans-Serif" font-size="18.00" fill="#1585da">Reconstruct</text>
+</g>
+<!-- B&#45;&gt;C -->
+<g id="edge2" class="edge">
+<title>B-&gt;C</title>
+<path fill="none" stroke="#8c99a5" stroke-width="1.1" d="M97,-163.24C97,-163.24 97,-140.45 97,-140.45"></path>
+<polygon fill="#8c99a5" stroke="#8c99a5" stroke-width="1.1" points="99.45,-140.45 97,-133.45 94.55,-140.45 99.45,-140.45"></polygon>
+</g>
+<!-- G -->
+<g id="node6" class="node">
+<title>G</title>
+<path fill="#eef3f7" stroke="#8c99a5" stroke-width="1.2" d="M380.61,-202.6C380.61,-202.6 225.39,-202.6 225.39,-202.6 219.39,-202.6 213.39,-196.6 213.39,-190.6 213.39,-190.6 213.39,-175.4 213.39,-175.4 213.39,-169.4 219.39,-163.4 225.39,-163.4 225.39,-163.4 380.61,-163.4 380.61,-163.4 386.61,-163.4 392.61,-169.4 392.61,-175.4 392.61,-175.4 392.61,-190.6 392.61,-190.6 392.61,-196.6 386.61,-202.6 380.61,-202.6"></path>
+<text text-anchor="middle" x="303" y="-177.6" font-family="Helvetica,sans-Serif" font-size="18.00" fill="#1585da">Support generation</text>
+</g>
+<!-- B&#45;&gt;G -->
+<!-- D -->
+<g id="node4" class="node">
+<title>D</title>
+<path fill="#eef3f7" stroke="#8c99a5" stroke-width="1.2" d="M157.56,-63.4C157.56,-63.4 36.44,-63.4 36.44,-63.4 30.44,-63.4 24.44,-57.4 24.44,-51.4 24.44,-51.4 24.44,-36.2 24.44,-36.2 24.44,-30.2 30.44,-24.2 36.44,-24.2 36.44,-24.2 157.56,-24.2 157.56,-24.2 163.56,-24.2 169.56,-30.2 169.56,-36.2 169.56,-36.2 169.56,-51.4 169.56,-51.4 169.56,-57.4 163.56,-63.4 157.56,-63.4"></path>
+<text text-anchor="middle" x="97" y="-38.4" font-family="Helvetica,sans-Serif" font-size="18.00" fill="#1585da">Refine / Export</text>
+</g>
+<!-- C&#45;&gt;D -->
+<g id="edge3" class="edge">
+<title>C-&gt;D</title>
+<path fill="none" stroke="#8c99a5" stroke-width="1.1" d="M97,-93.64C97,-93.64 97,-70.85 97,-70.85"></path>
+<polygon fill="#8c99a5" stroke="#8c99a5" stroke-width="1.1" points="99.45,-70.85 97,-63.85 94.55,-70.85 99.45,-70.85"></polygon>
+</g>
+<!-- H -->
+<g id="node7" class="node">
+<title>H</title>
+<path fill="#eef3f7" stroke="#8c99a5" stroke-width="1.2" d="M323.51,-133C323.51,-133 282.49,-133 282.49,-133 276.49,-133 270.49,-127 270.49,-121 270.49,-121 270.49,-105.8 270.49,-105.8 270.49,-99.8 276.49,-93.8 282.49,-93.8 282.49,-93.8 323.51,-93.8 323.51,-93.8 329.51,-93.8 335.51,-99.8 335.51,-105.8 335.51,-105.8 335.51,-121 335.51,-121 335.51,-127 329.51,-133 323.51,-133"></path>
+<text text-anchor="middle" x="303" y="-108" font-family="Helvetica,sans-Serif" font-size="18.00" fill="#1585da">Slice</text>
+</g>
+<!-- C&#45;&gt;H -->
+<!-- D&#45;&gt;F -->
+<g id="edge11" class="edge">
+<title>D-&gt;F</title>
+<path fill="none" stroke="#8c99a5" stroke-width="1.1" d="M163.77,-63.56C163.77,-114.43 163.77,-246 163.77,-246 163.77,-246 238.97,-246 238.97,-246"></path>
+<polygon fill="#8c99a5" stroke="#8c99a5" stroke-width="1.1" points="238.97,-248.45 245.97,-246 238.97,-243.55 238.97,-248.45"></polygon>
+</g>
+<!-- I -->
+<g id="node8" class="node">
+<title>I</title>
+<path fill="#eef3f7" stroke="#8c99a5" stroke-width="1.2" d="M322.51,-63.4C322.51,-63.4 283.49,-63.4 283.49,-63.4 277.49,-63.4 271.49,-57.4 271.49,-51.4 271.49,-51.4 271.49,-36.2 271.49,-36.2 271.49,-30.2 277.49,-24.2 283.49,-24.2 283.49,-24.2 322.51,-24.2 322.51,-24.2 328.51,-24.2 334.51,-30.2 334.51,-36.2 334.51,-36.2 334.51,-51.4 334.51,-51.4 334.51,-57.4 328.51,-63.4 322.51,-63.4"></path>
+<text text-anchor="middle" x="303" y="-38.4" font-family="Helvetica,sans-Serif" font-size="18.00" fill="#1585da">Print</text>
+</g>
+<!-- D&#45;&gt;I -->
+<!-- F&#45;&gt;G -->
+<g id="edge4" class="edge">
+<title>F-&gt;G</title>
+<path fill="none" stroke="#8c99a5" stroke-width="1.1" d="M303,-232.84C303,-232.84 303,-210.05 303,-210.05"></path>
+<polygon fill="#8c99a5" stroke="#8c99a5" stroke-width="1.1" points="305.45,-210.05 303,-203.05 300.55,-210.05 305.45,-210.05"></polygon>
+</g>
+<!-- G&#45;&gt;H -->
+<g id="edge5" class="edge">
+<title>G-&gt;H</title>
+<path fill="none" stroke="#8c99a5" stroke-width="1.1" d="M303,-163.24C303,-163.24 303,-140.45 303,-140.45"></path>
+<polygon fill="#8c99a5" stroke="#8c99a5" stroke-width="1.1" points="305.45,-140.45 303,-133.45 300.55,-140.45 305.45,-140.45"></polygon>
+</g>
+<!-- H&#45;&gt;I -->
+<g id="edge6" class="edge">
+<title>H-&gt;I</title>
+<path fill="none" stroke="#8c99a5" stroke-width="1.1" d="M303,-93.64C303,-93.64 303,-70.85 303,-70.85"></path>
+<polygon fill="#8c99a5" stroke="#8c99a5" stroke-width="1.1" points="305.45,-70.85 303,-63.85 300.55,-70.85 305.45,-70.85"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<div class="smaller">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>AM processes work layer-by.layer, so the mudel must be <strong>sliced</strong> into thin horizontal sections</p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="solid-model-preparation" class="slide level2">
+<h2>Solid model preparation</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Scans produce a <strong>surface model</strong> that may have holes, non-manifold geometry, and inconsistent face normals</li>
+<li>These issues must be resolved before printing, using software tools that can fill holes, repair meshes, and ensure the model is watertight and printable</li>
+<li>The model may also need to be scaled, oriented, and simplified to meet the printer’s requirements and the research goals of the replica</li>
+</ul>
+<div class="smaller">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Scan reslution might affect print result, but too high is just as bad as too low, because it can create unnecessarily large files and long print times without improving the final quality of the replica</p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Approximation</a></li><li><a href="#tabset-3-2">Surface model</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="slice.svg" style="width:75.0%"></p>
+<figcaption>Mesh approximation</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-3-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="cura_sm.png"></p>
+<figcaption>PolygonalApproximation</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="model-orientation-and-support-generation" class="slide level2">
+<h2>Model orientation and support generation</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Almost all 3-D printing processes <strong>cannot print overhangs</strong> beyond a certain angle without support structures</li>
+<li>The model must be oriented to minimize the need for supports, which can affect surface quality and post-processing time</li>
+<li>Support structures are generated based on the printer’s capabilities and the model’s geometry</li>
+<li>They must be removed after printing, which can leave marks or require additional finishing steps</li>
+</ul>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="cura_support.png"></p>
+<figcaption>Support structures</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="slicing-and-print-ready-file-generation" class="slide level2">
+<h2>Slicing and print-ready file generation</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Last step is <strong>slicing</strong>: the software converts the 3-D model into a series of 2-D layers and generates a print-ready file (e.g., G-code) that contains instructions for the printer</li>
+<li>Slicing parameters include layer height, infill density, print speed, and specific process settings that can affect the strength, appearance, and accuracy of the final replica</li>
+<li>The sliced file is then sent to the printer, which builds the object layer by layer according to the instructions</li>
+</ul>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="cura_infill.png"></p>
+<figcaption>Print slicing</figcaption>
+</figure>
+</div>
+</div></div>
 </section>
 <section id="taxonomy-of-3-d-printing-technologies" class="slide level2">
 <h2>Taxonomy of 3-D printing technologies</h2>

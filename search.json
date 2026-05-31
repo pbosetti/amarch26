@@ -102,7 +102,35 @@
     "href": "slides/part_1.html#example-same-mask-as-above",
     "title": "3-D reconstruction and printing tools: Fundamentals",
     "section": "Example: Same mask as above",
-    "text": "Example: Same mask as above\nScanned with Reality Composer on iPhone 16 Pro, exported as .usdz, and rendered with the same WebGL viewer as the photogrammetry model"
+    "text": "Example: Same mask as above\nScanned with Reality Composer on iPhone 16 Pro, exported as .usdz, and rendered with the same WebGL viewer as the photogrammetry model\n\n\n\n\n\n\n\n\nImportant\n\n\nNote the holes in the model: a 3-D scan, regardless the technology, provides a surface model, which has no information about the internal structure of the object. The holes are areas where the scanner could not capture data, often due to occlusions, reflective surfaces, or insufficient texture."
+  },
+  {
+    "objectID": "slides/part_1.html#process-flowchart",
+    "href": "slides/part_1.html#process-flowchart",
+    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "section": "Process flowchart",
+    "text": "Process flowchart\n\n\n\nScan must produce a surface model with sufficient resolution, with coherent face normals, and without holes or non-manifold geometry\nMost commonly used file formats are .stl (geometry only) and .obj (geometry + texture), but some printers require proprietary formats or additional metadata\nPrint process involves orientation, support generation, slicing, and post-processing steps that can affect feasibility, final accuracy and appearance of the replica\n\n\n\n\n\n\n\n\n\nprocess_flow\n\ncluster_scan\n\nScan\n\n\ncluster_print\n\nPrint\n\n\n\nA\n\nScan\n\n\n\nB\n\nPreprocess\n\n\n\nA-&gt;B\n\n\n\n\n\nF\n\nOrientation\n\n\n\n\nC\n\nReconstruct\n\n\n\nB-&gt;C\n\n\n\n\n\nG\n\nSupport generation\n\n\n\n\nD\n\nRefine / Export\n\n\n\nC-&gt;D\n\n\n\n\n\nH\n\nSlice\n\n\n\n\nD-&gt;F\n\n\n\n\n\nI\n\nPrint\n\n\n\n\nF-&gt;G\n\n\n\n\n\nG-&gt;H\n\n\n\n\n\nH-&gt;I\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nAM processes work layer-by.layer, so the mudel must be sliced into thin horizontal sections"
+  },
+  {
+    "objectID": "slides/part_1.html#solid-model-preparation",
+    "href": "slides/part_1.html#solid-model-preparation",
+    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "section": "Solid model preparation",
+    "text": "Solid model preparation\n\n\n\nScans produce a surface model that may have holes, non-manifold geometry, and inconsistent face normals\nThese issues must be resolved before printing, using software tools that can fill holes, repair meshes, and ensure the model is watertight and printable\nThe model may also need to be scaled, oriented, and simplified to meet the printer’s requirements and the research goals of the replica\n\n\n\n\n\n\n\n\nNote\n\n\nScan reslution might affect print result, but too high is just as bad as too low, because it can create unnecessarily large files and long print times without improving the final quality of the replica\n\n\n\n\n\n\nApproximationSurface model\n\n\n\n\n\nMesh approximation\n\n\n\n\n\n\n\nPolygonalApproximation"
+  },
+  {
+    "objectID": "slides/part_1.html#model-orientation-and-support-generation",
+    "href": "slides/part_1.html#model-orientation-and-support-generation",
+    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "section": "Model orientation and support generation",
+    "text": "Model orientation and support generation\n\n\n\nAlmost all 3-D printing processes cannot print overhangs beyond a certain angle without support structures\nThe model must be oriented to minimize the need for supports, which can affect surface quality and post-processing time\nSupport structures are generated based on the printer’s capabilities and the model’s geometry\nThey must be removed after printing, which can leave marks or require additional finishing steps\n\n\n\n\n\nSupport structures"
+  },
+  {
+    "objectID": "slides/part_1.html#slicing-and-print-ready-file-generation",
+    "href": "slides/part_1.html#slicing-and-print-ready-file-generation",
+    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "section": "Slicing and print-ready file generation",
+    "text": "Slicing and print-ready file generation\n\n\n\nLast step is slicing: the software converts the 3-D model into a series of 2-D layers and generates a print-ready file (e.g., G-code) that contains instructions for the printer\nSlicing parameters include layer height, infill density, print speed, and specific process settings that can affect the strength, appearance, and accuracy of the final replica\nThe sliced file is then sent to the printer, which builds the object layer by layer according to the instructions\n\n\n\n\n\nPrint slicing"
   },
   {
     "objectID": "slides/part_1.html#taxonomy-of-3-d-printing-technologies",
