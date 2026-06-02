@@ -739,9 +739,9 @@ Powder processes can handle complex forms and color, but surfaces may be grainy 
 
 :::
 
+
+
 ## Powder-based 3-D printing {{<bi 2-circle-fill>}}
-
-
 ::: {.columns}
 ::: {.column}
 * Some technologies ([SLM/SLS]{.bred}) require supports, some other ([MJF, EBM]{.bgreen}) do not
@@ -756,11 +756,20 @@ Regardless of the technology, powder-based printing often requires industrial eq
 ::: {.column}
 {{< include ./_powder_bed.qmd >}}
 :::
-
 :::
 
 
+## Powder-based 3-D printing {{<bi 3-circle-fill>}}
+::: {.columns}
+::: {.column}
+* Multi-Jet Fusion is particularly well-suited for archaeological replicas because it can produce durable nylon parts with good surface finish and fine detail, without the need for support structures
+* It can also print in **full color** using texture maps derived from the original scan
+:::
 
+::: {.column}
+![Multi-Jet Fusion color model](mjf_1.jpg)
+:::
+:::
 
 
 
