@@ -161,25 +161,60 @@
     "text": "Polymer-based 3-D printing\n\n\nMaterial families\n\nThermoplastics: PLA, PETG, ABS, nylon, and filled filaments.\nPhotopolymers: standard, tough, flexible, castable, and high-temperature resins.\nComposite materials can imitate stone, wood, or ceramic appearance without reproducing the original material history.\n\n\nArchaeological decisions\n\nIs the replica for handling, measurement, exhibition, accessibility, or conservation planning?\nDoes the surface need texture, painted color, or neutral analytical visibility?\nWhat scale, tolerance, and label will prevent confusion with the original?\n\n\n\n\n\n\n\n\n\nPractical note\n\n\nPolymers are usually the most accessible materials for archaeological replicas, but they should be described as interpretive copies with recorded source model, scale, printer, material, and finishing steps."
   },
   {
-    "objectID": "slides/part_1.html#filament-based-3-d-printing",
-    "href": "slides/part_1.html#filament-based-3-d-printing",
+    "objectID": "slides/part_1.html#filament-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d",
+    "href": "slides/part_1.html#filament-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d",
     "title": "3-D Reconstruction and Printing Tools: Fundamentals",
-    "section": "Filament-based 3-D printing",
-    "text": "Filament-based 3-D printing\n\n\nOperating principles\n\nA thermoplastic filament is melted and extruded through a nozzle.\nThe object is built layer by layer along programmed toolpaths.\nSupports, infill, perimeter count, layer height, and nozzle size control strength and detail.\n\n\nArchaeological fit\n\nRobust replicas for handling, teaching, access, and public engagement.\nEnlarged models of small finds for tactile inspection.\nTrial reconstructions, joins, mounts, and packaging aids.\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nFilament printing is inexpensive and durable, but layer lines, anisotropic strength, overhang supports, and limited fine detail can affect the accuracy of inscriptions, tool marks, and thin edges."
+    "section": "Filament-based 3-D printing ",
+    "text": "Filament-based 3-D printing \n\n\nOperating principles\n\nA thermoplastic filament is melted and extruded through a nozzle.\nThe object is built layer by layer along programmed toolpaths.\nSupports, infill, perimeter count, layer height, and nozzle size control strength and detail.\n\n\nArchaeological fit\n\nRobust replicas for handling, teaching, access, and public engagement.\nEnlarged models of small finds for tactile inspection.\nTrial reconstructions, joins, mounts, and packaging aids.\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nFilament printing is inexpensive and durable, but layer lines, anisotropic strength, overhang supports, and limited fine detail can affect the accuracy of inscriptions, tool marks, and thin edges."
   },
   {
-    "objectID": "slides/part_1.html#resin-based-3-d-printing",
-    "href": "slides/part_1.html#resin-based-3-d-printing",
+    "objectID": "slides/part_1.html#filament-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d",
+    "href": "slides/part_1.html#filament-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d",
     "title": "3-D Reconstruction and Printing Tools: Fundamentals",
-    "section": "Resin-based 3-D printing",
-    "text": "Resin-based 3-D printing\n\n\nOperating principles\n\nUltraviolet light cures liquid photopolymer resin in thin layers.\nParts are printed on supports, then washed, dried, and post-cured.\nResolution depends on pixel size, layer height, resin behavior, and orientation.\n\n\nArchaeological fit\n\nSmall artefacts with fine relief or complex decoration.\nCoins, seals, figurines, engraved surfaces, and diagnostic fragments.\nMasters for moulding or casting when direct handling copies are needed.\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nResin printing captures fine detail well, but uncured resin is hazardous, parts can be brittle or UV-sensitive, and support scars or shrinkage may compromise metric fidelity."
+    "section": "Filament-based 3-D printing ",
+    "text": "Filament-based 3-D printing \n\n\n\nFDM printers commonly have two extruders, which can depose two different colors or two different materials (e.g., soluble support)\nLayer height is typically 0.1–0.3 mm, but can be as low as 0.05 mm for fine detail or as high as 0.5 mm for faster prints with less detail (and larger parts)\nMaterials with best mechanical properties often require higher temperature, a heated bed, and a closed, heated build chamber\nFinal parts are often not watertight and may require post-processing to improve surface finish, remove supports, or enhance strength"
   },
   {
-    "objectID": "slides/part_1.html#powder-based-3-d-printing",
-    "href": "slides/part_1.html#powder-based-3-d-printing",
+    "objectID": "slides/part_1.html#resin-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d",
+    "href": "slides/part_1.html#resin-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d",
     "title": "3-D Reconstruction and Printing Tools: Fundamentals",
-    "section": "Powder-based 3-D printing",
-    "text": "Powder-based 3-D printing\n\n\nOperating principles\n\nA thin layer of powder is spread over the build area.\nHeat, laser energy, or a liquid binder selectively joins each layer.\nUnfused powder supports the part during printing and is removed afterward.\n\n\nArchaeological fit\n\nComplex geometry without many visible support scars.\nNylon prints for durable handling collections.\nBinder jet prints for full-color display models using texture maps.\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nPowder processes can handle complex forms and color, but surfaces may be grainy or porous, cavities can trap powder, and equipment and service costs are higher than desktop polymer printers."
+    "section": "Resin-based 3-D printing ",
+    "text": "Resin-based 3-D printing \n\n\nOperating principles\n\nUltraviolet light cures liquid photopolymer resin in thin layers.\nParts are printed on supports, then washed, dried, and post-cured.\nResolution depends on pixel size, layer height, resin behavior, and orientation.\n\n\nArchaeological fit\n\nSmall artefacts with fine relief or complex decoration.\nCoins, seals, figurines, engraved surfaces, and diagnostic fragments.\nMasters for moulding or casting when direct handling copies are needed.\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nResin printing captures fine detail well, but uncured resin is hazardous, parts can be brittle or UV-sensitive, and support scars or shrinkage may compromise metric fidelity."
+  },
+  {
+    "objectID": "slides/part_1.html#resin-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d",
+    "href": "slides/part_1.html#resin-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
+    "section": "Resin-based 3-D printing ",
+    "text": "Resin-based 3-D printing \n\n\n\nSLA printers use a laser to cure resin point by point, while MSLA and DLP use a masked LCD to cure an entire layer at once, which can speed up printing but may reduce resolution and increase pixelation\nDetail is often better than FDM, with layer heights as low as 0.01 mm and XY resolution determined by the pixel size of the light source\nNo multi-material capability\nPost processing: UV-oven curing\nPart strength, shape, color can change with time and UV radiation"
+  },
+  {
+    "objectID": "slides/part_1.html#resin-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920332d636972636c652d66696c6c3e7d7d",
+    "href": "slides/part_1.html#resin-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920332d636972636c652d66696c6c3e7d7d",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
+    "section": "Resin-based 3-D printing ",
+    "text": "Resin-based 3-D printing \n\n\n\nOverhangs must be supported by fragile and thin dendritic structures that have to be manually removed after printing, which can leave marks and require additional finishing steps\nPhotopolymers with ceramic load can produce a grainy surface that mimics stone, but they are more expensive and less durable than standard resins\nHigh ceramic load can be later sinthered to produce a more durable, fully ceramic replica, but this process can cause shrinkage and loss of detail\n\n\n\nSupportsCeramics\n\n\n\n\n\nManually removing supports\n\n\n\n\n\n\n\nDurable replicas\n\n\n\n\n\n\n\n\nAlso see https://doi.org/10.1111/jace.20043 for a detailed study of ceramic resin properties and post-processing effects on strength, durability, and surface finish."
+  },
+  {
+    "objectID": "slides/part_1.html#powder-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d",
+    "href": "slides/part_1.html#powder-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
+    "section": "Powder-based 3-D printing ",
+    "text": "Powder-based 3-D printing \n\n\nOperating principles\n\nA thin layer of powder is spread over the build area.\nHeat, laser energy, or a liquid binder selectively joins each layer.\nUnfused powder supports the part during printing and is removed afterward.\n\n\nArchaeological fit\n\nComplex geometry without many visible support scars.\nNylon prints for durable handling collections.\nBinder jet prints for full-color display models using texture maps.\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nPowder processes can handle complex forms and color, but surfaces may be grainy or porous, cavities can trap powder, and equipment and service costs are higher than desktop polymer printers."
+  },
+  {
+    "objectID": "slides/part_1.html#powder-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d",
+    "href": "slides/part_1.html#powder-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
+    "section": "Powder-based 3-D printing ",
+    "text": "Powder-based 3-D printing \n\n\n\nSome technologies (SLM/SLS) require supports, some other (MJF, EBM) do not\nSurface finish is often rough and porous, which can be improved with post-processing but may affect fine details\nSome powders require special handling and disposal due to health and safety concerns\n\n\n\n\n\n\n\nWarning\n\n\nRegardless of the technology, powder-based printing often requires industrial equipment and safety precautions, which can increase cost and turnaround time, and limit material options and post-processing control"
+  },
+  {
+    "objectID": "slides/part_1.html#powder-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920332d636972636c652d66696c6c3e7d7d",
+    "href": "slides/part_1.html#powder-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920332d636972636c652d66696c6c3e7d7d",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
+    "section": "Powder-based 3-D printing ",
+    "text": "Powder-based 3-D printing \n\n\n\nMulti-Jet Fusion is particularly well-suited for archaeological replicas because it can produce durable nylon parts with good surface finish and fine detail, without the need for support structures\nIt can also print in full color using texture maps derived from the original scan\n\n\n\n\n\nMulti-Jet Fusion color model"
   },
   {
     "objectID": "slides/part_1.html#metal-based-3-d-printing",

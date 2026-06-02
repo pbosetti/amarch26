@@ -33,7 +33,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f24f0009a712d20f005352527a92770e.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-3731a5913aa1f7bc646ce8c5eddfe3c0.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -896,9 +896,9 @@ Peabody Museum - Harvard University <a href="https://peabody.harvard.edu/video-d
 <h2>Taxonomy of 3-D printing technologies</h2>
 <table class="caption-top">
 <colgroup>
+<col style="width: 16%">
 <col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1012,8 +1012,8 @@ Peabody Museum - Harvard University <a href="https://peabody.harvard.edu/video-d
 <div class="column">
 <h3 id="material-families">Material families</h3>
 <ul>
-<li>Thermoplastics: PLA, PETG, ABS, nylon, and filled filaments.</li>
-<li>Photopolymers: standard, tough, flexible, castable, and high-temperature resins.</li>
+<li><strong>Thermoplastics</strong>: PLA, PETG, ABS, nylon, and filled filaments.</li>
+<li><strong>Photopolymers</strong>: standard, tough, flexible, castable, and high-temperature resins.</li>
 <li>Composite materials can imitate stone, wood, or ceramic appearance without reproducing the original material history.</li>
 </ul>
 </div><div class="column">
@@ -1040,8 +1040,8 @@ Peabody Museum - Harvard University <a href="https://peabody.harvard.edu/video-d
 </div>
 </div>
 </section>
-<section id="filament-based-3-d-printing" class="slide level2">
-<h2>Filament-based 3-D printing</h2>
+<section id="filament-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d" class="slide level2">
+<h2>Filament-based 3-D printing <i class="bi-1-circle-fill " style="" role="img" aria-hidden="true"></i></h2>
 <div class="columns">
 <div class="column">
 <h3 id="operating-principles-3">Operating principles</h3>
@@ -1074,8 +1074,185 @@ Peabody Museum - Harvard University <a href="https://peabody.harvard.edu/video-d
 </div>
 </div>
 </section>
-<section id="resin-based-3-d-printing" class="slide level2">
-<h2>Resin-based 3-D printing</h2>
+<section id="filament-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d" class="slide level2">
+<h2>Filament-based 3-D printing <i class="bi-2-circle-fill " style="" role="img" aria-hidden="true"></i></h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>FDM printers commonly have <strong>two extruders</strong>, which can depose two different colors or two different materials (e.g., soluble support)</li>
+<li>Layer height is typically 0.1–0.3 mm, but can be as low as 0.05 mm for fine detail or as high as 0.5 mm for faster prints with less detail (and larger parts)</li>
+<li>Materials with best mechanical properties often require higher temperature, a heated bed, and a closed, heated build chamber</li>
+<li>Final parts are often <span class="bred">not watertight</span> and may require post-processing to improve surface finish, remove supports, or enhance strength</li>
+</ul>
+</div><div class="column">
+<div class="fdm-animation" data-fdm-animation="">
+  <svg viewbox="0 0 400 400" role="img" aria-label="Fused deposition modeling animation">
+    <rect class="fdm-frame" x="18" y="18" width="364" height="364" rx="8"></rect>
+    <g class="fdm-final"></g>
+    <g class="fdm-current-support"></g>
+    <g class="fdm-current-part"></g>
+    <g class="fdm-active"></g>
+    <rect class="fdm-plate" x="52" y="344" width="296" height="14" rx="3"></rect>
+    <g class="fdm-head">
+      <line class="fdm-filament" x1="0" y1="36" x2="0" y2="84"></line>
+      <rect class="fdm-carriage" x="-34" y="70" width="68" height="28" rx="5"></rect>
+      <path class="fdm-nozzle" d="M -18 98 L 18 98 L 8 123 L -8 123 Z"></path>
+      <circle class="fdm-extrusion" cx="0" cy="128" r="4"></circle>
+    </g>
+  </svg>
+</div>
+<script>
+(() => {
+  const roots = document.querySelectorAll("[data-fdm-animation]:not([data-fdm-ready])");
+  if (!roots.length) {
+    return;
+  }
+
+  const svgNamespace = "http://www.w3.org/2000/svg";
+  const layerHeight = 14;
+  const layerGap = 2;
+  const layerCount = 15;
+  const positionsPerLayer = 40;
+  const stepMilliseconds = 1000 / positionsPerLayer;
+  const visibleLayerHeight = layerHeight - layerGap;
+  const bottomY = 344;
+  const extrusionCenterY = 128;
+  const scanMinX = 76;
+  const scanMaxX = 324;
+  const materials = {
+    part: "#1585da",
+    support: "#f08a24",
+  };
+  const finalMaterials = {
+    part: "rgba(21, 133, 218, 0.13)",
+    support: "rgba(240, 138, 36, 0.16)",
+  };
+  const partWidths = [
+    [136, 264],
+    [136, 264],
+    [132, 268],
+    [130, 270],
+    [128, 272],
+    [126, 274],
+    [122, 278],
+    [118, 282],
+    [84, 316],
+    [84, 316],
+    [96, 304],
+    [110, 290],
+    [126, 274],
+    [144, 256],
+    [164, 236],
+  ];
+
+  const layers = partWidths.map(([partStart, partEnd], index) => {
+    const segments = [];
+    if (index < 8) {
+      segments.push({ kind: "support", start: 84, end: 114 });
+      segments.push({ kind: "support", start: 286, end: 316 });
+    }
+    segments.push({ kind: "part", start: partStart, end: partEnd });
+    return segments.sort((a, b) => a.start - b.start);
+  });
+
+  function layerY(index) {
+    return bottomY - (index + 1) * layerHeight;
+  }
+
+  function makeRect(parent, segment, y, fill, endX = segment.end) {
+    const width = Math.max(0, Math.min(segment.end, endX) - segment.start);
+    if (width <= 0) {
+      return;
+    }
+    const rect = document.createElementNS(svgNamespace, "rect");
+    rect.setAttribute("x", String(segment.start));
+    rect.setAttribute("y", String(y));
+    rect.setAttribute("width", String(width));
+    rect.setAttribute("height", String(visibleLayerHeight));
+    rect.setAttribute("rx", "2");
+    rect.setAttribute("fill", fill);
+    parent.appendChild(rect);
+  }
+
+  function materialAt(layer, x) {
+    const active = layer.find((segment) => x >= segment.start && x <= segment.end);
+    if (active) {
+      return active.kind;
+    }
+    const next = layer.find((segment) => x < segment.start);
+    return next ? next.kind : "part";
+  }
+
+  function renderStatic(root) {
+    const finalGroup = root.querySelector(".fdm-final");
+    finalGroup.textContent = "";
+    layers.forEach((layer, index) => {
+      const y = layerY(index);
+      layer.forEach((segment) => {
+        makeRect(finalGroup, segment, y, finalMaterials[segment.kind]);
+      });
+    });
+  }
+
+  function renderFrame(root, step) {
+    const currentLayer = Math.floor(step / positionsPerLayer) % layerCount;
+    const position = step % positionsPerLayer;
+    const progress = position / (positionsPerLayer - 1);
+    const headX = scanMinX + (scanMaxX - scanMinX) * progress;
+    const y = layerY(currentLayer);
+    const layer = layers[currentLayer];
+    const material = materialAt(layer, headX);
+    const groups = {
+      part: root.querySelector(".fdm-current-part"),
+      support: root.querySelector(".fdm-current-support"),
+      active: root.querySelector(".fdm-active"),
+    };
+
+    groups.part.textContent = "";
+    groups.support.textContent = "";
+    groups.active.textContent = "";
+
+    layers.forEach((completeLayer, layerIndex) => {
+      if (layerIndex >= currentLayer) {
+        return;
+      }
+      const completeY = layerY(layerIndex);
+      completeLayer.forEach((segment) => {
+        makeRect(groups[segment.kind], segment, completeY, materials[segment.kind]);
+      });
+    });
+
+    layer.forEach((segment) => {
+      if (headX <= segment.start) {
+        return;
+      }
+      makeRect(groups.active, segment, y, materials[segment.kind], headX);
+    });
+
+    const head = root.querySelector(".fdm-head");
+    const activeLayerCenterY = y + visibleLayerHeight / 2;
+    const headY = activeLayerCenterY - extrusionCenterY;
+    head.setAttribute("transform", `translate(${headX.toFixed(2)} ${headY.toFixed(2)})`);
+    root.querySelector(".fdm-filament").setAttribute("stroke", materials[material]);
+    root.querySelector(".fdm-extrusion").setAttribute("fill", materials[material]);
+  }
+
+  roots.forEach((root) => {
+    root.dataset.fdmReady = "true";
+    renderStatic(root);
+    let step = 0;
+    renderFrame(root, step);
+    window.setInterval(() => {
+      step = (step + 1) % (layerCount * positionsPerLayer);
+      renderFrame(root, step);
+    }, stepMilliseconds);
+  });
+})();
+</script>
+</div></div>
+</section>
+<section id="resin-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d" class="slide level2">
+<h2>Resin-based 3-D printing <i class="bi-1-circle-fill " style="" role="img" aria-hidden="true"></i></h2>
 <div class="columns">
 <div class="column">
 <h3 id="operating-principles-4">Operating principles</h3>
@@ -1108,8 +1285,201 @@ Peabody Museum - Harvard University <a href="https://peabody.harvard.edu/video-d
 </div>
 </div>
 </section>
-<section id="powder-based-3-d-printing" class="slide level2">
-<h2>Powder-based 3-D printing</h2>
+<section id="resin-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d" class="slide level2">
+<h2>Resin-based 3-D printing <i class="bi-2-circle-fill " style="" role="img" aria-hidden="true"></i></h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>SLA printers use a laser to cure resin point by point, while MSLA and DLP use a masked LCD to cure an entire layer at once, which can speed up printing but may reduce resolution and increase pixelation</li>
+<li>Detail is often <span class="bgreen">better than FDM</span>, with layer heights as low as 0.01 mm and XY resolution determined by the pixel size of the light source</li>
+<li>No multi-material capability</li>
+<li>Post processing: UV-oven curing</li>
+<li>Part strength, shape, color can <span class="bred">change with time</span> and UV radiation</li>
+</ul>
+</div><div class="column">
+<div class="sla-animation" data-sla-animation="">
+  <svg viewbox="0 0 400 400" role="img" aria-label="Stereolithography printing animation">
+    <rect class="sla-frame" x="18" y="18" width="364" height="364" rx="8"></rect>
+    <rect class="sla-vat-back" x="54" y="280" width="292" height="64" rx="5"></rect>
+    <rect class="sla-resin" x="58" y="286" width="284" height="40" rx="2"></rect>
+    <g class="sla-final"></g>
+    <g class="sla-current"></g>
+    <g class="sla-active"></g>
+    <line class="sla-resin-surface" x1="58" y1="286" x2="342" y2="286"></line>
+    <g class="sla-platform">
+      <rect class="sla-platform-rod" x="-5" y="-84" width="10" height="84" rx="3"></rect>
+      <rect class="sla-platform-plate" x="-86" y="0" width="172" height="14" rx="3"></rect>
+    </g>
+    <g class="sla-laser">
+      <line class="sla-laser-beam" x1="200" y1="362" x2="200" y2="316"></line>
+      <circle class="sla-laser-dot" cx="200" cy="316" r="4"></circle>
+      <rect class="sla-laser-source" x="180" y="358" width="40" height="12" rx="3"></rect>
+    </g>
+    <path class="sla-vat-front" d="M 54 280 H 346 V 344 H 54 Z"></path>
+  </svg>
+</div>
+<script>
+(() => {
+  const roots = document.querySelectorAll("[data-sla-animation]:not([data-sla-ready])");
+  if (!roots.length) {
+    return;
+  }
+
+  const svgNamespace = "http://www.w3.org/2000/svg";
+  const layerHeight = 14;
+  const layerGap = 2;
+  const layerCount = 15;
+  const positionsPerLayer = 40;
+  const stepMilliseconds = 1000 / positionsPerLayer;
+  const visibleLayerHeight = layerHeight - layerGap;
+  const platformHeight = 14;
+  const activeLayerY = 310;
+  const activeLayerCenterY = activeLayerY + visibleLayerHeight / 2;
+  const scanMinX = 76;
+  const scanMaxX = 324;
+  const material = "#6b63d9";
+  const activeMaterial = "#7d72f0";
+  const finalMaterial = "rgba(107, 99, 217, 0.13)";
+  const partWidths = [
+    [136, 264],
+    [136, 264],
+    [132, 268],
+    [130, 270],
+    [128, 272],
+    [126, 274],
+    [122, 278],
+    [118, 282],
+    [84, 316],
+    [84, 316],
+    [96, 304],
+    [110, 290],
+    [126, 274],
+    [144, 256],
+    [164, 236],
+  ];
+  const layers = partWidths.slice().reverse().map(([start, end]) => ({ start, end }));
+
+  function makeRect(parent, segment, y, fill, endX = segment.end) {
+    const width = Math.max(0, Math.min(segment.end, endX) - segment.start);
+    if (width <= 0) {
+      return;
+    }
+    const rect = document.createElementNS(svgNamespace, "rect");
+    rect.setAttribute("x", String(segment.start));
+    rect.setAttribute("y", String(y));
+    rect.setAttribute("width", String(width));
+    rect.setAttribute("height", String(visibleLayerHeight));
+    rect.setAttribute("rx", "2");
+    rect.setAttribute("fill", fill);
+    parent.appendChild(rect);
+  }
+
+  function layerY(layerIndex, currentLayer) {
+    return activeLayerY - (currentLayer - layerIndex) * layerHeight;
+  }
+
+  function finalLayerY(layerIndex) {
+    return activeLayerY - (layerCount - 1 - layerIndex) * layerHeight;
+  }
+
+  function platformTopY(currentLayer) {
+    const platformBottomY = activeLayerY - currentLayer * layerHeight - layerGap;
+    return platformBottomY - platformHeight;
+  }
+
+  function renderStatic(root) {
+    const finalGroup = root.querySelector(".sla-final");
+    finalGroup.textContent = "";
+    layers.forEach((layer, index) => {
+      makeRect(finalGroup, layer, finalLayerY(index), finalMaterial);
+    });
+  }
+
+  function renderFrame(root, step) {
+    const currentLayer = Math.floor(step / positionsPerLayer) % layerCount;
+    const position = step % positionsPerLayer;
+    const progress = position / (positionsPerLayer - 1);
+    const laserX = scanMinX + (scanMaxX - scanMinX) * progress;
+    const currentGroup = root.querySelector(".sla-current");
+    const activeGroup = root.querySelector(".sla-active");
+    const platform = root.querySelector(".sla-platform");
+    const laserBeam = root.querySelector(".sla-laser-beam");
+    const laserDot = root.querySelector(".sla-laser-dot");
+    const activeLayer = layers[currentLayer];
+
+    currentGroup.textContent = "";
+    activeGroup.textContent = "";
+
+    layers.forEach((layer, index) => {
+      if (index >= currentLayer) {
+        return;
+      }
+      makeRect(currentGroup, layer, layerY(index, currentLayer), material);
+    });
+
+    if (laserX > activeLayer.start) {
+      makeRect(activeGroup, activeLayer, activeLayerY, activeMaterial, laserX);
+    }
+
+    platform.setAttribute("transform", `translate(200 ${platformTopY(currentLayer).toFixed(2)})`);
+    laserBeam.setAttribute("x2", laserX.toFixed(2));
+    laserBeam.setAttribute("y2", String(activeLayerCenterY));
+    laserDot.setAttribute("cx", laserX.toFixed(2));
+    laserDot.setAttribute("cy", String(activeLayerCenterY));
+  }
+
+  roots.forEach((root) => {
+    root.dataset.slaReady = "true";
+    renderStatic(root);
+    let step = 0;
+    renderFrame(root, step);
+    window.setInterval(() => {
+      step = (step + 1) % (layerCount * positionsPerLayer);
+      renderFrame(root, step);
+    }, stepMilliseconds);
+  });
+})();
+</script>
+</div></div>
+</section>
+<section id="resin-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920332d636972636c652d66696c6c3e7d7d" class="slide level2">
+<h2>Resin-based 3-D printing <i class="bi-3-circle-fill " style="" role="img" aria-hidden="true"></i></h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Overhangs must be <strong>supported</strong> by fragile and thin dendritic structures that have to be manually removed after printing, which can leave marks and require additional finishing steps</li>
+<li>Photopolymers with ceramic load can produce a grainy surface that mimics stone, but they are more expensive and less durable than standard resins</li>
+<li>High ceramic load can be later sinthered to produce a more durable, fully ceramic replica, but this process can cause shrinkage and loss of detail</li>
+</ul>
+</div><div class="column">
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Supports</a></li><li><a href="#tabset-5-2">Ceramics</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="sla_supports.jpg"></p>
+<figcaption>Manually removing supports</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-5-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="sla_ceramic.png" style="width:66.0%"></p>
+<figcaption>Durable replicas</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+
+<aside><div>
+<p>Also see <a href="https://doi.org/10.1111/jace.20043" target="_blank">https://doi.org/10.1111/jace.20043</a> for a detailed study of ceramic resin properties and post-processing effects on strength, durability, and surface finish.</p>
+</div></aside></section>
+<section id="powder-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d" class="slide level2">
+<h2>Powder-based 3-D printing <i class="bi-1-circle-fill " style="" role="img" aria-hidden="true"></i></h2>
 <div class="columns">
 <div class="column">
 <h3 id="operating-principles-5">Operating principles</h3>
@@ -1141,6 +1511,298 @@ Peabody Museum - Harvard University <a href="https://peabody.harvard.edu/video-d
 </div>
 </div>
 </div>
+</section>
+<section id="powder-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d" class="slide level2">
+<h2>Powder-based 3-D printing <i class="bi-2-circle-fill " style="" role="img" aria-hidden="true"></i></h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Some technologies (<span class="bred">SLM/SLS</span>) require supports, some other (<span class="bgreen">MJF, EBM</span>) do not</li>
+<li>Surface finish is often rough and porous, which can be improved with post-processing but may affect fine details</li>
+<li>Some powders require <strong>special handling</strong> and disposal due to health and safety concerns</li>
+</ul>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>Regardless of the technology, powder-based printing often requires industrial equipment and safety precautions, which can increase cost and turnaround time, and limit material options and post-processing control</p>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="powder-animation" data-powder-animation="">
+  <svg viewbox="0 0 400 400" role="img" aria-label="Powder-bed fusion printing animation">
+    <rect class="powder-frame" x="18" y="18" width="364" height="364" rx="8"></rect>
+    <rect class="powder-chamber-back" x="46" y="150" width="118" height="198" rx="5"></rect>
+    <rect class="powder-chamber-back" x="188" y="150" width="166" height="198" rx="5"></rect>
+    <rect class="powder-feed-powder" x="52" y="150" width="106" height="174" rx="2"></rect>
+    <rect class="powder-bed-bulk" x="194" y="150" width="154" height="0" rx="2"></rect>
+    <rect class="powder-bed-powder" x="194" y="150" width="0" height="12" rx="2"></rect>
+    <g class="powder-final"></g>
+    <g class="powder-current"></g>
+    <g class="powder-active"></g>
+    <line class="powder-top-level" x1="46" y1="150" x2="354" y2="150"></line>
+    <g class="powder-feed-piston">
+      <rect class="powder-piston-rod" x="-4" y="8" width="8" height="44" rx="3"></rect>
+      <rect class="powder-piston-plate" x="-53" y="0" width="106" height="10" rx="3"></rect>
+    </g>
+    <g class="powder-build-platform">
+      <rect class="powder-platform-rod" x="-4" y="8" width="8" height="44" rx="3"></rect>
+      <rect class="powder-platform-plate" x="-77" y="0" width="154" height="10" rx="3"></rect>
+    </g>
+    <g class="powder-recoater">
+      <path class="powder-recoater-body" d="M -25 -30 H 25 L 0 0 Z"></path>
+    </g>
+    <g class="powder-laser">
+      <circle class="powder-laser-mirror" cx="271" cy="72" r="8"></circle>
+      <line class="powder-laser-beam" x1="271" y1="72" x2="271" y2="150"></line>
+      <circle class="powder-laser-dot" cx="271" cy="150" r="4"></circle>
+    </g>
+    <path class="powder-chamber-front" d="M 46 150 H 164 V 348 H 46 Z"></path>
+    <path class="powder-chamber-front" d="M 188 150 H 354 V 348 H 188 Z"></path>
+  </svg>
+</div>
+<script>
+(() => {
+  const roots = document.querySelectorAll("[data-powder-animation]:not([data-powder-ready])");
+  if (!roots.length) {
+    return;
+  }
+
+  const svgNamespace = "http://www.w3.org/2000/svg";
+  const layerHeight = 12;
+  const layerGap = 2;
+  const layerCount = 15;
+  const stepsPerPhase = 40;
+  const stepsPerLayer = stepsPerPhase * 2;
+  const stepMilliseconds = 1000 / stepsPerPhase;
+  const visibleLayerHeight = layerHeight - layerGap;
+  const topLevelY = 150;
+  const feedLeftX = 52;
+  const feedRightX = 158;
+  const feedPistonBaseY = 324;
+  const feedPistonLiftPerLayer = 6.1;
+  const buildLeftX = 194;
+  const buildRightX = 348;
+  const sourceMinX = 76;
+  const sourceMaxX = 324;
+  const partMinX = 198;
+  const partMaxX = 344;
+  const recoaterStartX = 22;
+  const recoaterEndX = 370;
+  const recoaterY = topLevelY;
+  const laserScanMinX = buildLeftX;
+  const laserScanMaxX = buildRightX;
+  const material = "#4f7f99";
+  const activeMaterial = "#ee9d35";
+  const finalMaterial = "rgba(79, 127, 153, 0.14)";
+  const powderMaterial = "#c5c8ca";
+  const partWidths = [
+    [136, 264],
+    [136, 264],
+    [132, 268],
+    [130, 270],
+    [128, 272],
+    [126, 274],
+    [122, 278],
+    [118, 282],
+    [84, 316],
+    [84, 316],
+    [96, 304],
+    [110, 290],
+    [126, 274],
+    [144, 256],
+    [164, 236],
+  ];
+
+  function clamp(value, min = 0, max = 1) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function easeInOut(t) {
+    return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  }
+
+  function mapX(x) {
+    const t = (x - sourceMinX) / (sourceMaxX - sourceMinX);
+    return partMinX + t * (partMaxX - partMinX);
+  }
+
+  const layers = partWidths.map(([start, end]) => ({
+    start: mapX(start),
+    end: mapX(end),
+  }));
+
+  function makeRect(parent, segment, y, fill, endX = segment.end) {
+    const width = Math.max(0, Math.min(segment.end, endX) - segment.start);
+    if (width <= 0) {
+      return;
+    }
+    const rect = document.createElementNS(svgNamespace, "rect");
+    rect.setAttribute("x", String(segment.start));
+    rect.setAttribute("y", String(y));
+    rect.setAttribute("width", String(width));
+    rect.setAttribute("height", String(visibleLayerHeight));
+    rect.setAttribute("rx", "2");
+    rect.setAttribute("fill", fill);
+    parent.appendChild(rect);
+  }
+
+  function completedLayerY(layerIndex, currentLayer, downProgress) {
+    return topLevelY + (currentLayer - 1 - layerIndex + downProgress) * layerHeight;
+  }
+
+  function finalLayerY(layerIndex) {
+    return topLevelY + (layerCount - 1 - layerIndex) * layerHeight;
+  }
+
+  function setRectYHeight(rect, y, height) {
+    rect.setAttribute("y", y.toFixed(2));
+    rect.setAttribute("height", Math.max(0, height).toFixed(2));
+  }
+
+  function prepState(progress) {
+    const feedRise = easeInOut(clamp((progress - 0.1) / 0.15));
+    const downProgress = easeInOut(clamp((progress - 0.25) / 0.15));
+    const forwardProgress = easeInOut(clamp((progress - 0.4) / 0.35));
+    const returnProgress = easeInOut(clamp((progress - 0.75) / 0.25));
+    const recoaterX = returnProgress > 0
+      ? recoaterEndX + (recoaterStartX - recoaterEndX) * returnProgress
+      : recoaterStartX + (recoaterEndX - recoaterStartX) * forwardProgress;
+    const feedScrape = returnProgress > 0
+      ? 1
+      : clamp((recoaterX - feedLeftX) / (feedRightX - feedLeftX));
+    const buildFill = returnProgress > 0
+      ? 1
+      : clamp((recoaterX - buildLeftX) / (buildRightX - buildLeftX));
+    return {
+      buildFill,
+      downProgress,
+      feedRise,
+      feedScrape: forwardProgress > 0 ? feedScrape : 0,
+      recoaterX,
+    };
+  }
+
+  function renderStatic(root) {
+    const finalGroup = root.querySelector(".powder-final");
+    finalGroup.textContent = "";
+    layers.forEach((layer, index) => {
+      makeRect(finalGroup, layer, finalLayerY(index), finalMaterial);
+    });
+  }
+
+  function renderFrame(root, step) {
+    const currentLayer = Math.floor(step / stepsPerLayer) % layerCount;
+    const layerStep = step % stepsPerLayer;
+    const isLaserScanning = layerStep >= stepsPerPhase;
+    const phaseStep = layerStep % stepsPerPhase;
+    const phaseProgress = phaseStep / (stepsPerPhase - 1);
+    const state = isLaserScanning
+      ? {
+          buildFill: 1,
+          downProgress: 1,
+          feedRise: 1,
+          feedScrape: 1,
+          recoaterX: recoaterStartX,
+        }
+      : prepState(phaseProgress);
+    const currentGroup = root.querySelector(".powder-current");
+    const activeGroup = root.querySelector(".powder-active");
+    const bedPowder = root.querySelector(".powder-bed-powder");
+    const bedBulk = root.querySelector(".powder-bed-bulk");
+    const feedPowder = root.querySelector(".powder-feed-powder");
+    const feedPiston = root.querySelector(".powder-feed-piston");
+    const platform = root.querySelector(".powder-build-platform");
+    const recoater = root.querySelector(".powder-recoater");
+    const laserBeam = root.querySelector(".powder-laser-beam");
+    const laserDot = root.querySelector(".powder-laser-dot");
+    const laserMirror = root.querySelector(".powder-laser-mirror");
+
+    currentGroup.textContent = "";
+    activeGroup.textContent = "";
+
+    layers.forEach((layer, index) => {
+      if (index >= currentLayer) {
+        return;
+      }
+      makeRect(currentGroup, layer, completedLayerY(index, currentLayer, state.downProgress), material);
+    });
+
+    if (isLaserScanning) {
+      const laserX = laserScanMinX + (laserScanMaxX - laserScanMinX) * phaseProgress;
+      const activeLayer = layers[currentLayer];
+      if (laserX > activeLayer.start) {
+        makeRect(activeGroup, activeLayer, topLevelY, activeMaterial, laserX);
+      }
+      laserBeam.setAttribute("x2", laserX.toFixed(2));
+      laserBeam.setAttribute("y2", String(topLevelY));
+      laserDot.setAttribute("cx", laserX.toFixed(2));
+      laserDot.setAttribute("cy", String(topLevelY));
+      laserBeam.setAttribute("opacity", "1");
+      laserDot.setAttribute("opacity", "1");
+      laserMirror.setAttribute("opacity", "1");
+    } else {
+      laserBeam.setAttribute("opacity", "0");
+      laserDot.setAttribute("opacity", "0");
+      laserMirror.setAttribute("opacity", "0.38");
+    }
+
+    const feedPistonY = feedPistonBaseY - (currentLayer + state.feedRise) * feedPistonLiftPerLayer;
+    const feedSurfaceY = topLevelY - layerHeight * state.feedRise * (1 - state.feedScrape);
+    const platformY = topLevelY + (currentLayer + state.downProgress) * layerHeight;
+    const bulkTopY = topLevelY + state.downProgress * layerHeight;
+    const bulkHeight = currentLayer * layerHeight;
+    const buildPowderWidth = (buildRightX - buildLeftX) * state.buildFill;
+
+    feedPowder.setAttribute("fill", powderMaterial);
+    setRectYHeight(feedPowder, feedSurfaceY, feedPistonY - feedSurfaceY);
+    bedBulk.setAttribute("x", String(buildLeftX));
+    bedBulk.setAttribute("width", String(buildRightX - buildLeftX));
+    setRectYHeight(bedBulk, bulkTopY, bulkHeight);
+    bedPowder.setAttribute("x", String(buildLeftX));
+    bedPowder.setAttribute("width", buildPowderWidth.toFixed(2));
+    setRectYHeight(bedPowder, topLevelY, layerHeight);
+    feedPiston.setAttribute("transform", `translate(105 ${feedPistonY.toFixed(2)})`);
+    platform.setAttribute("transform", `translate(271 ${platformY.toFixed(2)})`);
+    recoater.setAttribute("transform", `translate(${state.recoaterX.toFixed(2)} ${recoaterY})`);
+  }
+
+  roots.forEach((root) => {
+    root.dataset.powderReady = "true";
+    renderStatic(root);
+    let step = 0;
+    renderFrame(root, step);
+    window.setInterval(() => {
+      step = (step + 1) % (layerCount * stepsPerLayer);
+      renderFrame(root, step);
+    }, stepMilliseconds);
+  });
+})();
+</script>
+</div></div>
+</section>
+<section id="powder-based-3-d-printing-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920332d636972636c652d66696c6c3e7d7d" class="slide level2">
+<h2>Powder-based 3-D printing <i class="bi-3-circle-fill " style="" role="img" aria-hidden="true"></i></h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Multi-Jet Fusion is particularly well-suited for archaeological replicas because it can produce durable nylon parts with good surface finish and fine detail, without the need for support structures</li>
+<li>It can also print in <strong>full color</strong> using texture maps derived from the original scan</li>
+</ul>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="mjf_1.jpg"></p>
+<figcaption>Multi-Jet Fusion color model</figcaption>
+</figure>
+</div>
+</div></div>
 </section>
 <section id="metal-based-3-d-printing" class="slide level2">
 <h2>Metal-based 3-D printing</h2>
