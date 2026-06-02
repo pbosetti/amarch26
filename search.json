@@ -9,182 +9,182 @@
   {
     "objectID": "slides/part_1.html#key-references-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c6269206e65777370617065723e7d7d",
     "href": "slides/part_1.html#key-references-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c6269206e65777370617065723e7d7d",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Key references ",
     "text": "Key references \n\n Balletti, C., & Ballarin, M. (2019). An Application of Integrated 3D Technologies for Replicas in Cultural Heritage. ISPRS International Journal of Geo-Information, 8(6), 285. https://doi.org/10.3390/ijgi8060285\nBitelli, G., Forte, A., Tini, M. A., Belfiori, F., & Tirincanti, A. (2025). High-Detail 3D Reconstruction and Digital Strategies for the Enhancements of Archaeological Properties in Museums. Heritage, 8(2), 49. https://doi.org/10.3390/heritage8020049\nCecchitelli, M., Fiori, G., Bocchetta, G., Filippi, F., Leccese, F., Galo, J., Sciuto, S. A., & Scorza, A. (2023). Dimensional assessment in bioarchaeology applications: a preliminary study on quality controls in 3D printing of human skulls. Proceedings of the 2022 IMEKO TC4 International Conference on Metrology for Archaeology and Cultural Heritage, 98–103. https://doi.org/10.21014/tc4-arc-2023.020\nKantaros, A., Douros, P., Soulis, E., Brachos, K., Ganetsos, T., Peppa, E., Manta, E., & Alysandratou, E. (2025). 3D Imaging and Additive Manufacturing for Original Artifact Preservation Purposes: A Case Study from the Archaeological Museum of Alexandroupolis. Heritage, 8(2), 80. https://doi.org/10.3390/heritage8020080\nLlull, C., Baloian, N., Bustos, B., Kupczik, K., Sipiran, I., & Baloian, A. (2023). Evaluation of 3D Reconstruction for Cultural Heritage Applications. 2023 IEEE/CVF International Conference on Computer Vision Workshops (ICCVW), 1634–1643. https://doi.org/10.1109/iccvw60793.2023.00179\nSpallone, R., Lamberti, F., Olivieri, L. M., Ronco, F., & Castagna, L. (2022). AR And VR for Enhancing Museums’ Heritage Through 3d Reconstruction of Fragmented Statue and Architectural Context. The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences, XLVI-2/W1-2022, 473–480. https://doi.org/10.5194/isprs-archives-xlvi-2-w1-2022-473-2022"
   },
   {
     "objectID": "slides/part_1.html#key-references-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920626f6f6b3e7d7d",
     "href": "slides/part_1.html#key-references-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920626f6f6b3e7d7d",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Key references ",
     "text": "Key references \n\nOn the Technologies (Fundamentals): Additive Manufacturing Technologies: 3D Printing, Rapid Prototyping, and Direct Digital Manufacturing by Ian Gibson, David Rosen, and Brent Stucker. This is widely considered the gold-standard textbook for understanding the mechanics, materials, and distinct processes (e.g., SLA, SLS, FDM) that make up modern 3D printing.\nOn Their Use in Archaeology: 3D Information Technologies in Cultural Heritage Preservation and Popularisation (MDPI Books, 2023). This volume offers a broad compilation of recent case studies focusing heavily on 3D terrestrial laser scanning, photogrammetry, and the application of 3D modeling for archaeological and museum contexts."
   },
   {
     "objectID": "slides/part_1.html#key-references-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c6269206c696e6b2d34356465673e7d7d",
     "href": "slides/part_1.html#key-references-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c6269206c696e6b2d34356465673e7d7d",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Key References ",
     "text": "Key References \n\nPhotogrammetry for Cultural Heritage Objects (Video Tutorial) https://www.youtube.com/watch?v=E2i4DQSsgCU\n\nWhy it’s useful: Practical step-by-step video tutorial on creating 3D models of cultural heritage objects via photogrammetry. Demonstrates photo capture and mesh processing—ideal for archaeologists learning the field-to-digital pipeline.\n\n3D Scanning for Cultural Heritage Conservation by Factum Arte (Online Guide/Lesson) https://www.factum-arte.com/pag/701/3d-scanning-for-cultural-heritage-conservation\n\nWhy it’s useful: Factum Arte, world leader in digital mediation and heritage preservation, breaks down differences between close-range photogrammetry and laser scanning, explaining when to use each based on artifact material (translucent marble vs. opaque stone) and environment.\n\nComplete Beginner’s Guide to 3D Printing (Video Tutorial) https://www.youtube.com/watch?v=T-Z3GmM20JM\n\nWhy it’s useful: Comprehensive video introduction to fused deposition modeling (FDM). Covers printer components, slicing software (converting 3D models into G-code), and printing process.\n\nDecoding Maya Hieroglyphs with 3D Technology (Educational Video)\nPeabody Museum - Harvard University https://peabody.harvard.edu/video-decoding-maya-hieroglyphs-3d-technology\n\nWhy it’s useful: Peabody Museum video bridges technology and archaeological value, showing how 3D scanning and printing decode, replicate, and preserve complex structures like the Hieroglyphic Stairway at Copan."
   },
   {
     "objectID": "slides/part_1.html#technologies-and-tools",
     "href": "slides/part_1.html#technologies-and-tools",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Technologies and tools",
     "text": "Technologies and tools\n\n\nGeneral workflow\n\nCapture the object or context with images, projected light, or laser range measurements.\nRegister viewpoints in a common coordinate system.\nGenerate a point cloud, mesh, texture, and scale reference.\nClean, document, and export the model for analysis, display, or printing.\n\n\nMethod selection\n\nSurface size, texture, reflectance, and fragility.\nRequired metric accuracy and smallest relevant feature.\nLab or field constraints: light, access, time, and portability.\nFinal use: measurement, online publication, teaching, or replica fabrication.\n\n\n\n\n\n\n\n\n\nKey principle\n\n\nThere is no universally best capture method. For archaeological objects, the best choice is the one that preserves provenance, scale, uncertainty, and reproducibility for the intended research question."
   },
   {
     "objectID": "slides/part_1.html#photogrammetry-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d-triangulation",
     "href": "slides/part_1.html#photogrammetry-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d-triangulation",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Photogrammetry : Triangulation",
     "text": "Photogrammetry : Triangulation\nIt’s quite like our binocular vision:"
   },
   {
     "objectID": "slides/part_1.html#photogrammetry-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d-operating-principles",
     "href": "slides/part_1.html#photogrammetry-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d-operating-principles",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Photogrammetry : Operating principles",
     "text": "Photogrammetry : Operating principles\n\n\n\nMultiple overlapping images of the object are taken from different angles\nThe camera positions and orientations do not have to be known in advance\nComputer vision algorithms identify common features (points) across images\nImages are aligned in 3-D space so that the same features overlap\nThe scene is reconstructed by triangulating feature positions in space, and textured with the original images\n\n\n\n\n\nPhotogrammetry bundle triangulation\n\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nPhotogrammetry is a cost-effective and accessible method for 3-D reconstruction, as it only requires a camera and software. However, it can be less accurate than other methods, especially for objects with low texture or in challenging lighting conditions."
   },
   {
     "objectID": "slides/part_1.html#structured-light-scanning-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d-operating-principles",
     "href": "slides/part_1.html#structured-light-scanning-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920312d636972636c652d66696c6c3e7d7d-operating-principles",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Structured light scanning : Operating principles",
     "text": "Structured light scanning : Operating principles\n\n\nOperating principles\n\nA projector casts a known pattern of stripes or dots on the surface.\nOne or more cameras record how the pattern is deformed by the object.\nSoftware reconstructs geometry by triangulating between projector, camera, and surface.\n\n\nArchaeological fit\n\nSmall and medium artefacts with fine relief: ceramics, lithics, bone, plaster, coins, and inscriptions.\nControlled indoor capture with stable light and limited object movement.\nUseful when photogrammetry lacks enough texture or repeatable detail.\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nStructured light scanning gives high local resolution and fast acquisition, but glossy, translucent, very dark, or deeply undercut surfaces may need surface preparation, multiple scan angles, or another method."
   },
   {
     "objectID": "slides/part_1.html#structured-light-scanning-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d-example",
     "href": "slides/part_1.html#structured-light-scanning-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920322d636972636c652d66696c6c3e7d7d-example",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Structured light scanning : Example",
     "text": "Structured light scanning : Example"
   },
   {
     "objectID": "slides/part_1.html#lidar-scanning",
     "href": "slides/part_1.html#lidar-scanning",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "LiDAR scanning",
     "text": "LiDAR scanning\n\n\nOperating principles\n\nA fixed laser scanner measures distance and angle for many points across a scene, via echo time of a pulse\nThe result is a dense, often georeferenced point cloud\nMight be combined with RGB imagery for texture and color information\nMultiple scans may be aligned using targets, shared geometry, SLAM, GNSS\n\n\n\nScanMeshArchaeological fit\n\n\n\n\n\nLiDAR point cloud\n\n\n\n\n\n\n\nLiDAR mesh\n\n\n\n\n\nArchitecture, excavation areas, rock art panels, caves, and landscapes.\nAirborne LiDAR can reveal microtopography and features under vegetation.\nTerrestrial LiDAR is strong for monitoring deformation, erosion, and conservation work.\n\n\n\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nLiDAR excels at scale and spatial context, but equipment cost, line-of-sight gaps, large datasets, and limited close-range surface detail make it complementary to artefact-level scanning\nWavelengths: short-wave infrared spectrums 905 nm (more sensitive) or eye-safe 1550 nm"
   },
   {
     "objectID": "slides/part_1.html#time-of-flight-scanning",
     "href": "slides/part_1.html#time-of-flight-scanning",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Time-of-flight scanning",
     "text": "Time-of-flight scanning\n\n\nOperating principles\n\nEvolution of LiDAR technology for portable, handheld devices.\nThe device floods the scene with a modulated beam of light (IR)\nThe sensor array measuresthe phase shift, pixel by pixel\nA depth map or point cloud is produced, often combined with RGB imagery and inertial tracking.\n\n\n\nExampleArchaeological fit\n\n\n\n\n\nTime-of-flight scanning\n\n\n\n\n\nRapid documentation of rooms, trenches, monuments, and larger objects.\nUseful for spatial context, logistics, and preliminary recording.\nLess appropriate when the research question depends on very fine surface detail.\n\n\n\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nTime-of-flight devices are fast and portable (iPhone has two), but their resolution and edge accuracy are usually lower than close-range photogrammetr or, structured light scanning for small artefacts, and lower than LiDAR for large-scale contexts"
   },
   {
     "objectID": "slides/part_1.html#lidar-vs-tof",
     "href": "slides/part_1.html#lidar-vs-tof",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "LiDAR vs ToF",
     "text": "LiDAR vs ToF\n\n\n\n\n\n\n\n\n\nTechnical Metric\nLiDAR Scanning\nToF (Flash/Phase Array)\n\n\n\n\nSpatial Sampling\nSequential point-by-point (mechanical or MEMS sweep)\nSimultaneous matrix array (instant snapshot)\n\n\nOperational Range\nLong-range (10m to 500m+)\nShort to medium-range (0.1m to 5m–10m)\n\n\nMeasurement Method\nDirect time interval measurement\nIndirect phase-shift detection\n\n\nAngular Resolution\nExtremely high (dependent on mechanical/galvanometer precision)\nDependent on pixel array density (lower resolution than scanning)\n\n\nFrame Rate\nLimited by scanning sweep mechanics (typically 10–30 Hz) SLOW\nVery high frame rates achievable (up to 60–120+ fps) FAST\n\n\nAmbient Light\nTolerance Exceptionally high (filters out solar noise via narrow aperture/wave)\nProne to solar washing (indoor optimization preferred)\n\n\nMoving Parts\nYes (in spinning/MEMS units); No (in pure solid-state OPA)\nCompletely solid-state (zero moving parts)\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nBoth methods can be augmented with RGB cameras for color information, and inertial measurement units (IMUs) for improved spatial tracking or range extension, but their core depth sensing technologies differ significantly in terms of resolution, range, and susceptibility to environmental conditions."
   },
   {
     "objectID": "slides/part_1.html#cheapest-solution-photogrammetry-with-a-smartphone",
     "href": "slides/part_1.html#cheapest-solution-photogrammetry-with-a-smartphone",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Cheapest solution: photogrammetry with a smartphone",
     "text": "Cheapest solution: photogrammetry with a smartphone\n\n\n\nReality composer is a free app for iOS and macOS that uses the device’s camera and ToF sensor to create 3-D models from live scanning\nit produces an .objcap file that must be opened by Reality Composer Pro app on macOS (free)\nThe latter can export models in .usdz format, which is compatible with many 3-D software and online platforms\nThe model quality is generally very good and includes texture\n\n\n\n\n\nReality Composer app (by Apple)"
   },
   {
     "objectID": "slides/part_1.html#example-1",
     "href": "slides/part_1.html#example-1",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Example",
     "text": "Example\n\n\n\n\n\nReality Composer\n\n\n\n\n\n\nCreate Scan"
   },
   {
     "objectID": "slides/part_1.html#example-same-mask-as-above",
     "href": "slides/part_1.html#example-same-mask-as-above",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Example: Same mask as above",
     "text": "Example: Same mask as above\nScanned with Reality Composer on iPhone 16 Pro, exported as .usdz, and rendered with the same WebGL viewer as the photogrammetry model\n\n\n\n\n\n\n\n\nImportant\n\n\nNote the holes in the model: a 3-D scan, regardless the technology, provides a surface model, which has no information about the internal structure of the object. The holes are areas where the scanner could not capture data, often due to occlusions, reflective surfaces, or insufficient texture."
   },
   {
     "objectID": "slides/part_1.html#precision-and-resolution-1",
     "href": "slides/part_1.html#precision-and-resolution-1",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Precision and resolution",
     "text": "Precision and resolution\n\n\n\n\n\n\n\n\n\n\n\n\nTechnology\nLateral Resolution\nDepth Resolution\n3D Precision\n\n\n\n\nPhotogrammetry\n0.05–2 mm/pixel\n0.1–5 mm\n0.1–1 mm\n\n\nStructured Light\n0.02–0.5 mm/pixel\n0.01–0.1 mm\n0.01–0.1 mm\n\n\nLiDAR\n1–20 mm\n1–10 mm\n1–10 mm\n\n\nToF\n1–20 mm/pixel\n1–20 mm\n5–50 mm\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nThe digital sensor resolution in mm/pixels is called Ground Sampling Distance (GSD), and it is a key metric for understanding the level of detail in a 3-D reconstruction. A smaller GSD means higher resolution and finer detail, while a larger GSD indicates lower resolution and less detail.\n\n\n\n\n\nStructured LightScanhead Localization\n\n\n\n\n\nTyp. precision: 0.1 mm\n\n\n\n\n\n\n\nTyp. precision: 0.03 mm"
   },
   {
     "objectID": "slides/part_1.html#process-flowchart",
     "href": "slides/part_1.html#process-flowchart",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Process flowchart",
     "text": "Process flowchart\n\n\n\nScan must produce a surface model with sufficient resolution, with coherent face normals, and without holes or non-manifold geometry\nMost commonly used file formats are .stl (geometry only) and .obj (geometry + texture), but some printers require proprietary formats or additional metadata\nPrint process involves orientation, support generation, slicing, and post-processing steps that can affect feasibility, final accuracy and appearance of the replica\n\n\n\n\n\n\n\n\n\nprocess_flow\n\ncluster_scan\n\nScan\n\n\ncluster_print\n\nPrint\n\n\n\nA\n\nScan\n\n\n\nB\n\nPreprocess\n\n\n\nA-&gt;B\n\n\n\n\n\nF\n\nOrientation\n\n\n\n\nC\n\nReconstruct\n\n\n\nB-&gt;C\n\n\n\n\n\nG\n\nSupport generation\n\n\n\n\nD\n\nRefine / Export\n\n\n\nC-&gt;D\n\n\n\n\n\nH\n\nSlice\n\n\n\n\nD-&gt;F\n\n\n\n\n\nI\n\nPrint\n\n\n\n\nF-&gt;G\n\n\n\n\n\nG-&gt;H\n\n\n\n\n\nH-&gt;I\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nAM processes work layer-by.layer, so the mudel must be sliced into thin horizontal sections"
   },
   {
     "objectID": "slides/part_1.html#solid-model-preparation",
     "href": "slides/part_1.html#solid-model-preparation",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Solid model preparation",
     "text": "Solid model preparation\n\n\n\nScans produce a surface model that may have holes, non-manifold geometry, and inconsistent face normals\nThese issues must be resolved before printing, using software tools that can fill holes, repair meshes, and ensure the model is watertight and printable\nThe model may also need to be scaled, oriented, and simplified to meet the printer’s requirements and the research goals of the replica\n\n\n\n\n\n\n\n\nNote\n\n\nScan reslution might affect print result, but too high is just as bad as too low, because it can create unnecessarily large files and long print times without improving the final quality of the replica\n\n\n\n\n\n\nApproximationSurface model\n\n\n\n\n\nMesh approximation\n\n\n\n\n\n\n\nPolygonalApproximation"
   },
   {
     "objectID": "slides/part_1.html#model-orientation-and-support-generation",
     "href": "slides/part_1.html#model-orientation-and-support-generation",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Model orientation and support generation",
     "text": "Model orientation and support generation\n\n\n\nAlmost all 3-D printing processes cannot print overhangs beyond a certain angle without support structures\nThe model must be oriented to minimize the need for supports, which can affect surface quality and post-processing time\nSupport structures are generated based on the printer’s capabilities and the model’s geometry\nThey must be removed after printing, which can leave marks or require additional finishing steps\n\n\n\n\n\nSupport structures"
   },
   {
     "objectID": "slides/part_1.html#slicing-and-print-ready-file-generation",
     "href": "slides/part_1.html#slicing-and-print-ready-file-generation",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Slicing and print-ready file generation",
     "text": "Slicing and print-ready file generation\n\n\n\nLast step is slicing: the software converts the 3-D model into a series of 2-D layers and generates a print-ready file (e.g., G-code) that contains instructions for the printer\nSlicing parameters include layer height, infill density, print speed, and specific process settings that can affect the strength, appearance, and accuracy of the final replica\nThe sliced file is then sent to the printer, which builds the object layer by layer according to the instructions\n\n\n\n\n\nPrint slicing"
   },
   {
     "objectID": "slides/part_1.html#taxonomy-of-3-d-printing-technologies",
     "href": "slides/part_1.html#taxonomy-of-3-d-printing-technologies",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Taxonomy of 3-D printing technologies",
     "text": "Taxonomy of 3-D printing technologies\n\n\n\n\n\n\n\n\nFamily\nCommon technologies\nTypical archaeological use\n\n\n\n\nMaterial extrusion\nFDM, FFF\nLow-cost handling models, teaching sets, enlarged tactile replicas\n\n\nVat photopolymerization\nSLA, MSLA, DLP\nSmall finds with fine relief, inscriptions, seals, detailed fragments\n\n\nPowder bed and binder\nSLS, MJF, binder jet\nComplex shapes, durable nylon replicas, color display models\n\n\nMetal additive manufacturing\nPBF, DED, metal binder jet\nSpecialist replicas, mounts, experimental tools, structural parts\n\n\n\n\n\n\n\n\n\n\nSelection criteria\n\n\nChoose the printing process from the required detail, strength, color, handling conditions, cost, post-processing effort, and ethical need to distinguish replica from original."
   },
   {
     "objectID": "slides/part_1.html#technologies-vs.-materials",
     "href": "slides/part_1.html#technologies-vs.-materials",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Technologies vs. materials",
     "text": "Technologies vs. materials\n\n\n\n\n\n\n\n\n\n\nTechnology\nCost\nCommon materials\nArchaeological fit\n\n\n\n\nMaterial extrusion\n\nPLA, PETG, ABS, nylon, filled filaments, concrete\nRobust handling models, enlarged tactile replicas, trial reconstructions, buildings\n\n\nVat photopolymerization\n\nStandard, tough, flexible, castable, high-temperature resins; resins w. ceramic load\nSmall artefacts with fine relief, coins, seals, figurines, engraved surfaces, masters for moulding\n\n\nPowder bed and binder\n\nNylon, gypsum, sandstone, concrete\nComplex geometry without many visible support scars, durable handling collections, full-color display models using texture maps\n\n\nMetal additive manufacturing\n\nStainless steel, aluminum, titanium, bronze\nSpecialist replicas when weight, stiffness, wear, or heat resistance matter, mounts, brackets, replacement fixtures, experimental archaeology tools\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\nMaterial extrusion and photopolymerization are desktop-compatible processes; powder bed and metal AM usually require industrial equipment and safety precautions, which can increase cost and turnaround time, and limit material options and post-processing control."
   },
   {
     "objectID": "slides/part_1.html#polymer-based-3-d-printing",
     "href": "slides/part_1.html#polymer-based-3-d-printing",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Polymer-based 3-D printing",
     "text": "Polymer-based 3-D printing\n\n\nMaterial families\n\nThermoplastics: PLA, PETG, ABS, nylon, and filled filaments.\nPhotopolymers: standard, tough, flexible, castable, and high-temperature resins.\nComposite materials can imitate stone, wood, or ceramic appearance without reproducing the original material history.\n\n\nArchaeological decisions\n\nIs the replica for handling, measurement, exhibition, accessibility, or conservation planning?\nDoes the surface need texture, painted color, or neutral analytical visibility?\nWhat scale, tolerance, and label will prevent confusion with the original?\n\n\n\n\n\n\n\n\n\nPractical note\n\n\nPolymers are usually the most accessible materials for archaeological replicas, but they should be described as interpretive copies with recorded source model, scale, printer, material, and finishing steps."
   },
   {
     "objectID": "slides/part_1.html#filament-based-3-d-printing",
     "href": "slides/part_1.html#filament-based-3-d-printing",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Filament-based 3-D printing",
     "text": "Filament-based 3-D printing\n\n\nOperating principles\n\nA thermoplastic filament is melted and extruded through a nozzle.\nThe object is built layer by layer along programmed toolpaths.\nSupports, infill, perimeter count, layer height, and nozzle size control strength and detail.\n\n\nArchaeological fit\n\nRobust replicas for handling, teaching, access, and public engagement.\nEnlarged models of small finds for tactile inspection.\nTrial reconstructions, joins, mounts, and packaging aids.\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nFilament printing is inexpensive and durable, but layer lines, anisotropic strength, overhang supports, and limited fine detail can affect the accuracy of inscriptions, tool marks, and thin edges."
   },
   {
     "objectID": "slides/part_1.html#resin-based-3-d-printing",
     "href": "slides/part_1.html#resin-based-3-d-printing",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Resin-based 3-D printing",
     "text": "Resin-based 3-D printing\n\n\nOperating principles\n\nUltraviolet light cures liquid photopolymer resin in thin layers.\nParts are printed on supports, then washed, dried, and post-cured.\nResolution depends on pixel size, layer height, resin behavior, and orientation.\n\n\nArchaeological fit\n\nSmall artefacts with fine relief or complex decoration.\nCoins, seals, figurines, engraved surfaces, and diagnostic fragments.\nMasters for moulding or casting when direct handling copies are needed.\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nResin printing captures fine detail well, but uncured resin is hazardous, parts can be brittle or UV-sensitive, and support scars or shrinkage may compromise metric fidelity."
   },
   {
     "objectID": "slides/part_1.html#powder-based-3-d-printing",
     "href": "slides/part_1.html#powder-based-3-d-printing",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Powder-based 3-D printing",
     "text": "Powder-based 3-D printing\n\n\nOperating principles\n\nA thin layer of powder is spread over the build area.\nHeat, laser energy, or a liquid binder selectively joins each layer.\nUnfused powder supports the part during printing and is removed afterward.\n\n\nArchaeological fit\n\nComplex geometry without many visible support scars.\nNylon prints for durable handling collections.\nBinder jet prints for full-color display models using texture maps.\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nPowder processes can handle complex forms and color, but surfaces may be grainy or porous, cavities can trap powder, and equipment and service costs are higher than desktop polymer printers."
   },
   {
     "objectID": "slides/part_1.html#metal-based-3-d-printing",
     "href": "slides/part_1.html#metal-based-3-d-printing",
-    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Metal-based 3-D printing",
     "text": "Metal-based 3-D printing\n\n\nOperating principles\n\nMetal powder or wire is fused by laser, electron beam, or directed energy.\nBinder jet metal parts are printed green and then sintered.\nHeat treatment, machining, polishing, and support removal are usually part of the workflow.\n\n\nArchaeological fit\n\nSpecialist replicas when weight, stiffness, wear, or heat resistance matter.\nMounts, brackets, replacement fixtures, and experimental archaeology tools.\nRarely justified for routine artefact replication.\n\n\n\n\n\n\n\n\n\nAdvantages and limitations\n\n\nMetal printing is costly and technically demanding; in archaeology it is most defensible when material properties are part of the research or conservation problem, not merely for visual resemblance."
   }
