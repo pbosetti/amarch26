@@ -1,7 +1,8 @@
 ---
-title: "3-D reconstruction and printing tools: Fundamentals"
-subtitle: "AMARCH26"
+title: "3-D Reconstruction and Printing Tools: Fundamentals"
+subtitle: "AMARCH26 --- Trento, June 4th, 2026"
 author: "Paolo Bosetti"
+institute: "University of Trento, Department of Industrial Engineering"
 format: revealjs
 resources:
   - _Mask.usdz

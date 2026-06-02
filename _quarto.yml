@@ -20,7 +20,7 @@ format:
     code-annotations: below
     preview-links: auto
     chalkboard: true
-    footer: "AMARCH26 --- [{{< bi house-fill >}} Home](/)"
+    footer: "AMARCH26 --- [{{< bi house-fill >}} Home](/) --- [Contact](mailto:paolo.bosetti@unitn.it)"
     fig-width: 5
     fig-height: 4
     fig-dpi: 300
