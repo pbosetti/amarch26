@@ -559,6 +559,96 @@ Peabody Museum - Harvard University <a href="https://peabody.harvard.edu/video-d
 </div>
 </section></section>
 <section>
+<section id="precision-and-resolution" class="title-slide slide level1 center">
+<h1>Precision and resolution</h1>
+<p><strong>Precision</strong> is the consistency of measurements across repeated scans, while <strong>resolution</strong> is the smallest feature size that can be reliably captured. Both are influenced by the scanning technology, settings, and object properties.</p>
+</section>
+<section id="precision-and-resolution-1" class="slide level2">
+<h2>Precision and resolution</h2>
+<div class="columns">
+<div class="column">
+<div class="smaller">
+<table class="caption-top">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 27%">
+<col style="width: 24%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Technology</th>
+<th>Lateral Resolution</th>
+<th>Depth Resolution</th>
+<th>3D Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Photogrammetry</td>
+<td>0.05–2 mm/pixel</td>
+<td>0.1–5 mm</td>
+<td>0.1–1 mm</td>
+</tr>
+<tr class="even">
+<td>Structured Light</td>
+<td>0.02–0.5 mm/pixel</td>
+<td>0.01–0.1 mm</td>
+<td>0.01–0.1 mm</td>
+</tr>
+<tr class="odd">
+<td>LiDAR</td>
+<td>1–20 mm</td>
+<td>1–10 mm</td>
+<td>1–10 mm</td>
+</tr>
+<tr class="even">
+<td>ToF</td>
+<td>1–20 mm/pixel</td>
+<td>1–20 mm</td>
+<td>5–50 mm</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The digital sensor resolution in mm/pixels is called <strong>Ground Sampling Distance</strong> (GSD), and it is a key metric for understanding the level of detail in a 3-D reconstruction. A smaller GSD means higher resolution and finer detail, while a larger GSD indicates lower resolution and less detail.</p>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Structured Light</a></li><li><a href="#tabset-3-2">Scanhead Localization</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="metrascan_2.jpg" style="width:66.0%"></p>
+<figcaption>Typ. precision: <strong>0.1 mm</strong></figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-3-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="metrascan_1.jpg" style="width:66.0%"></p>
+<figcaption>Typ. precision: <strong>0.03 mm</strong></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section></section>
+<section>
 <section id="d-printing" class="title-slide slide level1 center">
 <h1>3-D Printing</h1>
 <p>3-D printing turns digital reconstructions into physical replicas whose research value depends on scale control, material choice, finishing, and documentation</p>
@@ -735,9 +825,9 @@ Peabody Museum - Harvard University <a href="https://peabody.harvard.edu/video-d
 </div>
 </div><div class="column">
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Approximation</a></li><li><a href="#tabset-3-2">Surface model</a></li></ul>
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Approximation</a></li><li><a href="#tabset-4-2">Surface model</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1">
+<div id="tabset-4-1">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="slice.svg" style="width:75.0%"></p>
@@ -745,7 +835,7 @@ Peabody Museum - Harvard University <a href="https://peabody.harvard.edu/video-d
 </figure>
 </div>
 </div>
-<div id="tabset-3-2">
+<div id="tabset-4-2">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="cura_sm.png"></p>

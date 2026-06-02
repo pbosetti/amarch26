@@ -105,6 +105,13 @@
     "text": "Example: Same mask as above\nScanned with Reality Composer on iPhone 16 Pro, exported as .usdz, and rendered with the same WebGL viewer as the photogrammetry model\n\n\n\n\n\n\n\n\nImportant\n\n\nNote the holes in the model: a 3-D scan, regardless the technology, provides a surface model, which has no information about the internal structure of the object. The holes are areas where the scanner could not capture data, often due to occlusions, reflective surfaces, or insufficient texture."
   },
   {
+    "objectID": "slides/part_1.html#precision-and-resolution-1",
+    "href": "slides/part_1.html#precision-and-resolution-1",
+    "title": "3-D reconstruction and printing tools: Fundamentals",
+    "section": "Precision and resolution",
+    "text": "Precision and resolution\n\n\n\n\n\n\n\n\n\n\n\n\nTechnology\nLateral Resolution\nDepth Resolution\n3D Precision\n\n\n\n\nPhotogrammetry\n0.05–2 mm/pixel\n0.1–5 mm\n0.1–1 mm\n\n\nStructured Light\n0.02–0.5 mm/pixel\n0.01–0.1 mm\n0.01–0.1 mm\n\n\nLiDAR\n1–20 mm\n1–10 mm\n1–10 mm\n\n\nToF\n1–20 mm/pixel\n1–20 mm\n5–50 mm\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nThe digital sensor resolution in mm/pixels is called Ground Sampling Distance (GSD), and it is a key metric for understanding the level of detail in a 3-D reconstruction. A smaller GSD means higher resolution and finer detail, while a larger GSD indicates lower resolution and less detail.\n\n\n\n\n\nStructured LightScanhead Localization\n\n\n\n\n\nTyp. precision: 0.1 mm\n\n\n\n\n\n\n\nTyp. precision: 0.03 mm"
+  },
+  {
     "objectID": "slides/part_1.html#process-flowchart",
     "href": "slides/part_1.html#process-flowchart",
     "title": "3-D reconstruction and printing tools: Fundamentals",
