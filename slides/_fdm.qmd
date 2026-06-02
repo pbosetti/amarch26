@@ -1,0 +1,166 @@
+```{=html}
+<div class="fdm-animation" data-fdm-animation>
+  <svg viewBox="0 0 400 400" role="img" aria-label="Fused deposition modeling animation">
+    <rect class="fdm-frame" x="18" y="18" width="364" height="364" rx="8"></rect>
+    <g class="fdm-final"></g>
+    <g class="fdm-current-support"></g>
+    <g class="fdm-current-part"></g>
+    <g class="fdm-active"></g>
+    <rect class="fdm-plate" x="52" y="344" width="296" height="14" rx="3"></rect>
+    <g class="fdm-head">
+      <line class="fdm-filament" x1="0" y1="36" x2="0" y2="84"></line>
+      <rect class="fdm-carriage" x="-34" y="70" width="68" height="28" rx="5"></rect>
+      <path class="fdm-nozzle" d="M -18 98 L 18 98 L 8 123 L -8 123 Z"></path>
+      <circle class="fdm-extrusion" cx="0" cy="128" r="4"></circle>
+    </g>
+  </svg>
+</div>
+<script>
+(() => {
+  const roots = document.querySelectorAll("[data-fdm-animation]:not([data-fdm-ready])");
+  if (!roots.length) {
+    return;
+  }
+
+  const svgNamespace = "http://www.w3.org/2000/svg";
+  const layerHeight = 14;
+  const layerGap = 2;
+  const layerCount = 15;
+  const positionsPerLayer = 40;
+  const stepMilliseconds = 1000 / positionsPerLayer;
+  const visibleLayerHeight = layerHeight - layerGap;
+  const bottomY = 344;
+  const extrusionCenterY = 128;
+  const scanMinX = 76;
+  const scanMaxX = 324;
+  const materials = {
+    part: "#1585da",
+    support: "#f08a24",
+  };
+  const finalMaterials = {
+    part: "rgba(21, 133, 218, 0.13)",
+    support: "rgba(240, 138, 36, 0.16)",
+  };
+  const partWidths = [
+    [136, 264],
+    [136, 264],
+    [132, 268],
+    [130, 270],
+    [128, 272],
+    [126, 274],
+    [122, 278],
+    [118, 282],
+    [84, 316],
+    [84, 316],
+    [96, 304],
+    [110, 290],
+    [126, 274],
+    [144, 256],
+    [164, 236],
+  ];
+
+  const layers = partWidths.map(([partStart, partEnd], index) => {
+    const segments = [];
+    if (index < 8) {
+      segments.push({ kind: "support", start: 84, end: 114 });
+      segments.push({ kind: "support", start: 286, end: 316 });
+    }
+    segments.push({ kind: "part", start: partStart, end: partEnd });
+    return segments.sort((a, b) => a.start - b.start);
+  });
+
+  function layerY(index) {
+    return bottomY - (index + 1) * layerHeight;
+  }
+
+  function makeRect(parent, segment, y, fill, endX = segment.end) {
+    const width = Math.max(0, Math.min(segment.end, endX) - segment.start);
+    if (width <= 0) {
+      return;
+    }
+    const rect = document.createElementNS(svgNamespace, "rect");
+    rect.setAttribute("x", String(segment.start));
+    rect.setAttribute("y", String(y));
+    rect.setAttribute("width", String(width));
+    rect.setAttribute("height", String(visibleLayerHeight));
+    rect.setAttribute("rx", "2");
+    rect.setAttribute("fill", fill);
+    parent.appendChild(rect);
+  }
+
+  function materialAt(layer, x) {
+    const active = layer.find((segment) => x >= segment.start && x <= segment.end);
+    if (active) {
+      return active.kind;
+    }
+    const next = layer.find((segment) => x < segment.start);
+    return next ? next.kind : "part";
+  }
+
+  function renderStatic(root) {
+    const finalGroup = root.querySelector(".fdm-final");
+    finalGroup.textContent = "";
+    layers.forEach((layer, index) => {
+      const y = layerY(index);
+      layer.forEach((segment) => {
+        makeRect(finalGroup, segment, y, finalMaterials[segment.kind]);
+      });
+    });
+  }
+
+  function renderFrame(root, step) {
+    const currentLayer = Math.floor(step / positionsPerLayer) % layerCount;
+    const position = step % positionsPerLayer;
+    const progress = position / (positionsPerLayer - 1);
+    const headX = scanMinX + (scanMaxX - scanMinX) * progress;
+    const y = layerY(currentLayer);
+    const layer = layers[currentLayer];
+    const material = materialAt(layer, headX);
+    const groups = {
+      part: root.querySelector(".fdm-current-part"),
+      support: root.querySelector(".fdm-current-support"),
+      active: root.querySelector(".fdm-active"),
+    };
+
+    groups.part.textContent = "";
+    groups.support.textContent = "";
+    groups.active.textContent = "";
+
+    layers.forEach((completeLayer, layerIndex) => {
+      if (layerIndex >= currentLayer) {
+        return;
+      }
+      const completeY = layerY(layerIndex);
+      completeLayer.forEach((segment) => {
+        makeRect(groups[segment.kind], segment, completeY, materials[segment.kind]);
+      });
+    });
+
+    layer.forEach((segment) => {
+      if (headX <= segment.start) {
+        return;
+      }
+      makeRect(groups.active, segment, y, materials[segment.kind], headX);
+    });
+
+    const head = root.querySelector(".fdm-head");
+    const activeLayerCenterY = y + visibleLayerHeight / 2;
+    const headY = activeLayerCenterY - extrusionCenterY;
+    head.setAttribute("transform", `translate(${headX.toFixed(2)} ${headY.toFixed(2)})`);
+    root.querySelector(".fdm-filament").setAttribute("stroke", materials[material]);
+    root.querySelector(".fdm-extrusion").setAttribute("fill", materials[material]);
+  }
+
+  roots.forEach((root) => {
+    root.dataset.fdmReady = "true";
+    renderStatic(root);
+    let step = 0;
+    renderFrame(root, step);
+    window.setInterval(() => {
+      step = (step + 1) % (layerCount * positionsPerLayer);
+      renderFrame(root, step);
+    }, stepMilliseconds);
+  });
+})();
+</script>
+```

@@ -1,0 +1,145 @@
+```{=html}
+<div class="sla-animation" data-sla-animation>
+  <svg viewBox="0 0 400 400" role="img" aria-label="Stereolithography printing animation">
+    <rect class="sla-frame" x="18" y="18" width="364" height="364" rx="8"></rect>
+    <rect class="sla-vat-back" x="54" y="280" width="292" height="64" rx="5"></rect>
+    <rect class="sla-resin" x="58" y="286" width="284" height="40" rx="2"></rect>
+    <g class="sla-final"></g>
+    <g class="sla-current"></g>
+    <g class="sla-active"></g>
+    <line class="sla-resin-surface" x1="58" y1="286" x2="342" y2="286"></line>
+    <g class="sla-platform">
+      <rect class="sla-platform-rod" x="-5" y="-84" width="10" height="84" rx="3"></rect>
+      <rect class="sla-platform-plate" x="-86" y="0" width="172" height="14" rx="3"></rect>
+    </g>
+    <g class="sla-laser">
+      <line class="sla-laser-beam" x1="200" y1="362" x2="200" y2="316"></line>
+      <circle class="sla-laser-dot" cx="200" cy="316" r="4"></circle>
+      <rect class="sla-laser-source" x="180" y="358" width="40" height="12" rx="3"></rect>
+    </g>
+    <path class="sla-vat-front" d="M 54 280 H 346 V 344 H 54 Z"></path>
+  </svg>
+</div>
+<script>
+(() => {
+  const roots = document.querySelectorAll("[data-sla-animation]:not([data-sla-ready])");
+  if (!roots.length) {
+    return;
+  }
+
+  const svgNamespace = "http://www.w3.org/2000/svg";
+  const layerHeight = 14;
+  const layerGap = 2;
+  const layerCount = 15;
+  const positionsPerLayer = 40;
+  const stepMilliseconds = 1000 / positionsPerLayer;
+  const visibleLayerHeight = layerHeight - layerGap;
+  const platformHeight = 14;
+  const activeLayerY = 310;
+  const activeLayerCenterY = activeLayerY + visibleLayerHeight / 2;
+  const scanMinX = 76;
+  const scanMaxX = 324;
+  const material = "#6b63d9";
+  const activeMaterial = "#7d72f0";
+  const finalMaterial = "rgba(107, 99, 217, 0.13)";
+  const partWidths = [
+    [136, 264],
+    [136, 264],
+    [132, 268],
+    [130, 270],
+    [128, 272],
+    [126, 274],
+    [122, 278],
+    [118, 282],
+    [84, 316],
+    [84, 316],
+    [96, 304],
+    [110, 290],
+    [126, 274],
+    [144, 256],
+    [164, 236],
+  ];
+  const layers = partWidths.slice().reverse().map(([start, end]) => ({ start, end }));
+
+  function makeRect(parent, segment, y, fill, endX = segment.end) {
+    const width = Math.max(0, Math.min(segment.end, endX) - segment.start);
+    if (width <= 0) {
+      return;
+    }
+    const rect = document.createElementNS(svgNamespace, "rect");
+    rect.setAttribute("x", String(segment.start));
+    rect.setAttribute("y", String(y));
+    rect.setAttribute("width", String(width));
+    rect.setAttribute("height", String(visibleLayerHeight));
+    rect.setAttribute("rx", "2");
+    rect.setAttribute("fill", fill);
+    parent.appendChild(rect);
+  }
+
+  function layerY(layerIndex, currentLayer) {
+    return activeLayerY - (currentLayer - layerIndex) * layerHeight;
+  }
+
+  function finalLayerY(layerIndex) {
+    return activeLayerY - (layerCount - 1 - layerIndex) * layerHeight;
+  }
+
+  function platformTopY(currentLayer) {
+    const platformBottomY = activeLayerY - currentLayer * layerHeight - layerGap;
+    return platformBottomY - platformHeight;
+  }
+
+  function renderStatic(root) {
+    const finalGroup = root.querySelector(".sla-final");
+    finalGroup.textContent = "";
+    layers.forEach((layer, index) => {
+      makeRect(finalGroup, layer, finalLayerY(index), finalMaterial);
+    });
+  }
+
+  function renderFrame(root, step) {
+    const currentLayer = Math.floor(step / positionsPerLayer) % layerCount;
+    const position = step % positionsPerLayer;
+    const progress = position / (positionsPerLayer - 1);
+    const laserX = scanMinX + (scanMaxX - scanMinX) * progress;
+    const currentGroup = root.querySelector(".sla-current");
+    const activeGroup = root.querySelector(".sla-active");
+    const platform = root.querySelector(".sla-platform");
+    const laserBeam = root.querySelector(".sla-laser-beam");
+    const laserDot = root.querySelector(".sla-laser-dot");
+    const activeLayer = layers[currentLayer];
+
+    currentGroup.textContent = "";
+    activeGroup.textContent = "";
+
+    layers.forEach((layer, index) => {
+      if (index >= currentLayer) {
+        return;
+      }
+      makeRect(currentGroup, layer, layerY(index, currentLayer), material);
+    });
+
+    if (laserX > activeLayer.start) {
+      makeRect(activeGroup, activeLayer, activeLayerY, activeMaterial, laserX);
+    }
+
+    platform.setAttribute("transform", `translate(200 ${platformTopY(currentLayer).toFixed(2)})`);
+    laserBeam.setAttribute("x2", laserX.toFixed(2));
+    laserBeam.setAttribute("y2", String(activeLayerCenterY));
+    laserDot.setAttribute("cx", laserX.toFixed(2));
+    laserDot.setAttribute("cy", String(activeLayerCenterY));
+  }
+
+  roots.forEach((root) => {
+    root.dataset.slaReady = "true";
+    renderStatic(root);
+    let step = 0;
+    renderFrame(root, step);
+    window.setInterval(() => {
+      step = (step + 1) % (layerCount * positionsPerLayer);
+      renderFrame(root, step);
+    }, stepMilliseconds);
+  });
+})();
+</script>
+```

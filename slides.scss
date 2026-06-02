@@ -363,6 +363,192 @@ $body-color: #777777;
     background: $main-color-dark;
   }
 
+  .fdm-animation,
+  .sla-animation,
+  .powder-animation {
+    width: min(74vh, 560px, 100%);
+    aspect-ratio: 1 / 1;
+    margin: 0.15em auto 0;
+  }
+
+  .fdm-animation svg,
+  .sla-animation svg,
+  .powder-animation svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .fdm-frame {
+    fill: #f4f7fa;
+    stroke: #d4dbe4;
+    stroke-width: 1.2;
+  }
+
+  .fdm-plate {
+    fill: #3e4854;
+  }
+
+  .fdm-current-part rect,
+  .fdm-current-support rect,
+  .fdm-active rect {
+    filter: drop-shadow(0 1px 1px rgba(39, 49, 61, 0.12));
+  }
+
+  .fdm-carriage {
+    fill: #55606d;
+    stroke: #27313d;
+    stroke-width: 1.5;
+  }
+
+  .fdm-nozzle {
+    fill: #27313d;
+  }
+
+  .fdm-filament {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+  }
+
+  .fdm-extrusion {
+    stroke: white;
+    stroke-width: 1.2;
+  }
+
+  .sla-frame {
+    fill: #f4f7fa;
+    stroke: #d4dbe4;
+    stroke-width: 1.2;
+  }
+
+  .sla-vat-back {
+    fill: rgba(99, 164, 216, 0.12);
+    stroke: rgba(67, 107, 145, 0.5);
+    stroke-width: 1.5;
+  }
+
+  .sla-vat-front {
+    fill: none;
+    stroke: rgba(67, 107, 145, 0.68);
+    stroke-width: 2;
+  }
+
+  .sla-resin {
+    fill: rgba(72, 154, 220, 0.2);
+  }
+
+  .sla-resin-surface {
+    stroke: rgba(63, 133, 190, 0.54);
+    stroke-width: 2;
+  }
+
+  .sla-current rect,
+  .sla-active rect {
+    filter: drop-shadow(0 1px 1px rgba(39, 49, 61, 0.12));
+  }
+
+  .sla-platform-rod,
+  .sla-platform-plate {
+    fill: #3e4854;
+  }
+
+  .sla-platform-plate {
+    stroke: #27313d;
+    stroke-width: 1.4;
+  }
+
+  .sla-laser-beam {
+    stroke: #e5252a;
+    stroke-linecap: round;
+    stroke-width: 2.5;
+  }
+
+  .sla-laser-dot {
+    fill: #e5252a;
+    stroke: white;
+    stroke-width: 1.2;
+  }
+
+  .sla-laser-source {
+    fill: #7b171b;
+  }
+
+  .powder-frame {
+    fill: #f4f7fa;
+    stroke: #d4dbe4;
+    stroke-width: 1.2;
+  }
+
+  .powder-chamber-back {
+    fill: #eef2f5;
+    stroke: rgba(67, 79, 91, 0.42);
+    stroke-width: 1.5;
+  }
+
+  .powder-chamber-front {
+    fill: none;
+    stroke: rgba(67, 79, 91, 0.68);
+    stroke-width: 2;
+  }
+
+  .powder-feed-powder,
+  .powder-bed-bulk,
+  .powder-bed-powder {
+    fill: #c5c8ca;
+  }
+
+  .powder-top-level {
+    stroke: rgba(67, 79, 91, 0.34);
+    stroke-width: 1.4;
+  }
+
+  .powder-final rect,
+  .powder-current rect,
+  .powder-active rect {
+    filter: drop-shadow(0 1px 1px rgba(39, 49, 61, 0.12));
+  }
+
+  .powder-piston-rod,
+  .powder-platform-rod {
+    fill: #596471;
+  }
+
+  .powder-piston-plate,
+  .powder-platform-plate {
+    fill: #3e4854;
+    stroke: #27313d;
+    stroke-width: 1.2;
+  }
+
+  .powder-recoater-body {
+    fill: #5d6671;
+    stroke: #27313d;
+    stroke-width: 1.2;
+  }
+
+  .powder-recoater-blade {
+    fill: #27313d;
+  }
+
+  .powder-laser-mirror {
+    fill: #7b171b;
+    stroke: #e5252a;
+    stroke-width: 1.6;
+  }
+
+  .powder-laser-beam {
+    stroke: #e5252a;
+    stroke-linecap: round;
+    stroke-width: 2.4;
+  }
+
+  .powder-laser-dot {
+    fill: #e5252a;
+    stroke: white;
+    stroke-width: 1.2;
+  }
+
   .reconstruction-error {
     display: grid;
     height: 100%;

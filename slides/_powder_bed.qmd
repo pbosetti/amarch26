@@ -1,0 +1,252 @@
+```{=html}
+<div class="powder-animation" data-powder-animation>
+  <svg viewBox="0 0 400 400" role="img" aria-label="Powder-bed fusion printing animation">
+    <rect class="powder-frame" x="18" y="18" width="364" height="364" rx="8"></rect>
+    <rect class="powder-chamber-back" x="46" y="150" width="118" height="198" rx="5"></rect>
+    <rect class="powder-chamber-back" x="188" y="150" width="166" height="198" rx="5"></rect>
+    <rect class="powder-feed-powder" x="52" y="150" width="106" height="174" rx="2"></rect>
+    <rect class="powder-bed-bulk" x="194" y="150" width="154" height="0" rx="2"></rect>
+    <rect class="powder-bed-powder" x="194" y="150" width="0" height="12" rx="2"></rect>
+    <g class="powder-final"></g>
+    <g class="powder-current"></g>
+    <g class="powder-active"></g>
+    <line class="powder-top-level" x1="46" y1="150" x2="354" y2="150"></line>
+    <g class="powder-feed-piston">
+      <rect class="powder-piston-rod" x="-4" y="8" width="8" height="44" rx="3"></rect>
+      <rect class="powder-piston-plate" x="-53" y="0" width="106" height="10" rx="3"></rect>
+    </g>
+    <g class="powder-build-platform">
+      <rect class="powder-platform-rod" x="-4" y="8" width="8" height="44" rx="3"></rect>
+      <rect class="powder-platform-plate" x="-77" y="0" width="154" height="10" rx="3"></rect>
+    </g>
+    <g class="powder-recoater">
+      <path class="powder-recoater-body" d="M -25 -30 H 25 L 0 0 Z"></path>
+    </g>
+    <g class="powder-laser">
+      <circle class="powder-laser-mirror" cx="271" cy="72" r="8"></circle>
+      <line class="powder-laser-beam" x1="271" y1="72" x2="271" y2="150"></line>
+      <circle class="powder-laser-dot" cx="271" cy="150" r="4"></circle>
+    </g>
+    <path class="powder-chamber-front" d="M 46 150 H 164 V 348 H 46 Z"></path>
+    <path class="powder-chamber-front" d="M 188 150 H 354 V 348 H 188 Z"></path>
+  </svg>
+</div>
+<script>
+(() => {
+  const roots = document.querySelectorAll("[data-powder-animation]:not([data-powder-ready])");
+  if (!roots.length) {
+    return;
+  }
+
+  const svgNamespace = "http://www.w3.org/2000/svg";
+  const layerHeight = 12;
+  const layerGap = 2;
+  const layerCount = 15;
+  const stepsPerPhase = 40;
+  const stepsPerLayer = stepsPerPhase * 2;
+  const stepMilliseconds = 1000 / stepsPerPhase;
+  const visibleLayerHeight = layerHeight - layerGap;
+  const topLevelY = 150;
+  const feedLeftX = 52;
+  const feedRightX = 158;
+  const feedPistonBaseY = 324;
+  const feedPistonLiftPerLayer = 6.1;
+  const buildLeftX = 194;
+  const buildRightX = 348;
+  const sourceMinX = 76;
+  const sourceMaxX = 324;
+  const partMinX = 198;
+  const partMaxX = 344;
+  const recoaterStartX = 22;
+  const recoaterEndX = 370;
+  const recoaterY = topLevelY;
+  const laserScanMinX = buildLeftX;
+  const laserScanMaxX = buildRightX;
+  const material = "#4f7f99";
+  const activeMaterial = "#ee9d35";
+  const finalMaterial = "rgba(79, 127, 153, 0.14)";
+  const powderMaterial = "#c5c8ca";
+  const partWidths = [
+    [136, 264],
+    [136, 264],
+    [132, 268],
+    [130, 270],
+    [128, 272],
+    [126, 274],
+    [122, 278],
+    [118, 282],
+    [84, 316],
+    [84, 316],
+    [96, 304],
+    [110, 290],
+    [126, 274],
+    [144, 256],
+    [164, 236],
+  ];
+
+  function clamp(value, min = 0, max = 1) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function easeInOut(t) {
+    return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  }
+
+  function mapX(x) {
+    const t = (x - sourceMinX) / (sourceMaxX - sourceMinX);
+    return partMinX + t * (partMaxX - partMinX);
+  }
+
+  const layers = partWidths.map(([start, end]) => ({
+    start: mapX(start),
+    end: mapX(end),
+  }));
+
+  function makeRect(parent, segment, y, fill, endX = segment.end) {
+    const width = Math.max(0, Math.min(segment.end, endX) - segment.start);
+    if (width <= 0) {
+      return;
+    }
+    const rect = document.createElementNS(svgNamespace, "rect");
+    rect.setAttribute("x", String(segment.start));
+    rect.setAttribute("y", String(y));
+    rect.setAttribute("width", String(width));
+    rect.setAttribute("height", String(visibleLayerHeight));
+    rect.setAttribute("rx", "2");
+    rect.setAttribute("fill", fill);
+    parent.appendChild(rect);
+  }
+
+  function completedLayerY(layerIndex, currentLayer, downProgress) {
+    return topLevelY + (currentLayer - 1 - layerIndex + downProgress) * layerHeight;
+  }
+
+  function finalLayerY(layerIndex) {
+    return topLevelY + (layerCount - 1 - layerIndex) * layerHeight;
+  }
+
+  function setRectYHeight(rect, y, height) {
+    rect.setAttribute("y", y.toFixed(2));
+    rect.setAttribute("height", Math.max(0, height).toFixed(2));
+  }
+
+  function prepState(progress) {
+    const feedRise = easeInOut(clamp((progress - 0.1) / 0.15));
+    const downProgress = easeInOut(clamp((progress - 0.25) / 0.15));
+    const forwardProgress = easeInOut(clamp((progress - 0.4) / 0.35));
+    const returnProgress = easeInOut(clamp((progress - 0.75) / 0.25));
+    const recoaterX = returnProgress > 0
+      ? recoaterEndX + (recoaterStartX - recoaterEndX) * returnProgress
+      : recoaterStartX + (recoaterEndX - recoaterStartX) * forwardProgress;
+    const feedScrape = returnProgress > 0
+      ? 1
+      : clamp((recoaterX - feedLeftX) / (feedRightX - feedLeftX));
+    const buildFill = returnProgress > 0
+      ? 1
+      : clamp((recoaterX - buildLeftX) / (buildRightX - buildLeftX));
+    return {
+      buildFill,
+      downProgress,
+      feedRise,
+      feedScrape: forwardProgress > 0 ? feedScrape : 0,
+      recoaterX,
+    };
+  }
+
+  function renderStatic(root) {
+    const finalGroup = root.querySelector(".powder-final");
+    finalGroup.textContent = "";
+    layers.forEach((layer, index) => {
+      makeRect(finalGroup, layer, finalLayerY(index), finalMaterial);
+    });
+  }
+
+  function renderFrame(root, step) {
+    const currentLayer = Math.floor(step / stepsPerLayer) % layerCount;
+    const layerStep = step % stepsPerLayer;
+    const isLaserScanning = layerStep >= stepsPerPhase;
+    const phaseStep = layerStep % stepsPerPhase;
+    const phaseProgress = phaseStep / (stepsPerPhase - 1);
+    const state = isLaserScanning
+      ? {
+          buildFill: 1,
+          downProgress: 1,
+          feedRise: 1,
+          feedScrape: 1,
+          recoaterX: recoaterStartX,
+        }
+      : prepState(phaseProgress);
+    const currentGroup = root.querySelector(".powder-current");
+    const activeGroup = root.querySelector(".powder-active");
+    const bedPowder = root.querySelector(".powder-bed-powder");
+    const bedBulk = root.querySelector(".powder-bed-bulk");
+    const feedPowder = root.querySelector(".powder-feed-powder");
+    const feedPiston = root.querySelector(".powder-feed-piston");
+    const platform = root.querySelector(".powder-build-platform");
+    const recoater = root.querySelector(".powder-recoater");
+    const laserBeam = root.querySelector(".powder-laser-beam");
+    const laserDot = root.querySelector(".powder-laser-dot");
+    const laserMirror = root.querySelector(".powder-laser-mirror");
+
+    currentGroup.textContent = "";
+    activeGroup.textContent = "";
+
+    layers.forEach((layer, index) => {
+      if (index >= currentLayer) {
+        return;
+      }
+      makeRect(currentGroup, layer, completedLayerY(index, currentLayer, state.downProgress), material);
+    });
+
+    if (isLaserScanning) {
+      const laserX = laserScanMinX + (laserScanMaxX - laserScanMinX) * phaseProgress;
+      const activeLayer = layers[currentLayer];
+      if (laserX > activeLayer.start) {
+        makeRect(activeGroup, activeLayer, topLevelY, activeMaterial, laserX);
+      }
+      laserBeam.setAttribute("x2", laserX.toFixed(2));
+      laserBeam.setAttribute("y2", String(topLevelY));
+      laserDot.setAttribute("cx", laserX.toFixed(2));
+      laserDot.setAttribute("cy", String(topLevelY));
+      laserBeam.setAttribute("opacity", "1");
+      laserDot.setAttribute("opacity", "1");
+      laserMirror.setAttribute("opacity", "1");
+    } else {
+      laserBeam.setAttribute("opacity", "0");
+      laserDot.setAttribute("opacity", "0");
+      laserMirror.setAttribute("opacity", "0.38");
+    }
+
+    const feedPistonY = feedPistonBaseY - (currentLayer + state.feedRise) * feedPistonLiftPerLayer;
+    const feedSurfaceY = topLevelY - layerHeight * state.feedRise * (1 - state.feedScrape);
+    const platformY = topLevelY + (currentLayer + state.downProgress) * layerHeight;
+    const bulkTopY = topLevelY + state.downProgress * layerHeight;
+    const bulkHeight = currentLayer * layerHeight;
+    const buildPowderWidth = (buildRightX - buildLeftX) * state.buildFill;
+
+    feedPowder.setAttribute("fill", powderMaterial);
+    setRectYHeight(feedPowder, feedSurfaceY, feedPistonY - feedSurfaceY);
+    bedBulk.setAttribute("x", String(buildLeftX));
+    bedBulk.setAttribute("width", String(buildRightX - buildLeftX));
+    setRectYHeight(bedBulk, bulkTopY, bulkHeight);
+    bedPowder.setAttribute("x", String(buildLeftX));
+    bedPowder.setAttribute("width", buildPowderWidth.toFixed(2));
+    setRectYHeight(bedPowder, topLevelY, layerHeight);
+    feedPiston.setAttribute("transform", `translate(105 ${feedPistonY.toFixed(2)})`);
+    platform.setAttribute("transform", `translate(271 ${platformY.toFixed(2)})`);
+    recoater.setAttribute("transform", `translate(${state.recoaterX.toFixed(2)} ${recoaterY})`);
+  }
+
+  roots.forEach((root) => {
+    root.dataset.powderReady = "true";
+    renderStatic(root);
+    let step = 0;
+    renderFrame(root, step);
+    window.setInterval(() => {
+      step = (step + 1) % (layerCount * stepsPerLayer);
+      renderFrame(root, step);
+    }, stepMilliseconds);
+  });
+})();
+</script>
+```

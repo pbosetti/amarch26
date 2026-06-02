@@ -523,7 +523,7 @@ Scan reslution might affect print result, but too high is just as bad as too low
 ## Taxonomy of 3-D printing technologies
 
 | Family | Common technologies | Typical archaeological use |
-|---|---|---|
+|-|--|---|
 | Material extrusion | FDM, FFF | Low-cost handling models, teaching sets, enlarged tactile replicas |
 | Vat photopolymerization | SLA, MSLA, DLP | Small finds with fine relief, inscriptions, seals, detailed fragments |
 | Powder bed and binder | SLS, MJF, binder jet | Complex shapes, durable nylon replicas, color display models |
@@ -557,8 +557,8 @@ Material extrusion and photopolymerization are [desktop-compatible]{.bgreen} pro
 ::: {.column}
 ### Material families
 
-* Thermoplastics: PLA, PETG, ABS, nylon, and filled filaments.
-* Photopolymers: standard, tough, flexible, castable, and high-temperature resins.
+* **Thermoplastics**: PLA, PETG, ABS, nylon, and filled filaments.
+* **Photopolymers**: standard, tough, flexible, castable, and high-temperature resins.
 * Composite materials can imitate stone, wood, or ceramic appearance without reproducing the original material history.
 
 :::
@@ -580,7 +580,7 @@ Polymers are usually the most accessible materials for archaeological replicas, 
 
 :::
 
-## Filament-based 3-D printing
+## Filament-based 3-D printing {{<bi 1-circle-fill>}}
 
 ::: {.columns}
 
@@ -610,7 +610,26 @@ Filament printing is inexpensive and durable, but layer lines, anisotropic stren
 
 :::
 
-## Resin-based 3-D printing
+
+## Filament-based 3-D printing {{<bi 2-circle-fill>}}
+
+
+::: {.columns}
+
+::: {.column}
+* FDM printers commonly have **two extruders**, which can depose two different colors or two different materials (e.g., soluble support)
+* Layer height is typically 0.1–0.3 mm, but can be as low as 0.05 mm for fine detail or as high as 0.5 mm for faster prints with less detail (and larger parts)
+* Materials with best mechanical properties often require higher temperature, a heated bed, and a closed, heated build chamber
+* Final parts are often [not watertight]{.bred} and may require post-processing to improve surface finish, remove supports, or enhance strength
+:::
+
+::: {.column}
+{{< include _fdm.qmd >}}
+:::
+:::
+
+
+## Resin-based 3-D printing {{<bi 1-circle-fill>}}
 
 ::: {.columns}
 
@@ -640,7 +659,57 @@ Resin printing captures fine detail well, but uncured resin is hazardous, parts 
 
 :::
 
-## Powder-based 3-D printing
+
+## Resin-based 3-D printing {{<bi 2-circle-fill>}}
+
+::: {.columns}
+
+::: {.column}
+* SLA printers use a laser to cure resin point by point, while MSLA and DLP use a masked LCD to cure an entire layer at once, which can speed up printing but may reduce resolution and increase pixelation
+* Detail is often [better than FDM]{.bgreen}, with layer heights as low as 0.01 mm and XY resolution determined by the pixel size of the light source
+* No multi-material capability
+* Post processing: UV-oven curing
+* Part strength, shape, color can [change with time]{.bred} and UV radiation
+:::
+
+::: {.column}
+{{< include _sla.qmd >}}
+:::
+:::
+
+
+## Resin-based 3-D printing {{<bi 3-circle-fill>}}
+
+::: {.columns}
+:::{.column}
+* Overhangs must be **supported** by fragile and thin dendritic structures that have to be manually removed after printing, which can leave marks and require additional finishing steps
+* Photopolymers with ceramic load can produce a grainy surface that mimics stone, but they are more expensive and less durable than standard resins
+* High ceramic load can be later sinthered to produce a more durable, fully ceramic replica, but this process can cause shrinkage and loss of detail
+:::
+:::{.column}
+
+::: {.panel-tabset}
+
+## Supports
+
+![Manually removing supports](sla_supports.jpg)
+
+## Ceramics
+
+![Durable replicas](sla_ceramic.png){width=66%}
+
+:::
+
+
+:::
+:::
+
+:::aside
+Also see <https://doi.org/10.1111/jace.20043>{target="_blank"} for a detailed study of ceramic resin properties and post-processing effects on strength, durability, and surface finish.
+:::
+
+
+## Powder-based 3-D printing {{<bi 1-circle-fill>}}
 
 ::: {.columns}
 
@@ -669,6 +738,30 @@ Resin printing captures fine detail well, but uncured resin is hazardous, parts 
 Powder processes can handle complex forms and color, but surfaces may be grainy or porous, cavities can trap powder, and equipment and service costs are higher than desktop polymer printers.
 
 :::
+
+## Powder-based 3-D printing {{<bi 2-circle-fill>}}
+
+
+::: {.columns}
+::: {.column}
+* Some technologies ([SLM/SLS]{.bred}) require supports, some other ([MJF, EBM]{.bgreen}) do not
+* Surface finish is often rough and porous, which can be improved with post-processing but may affect fine details
+* Some powders require **special handling** and disposal due to health and safety concerns
+
+:::{.callout-warning}
+Regardless of the technology, powder-based printing often requires industrial equipment and safety precautions, which can increase cost and turnaround time, and limit material options and post-processing control
+:::
+:::
+
+::: {.column}
+{{< include ./_powder_bed.qmd >}}
+:::
+
+:::
+
+
+
+
 
 
 ## Metal-based 3-D printing
