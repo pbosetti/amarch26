@@ -33,7 +33,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-a35f633206032108f1f9b4999d76b1e2.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-8832f05c97a968baceab42de1f0ec5fe.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -142,8 +142,9 @@
 Paolo Bosetti 
 </div>
         <p class="quarto-title-affiliation">
-            University of Trento, Department of Industrial Engineering
-          </p>
+            </p><p>University of Trento, Department of Industrial Engineering</p>
+            <p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img data-src="http://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg" width="150"></a></p>
+          <p></p>
     </div>
 </div>
 
@@ -1854,7 +1855,7 @@ Peabody Museum - Harvard University <a href="https://peabody.harvard.edu/video-d
 h='&#x75;&#110;&#x69;&#116;&#110;&#46;&#x69;&#116;';a='&#64;';n='&#112;&#x61;&#x6f;&#108;&#x6f;&#46;&#98;&#x6f;&#x73;&#x65;&#116;&#116;&#x69;';e=n+a+h;
 document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x43;&#x6f;&#110;&#116;&#x61;&#x63;&#116;'+'<\/'+'a'+'>');
 // -->
-</script><noscript>Contact (paolo.bosetti at unitn dot it)</noscript></p>
+</script><noscript>Contact (paolo.bosetti at unitn dot it)</noscript> — <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">License: CC BY-NC-SA 4.0</a></p>
 </div>
 </div></div>
 
@@ -2152,8 +2153,11 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x4
               if (link.dataset.originalHref !== undefined) {
                 link.href = link.dataset.originalHref;
               }
-                // default icon
-                link.classList.add("external");
+                // target, if specified
+                link.setAttribute("target", "_blank");
+                if (link.getAttribute("rel") === null) {
+                  link.setAttribute("rel", "noopener");
+                }
             }
           }
         function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
