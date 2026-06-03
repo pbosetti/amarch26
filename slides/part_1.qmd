@@ -824,3 +824,6 @@ Regardless of the technology, powder-based printing often requires industrial eq
 Metal printing is costly and technically demanding; in archaeology it is most defensible when material properties are part of the research or conservation problem, not merely for visual resemblance.
 
 :::
+
+# Q&A
+Dont be shy...
