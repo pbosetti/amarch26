@@ -1077,7 +1077,7 @@
         }
         const dx = event.clientX - this.lastPointer[0];
         const dy = event.clientY - this.lastPointer[1];
-        this.yaw += dx * 0.006;
+        this.yaw -= dx * 0.006;
         this.pitch = clamp(this.pitch + dy * 0.005, -0.35, 1.05);
         this.lastPointer = [event.clientX, event.clientY];
       });
@@ -1515,7 +1515,7 @@
         }
         const dx = event.clientX - this.lastPointer[0];
         const dy = event.clientY - this.lastPointer[1];
-        this.yaw += dx * 0.007;
+        this.yaw -= dx * 0.007;
         this.pitch = clamp(this.pitch + dy * 0.006, -1.1, 1.1);
         this.lastPointer = [event.clientX, event.clientY];
       });
