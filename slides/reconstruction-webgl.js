@@ -28,6 +28,19 @@
   ];
 
   const structuredLightLaserSource = [-1.35, 0.58, 2.35];
+  const modelChangeEventName = "amarch-reconstruction-model-change";
+  const baseModelHeight = 1.26;
+  const modelSettings = {
+    "_Mask.usdz": {
+      label: "Mask",
+      scale: 2.0,
+    },
+    "_Jade.usdz": {
+      label: "Jade",
+      scale: 3.0,
+    },
+  };
+  let sharedModelSrc = null;
 
   const vertexShaderSource = `
     attribute vec3 a_position;
@@ -365,7 +378,7 @@
     return { min, max };
   }
 
-  function createModelMesh(modelAsset) {
+  function createModelMesh(modelAsset, modelSrc) {
     if (!modelAsset || !modelAsset.attributes || !modelAsset.indices) {
       return createFallbackObjectMesh();
     }
@@ -386,7 +399,8 @@
       (bounds.min[2] + bounds.max[2]) * 0.5,
     ];
     const sourceHeight = Math.max(0.0001, bounds.max[1] - bounds.min[1]);
-    const scaleFactor = 1.26 / sourceHeight;
+    const settings = modelSettings[modelSrc] || modelSettings[modelAsset.source] || {};
+    const scaleFactor = (baseModelHeight * (settings.scale || 1)) / sourceHeight;
     const targetCenter = [0, 0.04, 0.08];
     const positions = new Float32Array(sourcePositions.length);
 
@@ -415,6 +429,61 @@
   function getModelAsset(modelSrc) {
     const registry = window.AmarchReconstructionModels || {};
     return registry[modelSrc] || registry[modelSrc && modelSrc.split("/").pop()];
+  }
+
+  function modelDisplayName(modelSrc) {
+    if (modelSettings[modelSrc] && modelSettings[modelSrc].label) {
+      return modelSettings[modelSrc].label;
+    }
+    const fileName = (modelSrc || "Model").split("/").pop();
+    return fileName.replace(/^_/, "").replace(/\.[^.]+$/, "") || "Model";
+  }
+
+  function getAvailableModelSources(preferredSrc) {
+    const registry = window.AmarchReconstructionModels || {};
+    const sources = Object.keys(registry);
+    if (preferredSrc && !sources.includes(preferredSrc)) {
+      sources.unshift(preferredSrc);
+    }
+    return sources;
+  }
+
+  function createModelSelectControl(modelSrc) {
+    const sources = getAvailableModelSources(modelSrc);
+    if (sources.length < 2) {
+      return null;
+    }
+
+    const label = document.createElement("label");
+    label.className = "webgl-model-select";
+
+    const labelText = document.createElement("span");
+    labelText.textContent = "Model";
+
+    const select = document.createElement("select");
+    select.setAttribute("aria-label", "Select model");
+    sources.forEach((source) => {
+      const option = document.createElement("option");
+      option.value = source;
+      option.textContent = modelDisplayName(source);
+      select.appendChild(option);
+    });
+    select.value = modelSrc;
+
+    label.append(labelText, select);
+    return { label, select };
+  }
+
+  function announceModelSelection(modelSrc) {
+    if (!modelSrc || sharedModelSrc === modelSrc) {
+      return;
+    }
+    sharedModelSrc = modelSrc;
+    window.dispatchEvent(
+      new CustomEvent(modelChangeEventName, {
+        detail: { modelSrc },
+      }),
+    );
   }
 
   function pointAt(values, index) {
@@ -769,7 +838,8 @@
     constructor(root) {
       this.root = root;
       this.method = root.dataset.method || "photogrammetry";
-      this.modelSrc = root.dataset.modelSrc || "_Mask.usdz";
+      this.modelSrc = sharedModelSrc || root.dataset.modelSrc || "_Mask.usdz";
+      sharedModelSrc = this.modelSrc;
       this.baseline = this.method === "structured-light" ? 1.9 : 2.35;
       this.distance = 6.1;
       this.yaw = 0.0;
@@ -820,16 +890,15 @@
         texcoord: this.gl.createBuffer(),
       };
       this.uint32ElementExtension = this.gl.getExtension("OES_element_index_uint");
-      this.objectMesh = createModelMesh(getModelAsset(this.modelSrc));
       this.modelTexture = null;
-      this.featurePoints = this.objectMesh.featurePoints || fallbackFeaturePoints;
+      this.textureRequestId = 0;
       this.labels = new Map();
       this.labelsVisible = true;
+      this.setModel(this.modelSrc);
 
       this.addControls();
       this.addLabels();
       this.bindEvents();
-      this.loadModelTexture();
       this.resize();
 
       if (window.ResizeObserver) {
@@ -846,12 +915,23 @@
     }
 
     loadModelTexture() {
-      if (!this.objectMesh.texture) {
+      this.textureRequestId += 1;
+      const requestId = this.textureRequestId;
+      const textureName = this.objectMesh.texture;
+
+      if (this.modelTexture) {
+        this.gl.deleteTexture(this.modelTexture);
+        this.modelTexture = null;
+      }
+      if (!textureName) {
         return;
       }
 
       const image = new Image();
       image.addEventListener("load", () => {
+        if (requestId !== this.textureRequestId || textureName !== this.objectMesh.texture) {
+          return;
+        }
         const gl = this.gl;
         const texture = gl.createTexture();
         gl.bindTexture(gl.TEXTURE_2D, texture);
@@ -869,12 +949,33 @@
         gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
         this.modelTexture = texture;
       });
-      image.src = this.objectMesh.texture;
+      image.src = textureName;
+    }
+
+    setModel(modelSrc) {
+      this.modelSrc = modelSrc || "_Mask.usdz";
+      this.root.dataset.modelSrc = this.modelSrc;
+      this.objectMesh = createModelMesh(getModelAsset(this.modelSrc), this.modelSrc);
+      this.featurePoints = this.objectMesh.featurePoints || fallbackFeaturePoints;
+      if (this.modelSelect && this.modelSelect.value !== this.modelSrc) {
+        this.modelSelect.value = this.modelSrc;
+      }
+      this.loadModelTexture();
     }
 
     addControls() {
       const controls = document.createElement("div");
       controls.className = "reconstruction-controls";
+
+      const modelControl = createModelSelectControl(this.modelSrc);
+      if (modelControl) {
+        this.modelSelect = modelControl.select;
+        this.modelSelect.addEventListener("change", () => {
+          this.setModel(this.modelSelect.value);
+          announceModelSelection(this.modelSelect.value);
+        });
+        controls.appendChild(modelControl.label);
+      }
 
       const label = document.createElement("label");
       label.className = "reconstruction-control-label";
@@ -998,6 +1099,12 @@
         },
         { passive: false },
       );
+      window.addEventListener(modelChangeEventName, (event) => {
+        const modelSrc = event.detail && event.detail.modelSrc;
+        if (modelSrc && modelSrc !== this.modelSrc) {
+          this.setModel(modelSrc);
+        }
+      });
     }
 
     resize() {
@@ -1210,7 +1317,8 @@
   class MaskModelViewer {
     constructor(root) {
       this.root = root;
-      this.modelSrc = root.dataset.modelSrc || "_Mask.usdz";
+      this.modelSrc = sharedModelSrc || root.dataset.modelSrc || "_Mask.usdz";
+      sharedModelSrc = this.modelSrc;
       this.yaw = 0.0;
       this.pitch = 0.12;
       this.dragging = false;
@@ -1259,14 +1367,12 @@
         texcoord: this.gl.createBuffer(),
       };
       this.uint32ElementExtension = this.gl.getExtension("OES_element_index_uint");
-      this.objectMesh = createModelMesh(getModelAsset(this.modelSrc));
-      this.triangleWireframeGeometry = createTriangleWireframeGeometry(this.objectMesh);
       this.modelTexture = null;
+      this.textureRequestId = 0;
+      this.setModel(this.modelSrc);
 
-      this.configureView();
       this.addControls();
       this.bindEvents();
-      this.loadModelTexture();
       this.resize();
 
       if (window.ResizeObserver) {
@@ -1300,12 +1406,23 @@
     }
 
     loadModelTexture() {
-      if (!this.objectMesh.texture) {
+      this.textureRequestId += 1;
+      const requestId = this.textureRequestId;
+      const textureName = this.objectMesh.texture;
+
+      if (this.modelTexture) {
+        this.gl.deleteTexture(this.modelTexture);
+        this.modelTexture = null;
+      }
+      if (!textureName) {
         return;
       }
 
       const image = new Image();
       image.addEventListener("load", () => {
+        if (requestId !== this.textureRequestId || textureName !== this.objectMesh.texture) {
+          return;
+        }
         const gl = this.gl;
         const texture = gl.createTexture();
         gl.bindTexture(gl.TEXTURE_2D, texture);
@@ -1323,12 +1440,34 @@
         gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
         this.modelTexture = texture;
       });
-      image.src = this.objectMesh.texture;
+      image.src = textureName;
+    }
+
+    setModel(modelSrc) {
+      this.modelSrc = modelSrc || "_Mask.usdz";
+      this.root.dataset.modelSrc = this.modelSrc;
+      this.objectMesh = createModelMesh(getModelAsset(this.modelSrc), this.modelSrc);
+      this.triangleWireframeGeometry = createTriangleWireframeGeometry(this.objectMesh);
+      this.configureView();
+      if (this.modelSelect && this.modelSelect.value !== this.modelSrc) {
+        this.modelSelect.value = this.modelSrc;
+      }
+      this.loadModelTexture();
     }
 
     addControls() {
       const controls = document.createElement("div");
       controls.className = "mask-viewer-controls";
+
+      const modelControl = createModelSelectControl(this.modelSrc);
+      if (modelControl) {
+        this.modelSelect = modelControl.select;
+        this.modelSelect.addEventListener("change", () => {
+          this.setModel(this.modelSelect.value);
+          announceModelSelection(this.modelSelect.value);
+        });
+        controls.appendChild(modelControl.label);
+      }
 
       const textureToggle = document.createElement("button");
       textureToggle.type = "button";
@@ -1398,6 +1537,12 @@
         },
         { passive: false },
       );
+      window.addEventListener(modelChangeEventName, (event) => {
+        const modelSrc = event.detail && event.detail.modelSrc;
+        if (modelSrc && modelSrc !== this.modelSrc) {
+          this.setModel(modelSrc);
+        }
+      });
     }
 
     resize() {

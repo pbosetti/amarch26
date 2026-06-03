@@ -6,7 +6,9 @@ institute: "University of Trento, Department of Industrial Engineering"
 format: revealjs
 resources:
   - _Mask.usdz
+  - _Jade.usdz
   - mask-texture.png
+  - jade-texture.png
 ---
 
 # Contents
@@ -91,6 +93,7 @@ It's quite like our binocular vision:
 ```{=html}
 <div class="reconstruction-scene" data-reconstruction-webgl data-method="photogrammetry" data-model-src="_Mask.usdz"></div>
 <script src="mask-model.js"></script>
+<script src="jade-model.js"></script>
 <script src="reconstruction-webgl.js"></script>
 ```
 
@@ -151,6 +154,7 @@ Structured light scanning gives high local resolution and fast acquisition, but 
 ```{=html}
 <div class="reconstruction-scene" data-reconstruction-webgl data-method="structured-light" data-model-src="_Mask.usdz"></div>
 <script src="mask-model.js"></script>
+<script src="jade-model.js"></script>
 <script src="reconstruction-webgl.js"></script>
 ```
 
@@ -294,6 +298,9 @@ Scanned with Reality Composer on iPhone 16 Pro, exported as `.usdz`, and rendere
 
 ```{=html}
 <div class="mask-viewer" data-mask-viewer data-model-src="_Mask.usdz"></div>
+<script src="mask-model.js"></script>
+<script src="jade-model.js"></script>
+<script src="reconstruction-webgl.js"></script>
 ```
 
 :::{.callout-important .smaller}

@@ -210,6 +210,27 @@ $body-color: #777777;
     font-weight: 600;
   }
 
+  .webgl-model-select {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .webgl-model-select select {
+    min-width: 84px;
+    height: 28px;
+    padding: 3px 24px 3px 8px;
+    color: #27313d;
+    font: inherit;
+    font-size: 15px;
+    line-height: 1;
+    background: white;
+    border: 1px solid rgba(39, 49, 61, 0.22);
+    border-radius: 6px;
+  }
+
   .reconstruction-controls input[type="range"] {
     width: 170px;
     accent-color: $link-color;
@@ -578,6 +599,12 @@ $body-color: #777777;
 
     .reconstruction-controls input[type="range"] {
       width: 108px;
+    }
+
+    .webgl-model-select select {
+      min-width: 76px;
+      height: 27px;
+      font-size: 14px;
     }
 
     .reconstruction-label {
