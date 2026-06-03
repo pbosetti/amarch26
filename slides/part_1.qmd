@@ -6,7 +6,15 @@ institute: |
   University of Trento, Department of Industrial Engineering
 
   [![](http://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg){width=150px}](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-format: revealjs
+format: 
+  revealjs:
+    pointer:
+      key: "p"
+      color: "red"
+      pointerSize: 32
+      alwaysVisible: false
+revealjs-plugins:
+  - pointer
 resources:
   - _Mask.usdz
   - _Jade.usdz
@@ -452,7 +460,7 @@ digraph process_flow {
 }
 ```
 :::{.callout-note .smaller}
-AM processes work layer-by.layer, so the mudel must be **sliced** into thin horizontal sections
+AM processes work layer-by layer, so the model must be **sliced** into thin horizontal sections
 :::
 :::
 
@@ -462,7 +470,7 @@ AM processes work layer-by.layer, so the mudel must be **sliced** into thin hori
 ## Solid model preparation
 ::: {.columns}
 ::: {.column}
-* Scans produce a **surface model** that may have holes, non-manifold geometry, and inconsistent face normals
+* Scans produce a **surface model** that may have holes, <span style="position:relative; display:inline-block; cursor:help;" onmouseenter="this.querySelector('.hover-popup').style.display='block'" onmouseleave="this.querySelector('.hover-popup').style.display='none'">[non-manifold]{style="text-decoration: underline; text-decoration-color: #1585da;"}<span class="hover-popup" style="display:none; position:absolute; left:0; top:1.4em; width:300px; height:300px; z-index:9999; border:3px solid #1585da; border-radius: 10px; background:#fff; box-shadow:0 4px 12px rgba(0,0,0,0.25);"><img src="http://gnuplotting.org/figs/klein_bottle.png" alt="Klein bottle" style="width:100%; height:100%; object-fit:contain;" /></span></span> geometry, and inconsistent face normals
 * These issues must be resolved before printing, using software tools that can fill holes, repair meshes, and ensure the model is watertight and printable
 * The model may also need to be scaled, oriented, and simplified to meet the printer's requirements and the research goals of the replica
 
