@@ -108,7 +108,7 @@ It's quite like our binocular vision:
 :::
 
 ::: {.column width=40%}
-![Photogrammetry bundle triangulation](photogrammetry.png){width=66%}
+![Photogrammetry bundle triangulation](images/photogrammetry.png){width=66%}
 :::
 :::
 
@@ -171,10 +171,10 @@ Structured light scanning gives high local resolution and fast acquisition, but 
 ::: {.column}
 :::{.panel-tabset}
 ### Scan
-![LiDAR point cloud](lidar_2.jpg){width=77%}
+![LiDAR point cloud](images/lidar_2.jpg){width=77%}
 
 ### Mesh
-![LiDAR mesh](lidar_3.jpg){width=66%}
+![LiDAR mesh](images/lidar_3.jpg){width=66%}
 
 ### Archaeological fit
 * Architecture, excavation areas, rock art panels, caves, and landscapes.
@@ -208,7 +208,7 @@ Wavelengths: short-wave infrared spectrums 905 nm (more sensitive) or eye-safe 1
 ::: {.column}
 :::{.panel-tabset}
 ### Example
-![Time-of-flight scanning](flowers.jpeg){width=66%}
+![Time-of-flight scanning](images/flowers.jpeg){width=66%}
 
 ### Archaeological fit
 * Rapid documentation of rooms, trenches, monuments, and larger objects.
@@ -260,7 +260,7 @@ Both methods can be augmented with RGB cameras for color information, and inerti
 
 ::: {.column}
 
-![Reality Composer app (by Apple)](Reality_Composer_macOS_icon.webp){width=66%}
+![Reality Composer app (by Apple)](images/RC_icon.webp){width=66%}
 
 :::
 
@@ -272,11 +272,11 @@ Both methods can be augmented with RGB cameras for color information, and inerti
 ::: {.columns}
 
 ::: {.column width=33%}
-![Reality Composer](rc_1.jpeg){width=280px}
+![Reality Composer](images/rc_1.jpeg){width=280px}
 :::
 
 ::: {.column width=33%}
-![Create Scan](rc_2.jpeg){width=280px}
+![Create Scan](images/rc_2.jpeg){width=280px}
 :::
 
 ::: {.column width=33%}
@@ -325,10 +325,10 @@ The digital sensor resolution in mm/pixels is called **Ground Sampling Distance*
 
 ::: {.panel-tabset}
 ## Structured Light
-![Typ. precision: **0.1 mm** ](metrascan_2.jpg){width=66%}
+![Typ. precision: **0.1 mm** ](images/metrascan_2.jpg){width=66%}
 
 ## Scanhead Localization
-![Typ. precision: **0.03 mm** ](metrascan_1.jpg){width=66%}
+![Typ. precision: **0.03 mm** ](images/metrascan_1.jpg){width=66%}
 
 :::
 
@@ -467,10 +467,10 @@ Scan reslution might affect print result, but too high is just as bad as too low
 
 :::{.panel-tabset}
 ### Approximation
-![Mesh approximation](slice.svg){width=75%}
+![Mesh approximation](images/slice.svg){width=75%}
 
 ### Surface model
-![PolygonalApproximation](cura_sm.png)
+![PolygonalApproximation](images/cura_sm.png)
 :::
 
 :::
@@ -491,7 +491,7 @@ Scan reslution might affect print result, but too high is just as bad as too low
 
 ::: {.column}
 
-![Support structures](cura_support.png)
+![Support structures](images/cura_support.png)
 
 :::
 :::
@@ -509,7 +509,7 @@ Scan reslution might affect print result, but too high is just as bad as too low
 
 ::: {.column}
 
-![Print slicing](cura_infill.png)
+![Print slicing](images/cura_infill.png)
 
 :::
 :::
@@ -692,11 +692,11 @@ Resin printing captures fine detail well, but uncured resin is hazardous, parts 
 
 ## Supports
 
-![Manually removing supports](sla_supports.jpg)
+![Manually removing supports](images/sla_supports.jpg)
 
 ## Ceramics
 
-![Durable replicas](sla_ceramic.png){width=66%}
+![Durable replicas](images/sla_ceramic.png){width=66%}
 
 :::
 
@@ -767,7 +767,7 @@ Regardless of the technology, powder-based printing often requires industrial eq
 :::
 
 ::: {.column}
-![Multi-Jet Fusion color model](mjf_1.jpg)
+![Multi-Jet Fusion color model](images/mjf_1.jpg)
 :::
 :::
 
