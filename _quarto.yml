@@ -7,6 +7,8 @@ format:
   html:
     theme: [superhero, slides.scss]
   revealjs:
+    link-external-newwindow: true
+    link-external-icon: false
     theme: [default, slides.scss]
     width: 1280
     height: 720
@@ -20,12 +22,15 @@ format:
     code-annotations: below
     preview-links: auto
     chalkboard: true
-    footer: "AMARCH26 --- [{{< bi house-fill >}} Home](/) --- [Contact](mailto:paolo.bosetti@unitn.it)"
+    footer: |
+      AMARCH26 
+      --- [{{< bi house-fill >}} Home](/) 
+      --- [Contact](mailto:paolo.bosetti@unitn.it) 
+      --- [License: CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
     fig-width: 5
     fig-height: 4
     fig-dpi: 300
     touch: true
     email-obfuscation: javascript
     pdf-separate-fragments: true
-    link-external-icon: true
     lang: en-EN

@@ -4,6 +4,7 @@ author: "Paolo Bosetti"
 format: html
 ---
 
+![](images/mask.png){style="height: 180px; width: 100%; object-fit: cover;"}
 
 This repository contains the materials for the seminar "3-D reconstruction and printing tools: Fundamentals" presented by Paolo Bosetti at the [AMARCH26](https://eventi.unitn.it/it/amarch-2026) summer school.
 
@@ -25,10 +26,8 @@ An interactive presentation: *3-D reconstruction and printing tools: Fundamental
 
 :::
 
-
-
 ---
 
-![](images/mask.png)
+# License ![](http://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg){width=150px}
 
----
+This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
