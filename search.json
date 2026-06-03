@@ -98,11 +98,11 @@
     "text": "Example\n\n\n\n\n\nReality Composer\n\n\n\n\n\n\nCreate Scan"
   },
   {
-    "objectID": "slides/part_1.html#example-same-mask-as-above",
-    "href": "slides/part_1.html#example-same-mask-as-above",
+    "objectID": "slides/part_1.html#example-same-objects-as-above",
+    "href": "slides/part_1.html#example-same-objects-as-above",
     "title": "3-D Reconstruction and Printing Tools: Fundamentals",
-    "section": "Example: Same mask as above",
-    "text": "Example: Same mask as above\nScanned with Reality Composer on iPhone 16 Pro, exported as .usdz, and rendered with the same WebGL viewer as the photogrammetry model\n\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nNote the holes in the model: a 3-D scan, regardless the technology, provides a surface model, which has no information about the internal structure of the object. The holes are areas where the scanner could not capture data, often due to occlusions, reflective surfaces, or insufficient texture."
+    "section": "Example: Same objects as above",
+    "text": "Example: Same objects as above\nScanned with Reality Composer on iPhone 16 Pro, exported as .usdz, and rendered with the same WebGL viewer as the photogrammetry model\n\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nNote the holes in the mask model: a 3-D scan, regardless the technology, provides a surface model, which has no information about the internal structure of the object. The holes are areas where the scanner could not capture data, often due to occlusions, reflective surfaces, or insufficient texture."
   },
   {
     "objectID": "slides/part_1.html#precision-and-resolution-1",
@@ -130,7 +130,7 @@
     "href": "slides/part_1.html#model-orientation-and-support-generation",
     "title": "3-D Reconstruction and Printing Tools: Fundamentals",
     "section": "Model orientation and support generation",
-    "text": "Model orientation and support generation\n\n\n\nAlmost all 3-D printing processes cannot print overhangs beyond a certain angle without support structures\nThe model must be oriented to minimize the need for supports, which can affect surface quality and post-processing time\nSupport structures are generated based on the printer’s capabilities and the model’s geometry\nThey must be removed after printing, which can leave marks or require additional finishing steps\n\n\n\n\n\nSupport structures"
+    "text": "Model orientation and support generation\n\n\n\nMost of the common 3-D printing processes cannot print overhangs beyond a certain angle without support structures\nThe model must be oriented to minimize the need for supports, which can affect surface quality and post-processing time\nSupport structures are generated based on the printer’s capabilities and the model’s geometry\nThey must be removed after printing, which can leave marks or require additional finishing steps\n\n\n\n\n\nSupport structures"
   },
   {
     "objectID": "slides/part_1.html#slicing-and-print-ready-file-generation",

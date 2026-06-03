@@ -550,8 +550,8 @@ Peabody Museum - Harvard University <a href="https://peabody.harvard.edu/video-d
 <video src="rc_3.mov" controls="" style="display: block; margin: 0 auto;"><source src="rc_3.mov"></video>
 </div></div>
 </section>
-<section id="example-same-mask-as-above" class="slide level2">
-<h2>Example: Same mask as above</h2>
+<section id="example-same-objects-as-above" class="slide level2">
+<h2>Example: Same objects as above</h2>
 <p>Scanned with Reality Composer on iPhone 16 Pro, exported as <code>.usdz</code>, and rendered with the same WebGL viewer as the photogrammetry model</p>
 <div class="mask-viewer" data-mask-viewer="" data-model-src="_Mask.usdz"></div>
 <script src="mask-model.js"></script>
@@ -567,7 +567,7 @@ Peabody Museum - Harvard University <a href="https://peabody.harvard.edu/video-d
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<p>Note the <strong>holes</strong> in the model: a 3-D scan, regardless the technology, provides a <strong>surface model</strong>, which has no information about the internal structure of the object. The holes are areas where the scanner could not capture data, often due to occlusions, reflective surfaces, or insufficient texture.</p>
+<p>Note the <strong>holes</strong> in the mask model: a 3-D scan, regardless the technology, provides a <strong>surface model</strong>, which has no information about the internal structure of the object. The holes are areas where the scanner could not capture data, often due to occlusions, reflective surfaces, or insufficient texture.</p>
 </div>
 </div>
 </div>
@@ -867,7 +867,7 @@ Peabody Museum - Harvard University <a href="https://peabody.harvard.edu/video-d
 <div class="columns">
 <div class="column">
 <ul>
-<li>Almost all 3-D printing processes <strong>cannot print overhangs</strong> beyond a certain angle without support structures</li>
+<li>Most of the common 3-D printing processes <strong>cannot print overhangs</strong> beyond a certain angle without support structures</li>
 <li>The model must be oriented to minimize the need for supports, which can affect surface quality and post-processing time</li>
 <li>Support structures are generated based on the printer’s capabilities and the model’s geometry</li>
 <li>They must be removed after printing, which can leave marks or require additional finishing steps</li>
