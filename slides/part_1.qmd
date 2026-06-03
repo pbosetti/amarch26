@@ -1,10 +1,13 @@
 ---
 title: "3-D Reconstruction and Printing Tools: Fundamentals"
 subtitle: "AMARCH26 --- Trento, June 4th, 2026"
-author: "Paolo Bosetti"
-institute: |
-  University of Trento, Department of Industrial Engineering
+author: 
+  - name: "Paolo Bosetti"
+    email: "paolo.bosetti@unitn.it"
+    orcid: "0000-0003-3783-5928"
+    affiliation: "University of Trento, Department of Industrial Engineering"
 
+institute: |
   [![](http://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg){width=150px}](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 format: 
   revealjs:
@@ -15,6 +18,7 @@ format:
       alwaysVisible: false
 revealjs-plugins:
   - pointer
+  - tabset
 resources:
   - _Mask.usdz
   - _Jade.usdz
