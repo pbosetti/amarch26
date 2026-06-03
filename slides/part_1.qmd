@@ -307,7 +307,7 @@ Both methods can be augmented with RGB cameras for color information, and inerti
 :::
 
 
-## Example: Same mask as above
+## Example: Same objects as above
 
 Scanned with Reality Composer on iPhone 16 Pro, exported as `.usdz`, and rendered with the same WebGL viewer as the photogrammetry model
 
@@ -319,7 +319,7 @@ Scanned with Reality Composer on iPhone 16 Pro, exported as `.usdz`, and rendere
 ```
 
 :::{.callout-important .smaller}
-Note the **holes** in the model: a 3-D scan, regardless the technology, provides a **surface model**, which has no information about the internal structure of the object. The holes are areas where the scanner could not capture data, often due to occlusions, reflective surfaces, or insufficient texture.
+Note the **holes** in the mask model: a 3-D scan, regardless the technology, provides a **surface model**, which has no information about the internal structure of the object. The holes are areas where the scanner could not capture data, often due to occlusions, reflective surfaces, or insufficient texture.
 :::
 
 
@@ -504,7 +504,7 @@ Scan reslution might affect print result, but too high is just as bad as too low
 ::: {.columns}
 ::: {.column}
 
-* Almost all 3-D printing processes **cannot print overhangs** beyond a certain angle without support structures
+* Most of the common 3-D printing processes **cannot print overhangs** beyond a certain angle without support structures
 * The model must be oriented to minimize the need for supports, which can affect surface quality and post-processing time
 * Support structures are generated based on the printer's capabilities and the model's geometry
 * They must be removed after printing, which can leave marks or require additional finishing steps
